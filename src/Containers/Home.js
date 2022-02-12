@@ -1,15 +1,22 @@
 
-import  React, { useRef } from "react";
+import  React, { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
+import { Modal, Button } from 'react-bootstrap';
 
 export default function Home() {
   const form = useRef();
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_z2djj1k', 'template_key7wtr', form.current, 'user_OQDlxm04mac90RvzQrEsi')
-    .then((result) => {
-        console.log(result.text);
+    .then(() => {
+      form.current.reset()
+      handleShow()
     }, (error) => {
         console.log(error.text);
     });
@@ -28,16 +35,13 @@ export default function Home() {
                   <div className="herolider">
                     <ul className="caption-slides">
                       <li className="caption">
-                        <h1>RESPONSIVE TEMPLATES</h1>
-                        <div className="div-line"></div>
-                        <p className="hero">Design &amp; Development</p>
+                        <h1>Professional Technology Assistance </h1>
+                        <p className="hero">for</p>
                       </li>
-
                       <li className="caption">
-                        <h1>HIGH QUALITY CODE</h1>
+                        <h1>IT services & Web Development</h1>
                         <div className="div-line"></div>
                       </li>
-
                     </ul>
                   </div>
                 </div> 
@@ -55,7 +59,6 @@ export default function Home() {
                 <div className="col-sm-12 col-sm-offset-2">
                   <h1 className="big-subtitle">We make technology accessible! </h1>
                   <hr />
-                  <p className="about-text">Professional Technology Assistance for IT services & Web Development</p>
                 </div>
               </div> 
             </div>
@@ -123,7 +126,7 @@ technical and business related risks are significantly mitigated. Our highly ski
                 <ul className="features-list">
                   <li>
                     <div className="left-features-box animated" data-animation="fadeInLeft" data-delay="0">
-                      <span className="iconbox"><i className="fa fa-mobile"></i></span>
+                      <span className="iconbox"><i className="fa fas fa-mobile font-size-30"></i></span>
                       <div className="features-box-content">
                         <h6>Mobile App</h6>
                         <p>We are developing a hybrid mobile App as per your requirement. </p>
@@ -148,7 +151,21 @@ technical and business related risks are significantly mitigated. Our highly ski
                       </div> 
                     </div>
                   </li>
-                  <li>
+                </ul> 
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="features-image animated " data-animation="fadeInUp" data-delay="0">
+              <link rel="icon" href="assets/images/temp/woman.jpg" />
+              </div> 
+            </div> 
+
+            <div className="col-md-4 without-padding">
+              <div className="right-features-services">
+                <ul className="features-list">
+               
+                <li>
                     <div className="right-features-box animated " data-animation="fadeInRight" data-delay="0">
                       <span className="iconbox"><i className="fa fa-youtube"></i></span>
                       <div className="features-box-content">
@@ -157,34 +174,12 @@ technical and business related risks are significantly mitigated. Our highly ski
                       </div>
                     </div>
                   </li>
-                </ul> 
-              </div>
-            </div>
-
-            <div className="col-md-5">
-              <div className="features-image animated " data-animation="fadeInUp" data-delay="0">
-              <link rel="icon" href="assets/images/temp/woman.jpg" />
-              </div> 
-            </div> 
-
-            <div className="col-md-3 without-padding">
-              <div className="right-features-services">
-                <ul className="features-list">
                   <li>
                     <div className="right-features-box animated " data-animation="fadeInRight" data-delay="0">
                       <span className="iconbox"><i className="fa fa-wrench"></i></span>
                       <div className="features-box-content">
                         <h6>Easy Customization</h6>
                         <p>Description. Personalize your own website, no matter what theme and what customization options are added by the themes creator or your end.</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="right-features-box animated " data-animation="fadeInRight" data-delay="0">
-                      <span className="iconbox"><i className="fa fa-bullhorn"></i></span>
-                      <div className="features-box-content">
-                        <h6>Marketing</h6>
-                        <p>Mauris eros tortor, tristique cursus porttitor et, luctus sed urna.</p>
                       </div>
                     </div>
                   </li>
@@ -269,24 +264,22 @@ technical and business related risks are significantly mitigated. Our highly ski
                 <form ref={form} onSubmit={sendEmail}>
                 <fieldset>
                     <div className="form-group">
-                      <input className="form-control br-b" type="text" name="from_name" id="name" placeholder="Name" />
+                      <input className="form-control br-b" required type="text" name="from_name" id="name" placeholder="Name" />
                     </div>
 
                     <div className="form-group">
-                      <input className="form-control br-b" type="email" name="from_email" id="email" placeholder="Email" />
+                      <input className="form-control br-b" required type="email" name="from_email" id="email" placeholder="Email" />
                     </div>
 
                     <div className="form-group">
-                      <textarea className="form-control br-b" name="message" id="message" placeholder="Message..."></textarea>
+                      <textarea className="form-control br-b" required name="message" id="message" placeholder="Message..."></textarea>
                     </div>
                   </fieldset>
                   
                   <div className="form-group">
-                    <input type="submit" name="submit" value="Send message" id="submit" className="btn btn-sm btn-dark" />
+                    <button type="submit" name="submit" id="submit" className="btn btn-sm send-mail-button" data-target="#exampleModalCenter" >Send message</button>
                   </div>
-
                   <div id="alert"></div>
-
                 </form>
 
               </div>
@@ -301,9 +294,10 @@ technical and business related risks are significantly mitigated. Our highly ski
           <div className="row">
           <div className="col-sm-12 col-sm-offset-2">
               <ul className="footer-social-links">
-                <li className="display-inline-block"><i class="fa fa-facebook"></i><a href="https://www.facebook.com/Escoseinfo" target="_blank">Facebook</a></li>
-                <li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/company/escose" target="_blank">Linked In</a></li>
+                <li className="display-inline-block"><a href="https://www.facebook.com/Escoseinfo" target="_blank"><i className="fa fa-facebook-square icon-wrapper"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/escose" target="_blank"><i className="fa fa-linkedin-square icon-wrapper"></i></a></li>
               </ul>
+              
             </div>
             <div className="col-sm-12 col-sm-offset-2">
             <p className="copyright">
@@ -314,6 +308,27 @@ technical and business related risks are significantly mitigated. Our highly ski
         </div>
       </div>
     </footer>
+    <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter" className="">
+            <h3>Congralaution's</h3>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+          Your request got successfully, we'll get back to you soon.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose} className="btn btn-sm send-mail-button">Close</Button>
+        </Modal.Footer>
+      </Modal>
       </>
     );
   }

@@ -517,7 +517,7 @@ p.hero {
 
 .hero-content h1 {
   font-family: "Open Sans", sans-serif;
-  font-size: 43px;
+  font-size: 38px;
   font-weight: 500;
   letter-spacing: 8px;
   text-transform: uppercase;
@@ -694,11 +694,6 @@ ul.soon-list li {
   width: 50px;
   height: 50px;
   text-align: center;
-}
-
-.iconbox i {
-  font-size: 32px;
-  color: #fc6e51;
 }
 
 .choose-box-content,
@@ -1713,7 +1708,7 @@ ul.features-list li {
 
 .iconbox i {
   font-size: 32px;
-  color: #fc6e51;
+  color: #3350ac;
 }
 
 .features-box-content {
@@ -3126,10 +3121,28 @@ p.copyright {
 }
 
 .technology-image {
-  width: 12rem;
-  height: 13rem;
+  width: 14rem;
+  height: 14rem;
 }
 
+.icon-wrapper {
+  font-size: 2rem !important;
+  color: #3350ac;
+}
+
+.send-mail-button {
+  color: #fff;
+  text-transform: uppercase;
+  background: #3350ac;
+  font-weight: 400;
+  border-color: #bbbfc9;
+}
+
+.send-mail-button:hover {
+  color: #fff;
+  background: #5a78da;
+  border-color: #5a78da;
+}
 @media screen and (max-width: 480px) {
   .back-to-top {
     visibility: hidden;
@@ -3142,4 +3155,18 @@ p.copyright {
   .margin-right-1 {
     margin-right: 1rem;
   }
+}
+
+.font-size-30 {
+  font-size: 3.2rem !important;
+}
+
+.modal-header,
+.modal-footer {
+  border-bottom: none;
+  border-top: none;
+}
+
+.activeNav {
+  color: #5a78da !important;
 }
