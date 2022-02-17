@@ -317,7 +317,7 @@ technical and business related risks are significantly mitigated. Our highly ski
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="">
-            <h3>Congralaution's</h3>
+            <h3>Congratulation's</h3>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

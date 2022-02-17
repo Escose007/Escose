@@ -1665,8 +1665,9 @@ ul.details-list li:last-child {
 }
 
 .company-logo {
-  width: 5em;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-top: 1rem;
 }
 /*--------------------
   Features Section
