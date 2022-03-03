@@ -266,6 +266,10 @@ technical and business related risks are significantly mitigated. Our highly ski
                     <div className="form-group">
                       <input className="form-control br-b" required type="text" name="from_name" id="name" placeholder="Name" />
                     </div>
+                    
+                    <div className="form-group">
+                      <input className="form-control br-b" type="tel" name="telphone" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10"  required/>
+                    </div>
 
                     <div className="form-group">
                       <input className="form-control br-b" required type="email" name="from_email" id="email" placeholder="Email" />
@@ -294,8 +298,8 @@ technical and business related risks are significantly mitigated. Our highly ski
           <div className="row">
           <div className="col-sm-12 col-sm-offset-2">
               <ul className="footer-social-links">
-                <li className="display-inline-block"><a href="https://www.facebook.com/Escoseinfo" target="_blank"><i className="fa fa-facebook-square icon-wrapper"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/escose" target="_blank"><i className="fa fa-linkedin-square icon-wrapper"></i></a></li>
+                <li className="display-inline-block"><a href="https://www.facebook.com/Escoseinfo" target="_blank" rel="noreferrer"><i className="fa fa-facebook-square icon-wrapper"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/escose" target="_blank" rel="noreferrer"><i className="fa fa-linkedin-square icon-wrapper"></i></a></li>
               </ul>
               
             </div>
@@ -317,7 +321,7 @@ technical and business related risks are significantly mitigated. Our highly ski
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="">
-            <h3>Congratulation's</h3>
+            <h3>congratulation's</h3>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
