@@ -1,6 +1,6 @@
 
 import  React, { useState } from "react";
-import logo from '../Images/logo.svg' ;
+import logo from '../Images/escose-logo.svg' ;
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
 export default function TopLayout() {
