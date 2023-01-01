@@ -1660,14 +1660,13 @@ ul.details-list li:last-child {
 }
 
 .landing-hero {
-  background: url("../public/hero-bg/landing1.png");
+  background: url("../public/hero-bg/landing.png");
   background-size: cover;
 }
 
 .company-logo {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin-top: 1rem;
+  width: 6.5rem;
+  height: 6.5rem;
 }
 /*--------------------
   Features Section

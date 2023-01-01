@@ -92,7 +92,7 @@ smarter solutions with lesser time to market in a cost effective manner.</p>
               <div className="col-sm-4">
                 <div className="offer-post text-center animated in" data-animation="fadeInRight" data-delay="0">
                   <div className="offer-icon">
-                  <img src={require('../Images/quality1.png')} className="technology-image"/>
+                  <img src={require('../Images/quality.png')} className="technology-image"/>
                   </div>
                   <h4>Quality Assurance</h4>
                   <p>By following industry recognized leading testing methodologies, business-driven quality
@@ -268,7 +268,7 @@ technical and business related risks are significantly mitigated. Our highly ski
                     </div>
                     
                     <div className="form-group">
-                      <input className="form-control br-b" type="tel" name="telphone" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10"  required/>
+                      <input className="form-control br-b" type="tel" name="mb" id="mb" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10"  required/>
                     </div>
 
                     <div className="form-group">
