@@ -30,7 +30,7 @@ import education1 from './education1.png';
 import startup from './startup.png';
 import ecommerce from './ecommerce.png';
 import close from './close.svg';
-import escose_logo from './escose_logo.webp';
+import escose_logo from './escose_logo.png';
 import menu from './menu.svg';
 import star from './Star.svg';
 import about_us from './about_us.png';
