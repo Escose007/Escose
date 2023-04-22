@@ -32,7 +32,7 @@ import ecommerce from './ecommerce.png';
 import close from './close.svg';
 import escose_logo from './escose_logo.webp';
 import menu from './menu.svg';
-import star from './star.svg';
+import star from './Star.svg';
 import about_us from './about_us.png';
 import yongPassionat from './yongPassionat.svg';
 import enthusiasmandCreativity from './enthusiasmandCreativity.svg';
