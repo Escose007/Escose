@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styles from '../style';
 import ContactUs from '../components/ContactUs';
 import OutsourcingForm from '../components/OutsourcingForm';
@@ -6,11 +7,30 @@ import ContactUsHero from '../components/ContactUsHero';
 
 const Contact = () => {
   const [showSuccesToster, setSuccesToster] = useState(false);
-  const [activeTab, setActiveTab] = useState('general'); // 'general' or 'outsourcing'
+  const [activeTab, setActiveTab] = useState('outsourcing'); // Changed default to 'outsourcing'
+  const [searchParams] = useSearchParams();
 
   const handleSuccessToster = (value) => {
     setSuccesToster(value);
   };
+
+  // Check URL parameters on component mount to set the correct tab
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    const action = searchParams.get('action');
+    
+    // If tab parameter is explicitly set, use it
+    if (tab === 'general') {
+      setActiveTab('general');
+    } else if (tab === 'outsourcing') {
+      setActiveTab('outsourcing');
+    }
+    // If action parameter indicates hiring-related action, default to outsourcing tab
+    else if (action === 'hire' || action === 'hiring' || action === 'developers') {
+      setActiveTab('outsourcing');
+    }
+    // Default is already set to 'outsourcing' in useState
+  }, [searchParams]);
 
   return (
     <>

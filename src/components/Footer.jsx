@@ -81,37 +81,13 @@ const Footer = () => (
               Hire Developers
             </Link>
             <Link
-              to="/contact"
-              className="block border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
-            >
-              Get Quote
-            </Link>
-            <Link
               to="/services"
-              className="block bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
+              className="block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
             >
               View Services
             </Link>
           </div>
         </div>
-      </div>
-    </div>
-
-    {/* Newsletter Subscription */}
-    <div className="w-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-6 mb-8 border border-cyan-400/15">
-      <div className="text-center mb-4">
-        <h4 className="text-xl font-bold text-cyan-300 mb-2">Stay Updated</h4>
-        <p className="text-slate-300">Get the latest updates on technology trends and our services</p>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="flex-1 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-600/50 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
-        />
-        <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
-          Subscribe
-        </button>
       </div>
     </div>
 

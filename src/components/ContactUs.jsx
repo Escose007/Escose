@@ -29,14 +29,15 @@ const ContactUs = ({ handleSuccessToster }) => {
       form_type: 'general_inquiry'
     };
     
-    console.log('Sending email with params:', templateParams);
+    // console.log('Sending email with params:', templateParams);
     
     emailjs
       .send(
-        'service_z2djj1k',
+        'service_ccb920l',
         'template_key7wtr',
         templateParams,
-        'user_OQDlxm04mac90RvzQrEsi'
+        // form.current,
+        '2HswVx6NHPH32wUNU'
       )
       .then(
         (result) => {

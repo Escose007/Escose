@@ -46,10 +46,6 @@ export const navLinks = [
     title: 'Blogs',
   },
   {
-    id: '/aboutus',
-    title: 'About Us',
-  },
-  {
     id: '/outsourcing',
     title: 'Hire Developers',
   },
@@ -510,11 +506,11 @@ export const outsourcingFormFields = [
     placeholder: 'Number of developers needed',
   },
   {
-    id: 'project_duration',
-    labelText: 'Project Duration',
+    id: 'employment_type',
+    labelText: 'Employment Type',
     fieldType: 'text',
-    isRequired: false,
-    placeholder: 'Expected project timeline',
+    isRequired: true,
+    placeholder: 'e.g., Full-time, Part-time, Contract, Freelance',
   },
   {
     id: 'message',

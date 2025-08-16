@@ -10,7 +10,7 @@ const Services = () => (
           <h1 className="text-5xl font-bold blut-text__gradient mb-6">
             Our Services
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto">
             We provide comprehensive technology solutions to help your business grow and succeed in the digital age.
           </p>
         </div>
@@ -80,7 +80,7 @@ const Services = () => (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
               >
                 Get Free Consultation
               </Link>

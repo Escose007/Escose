@@ -8,7 +8,7 @@ const Blogs = () => (
           <h1 className="text-5xl font-bold blut-text__gradient mb-6">
             Tech Insights & Updates
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto">
             Stay updated with the latest trends in technology and development insights from Escose Technologies.
           </p>
         </div>

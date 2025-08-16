@@ -25,7 +25,7 @@ const OutsourcingForm = ({ handleSuccessToster }) => {
       contact_number: formData.get('contact_number'),
       developer_type: formData.get('developer_type'),
       team_size: formData.get('team_size'),
-      project_duration: formData.get('project_duration'),
+      employment_type: formData.get('employment_type'),
       message: formData.get('message'),
       to_email: 'info@escose.com',
       form_type: 'outsourcing_request'
@@ -35,10 +35,11 @@ const OutsourcingForm = ({ handleSuccessToster }) => {
     
     emailjs
       .send(
-        'service_z2djj1k',
-        'template_key7wtr',
+        'service_ccb920l',
+        'template_t5904kb',
         templateParams,
-        'user_OQDlxm04mac90RvzQrEsi'
+        // form.current,
+        '2HswVx6NHPH32wUNU'
       )
       .then(
         (result) => {
@@ -72,7 +73,7 @@ Email: ${formData.get('from_email')}
 Contact Number: ${formData.get('contact_number')}
 Developer Type: ${formData.get('developer_type')}
 Team Size: ${formData.get('team_size')}
-Project Duration: ${formData.get('project_duration')}
+Employment Type: ${formData.get('employment_type')}
 
 Additional Requirements:
 ${formData.get('message')}

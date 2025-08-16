@@ -347,65 +347,6 @@ const EmployeeOutsourcing = () => {
         </div>
       </section>
 
-      {/* Live Chat Simulation */}
-      <section className={`${styles.paddingX} ${styles.flexCenter} py-20`}>
-        <div className={`${styles.boxWidth} max-w-4xl`}>
-          <div className="bg-gradient-to-br from-gray-800/50 to-blue-900/30 rounded-2xl p-8 border border-cyan-400/20">
-            <h2 className="text-3xl font-bold text-center mb-8">
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Quick Support
-              </span>
-            </h2>
-            
-            <div className="bg-gray-900/50 rounded-xl p-6 h-64 overflow-y-auto mb-4 border border-gray-700">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-xs">
-                    AI
-                  </div>
-                  <div className="bg-gray-700 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-slate-100">Hi! I'm here to help you find the perfect developer for your project. What role are you looking to fill?</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3 justify-end">
-                  <div className="bg-cyan-600 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-slate-100">I need a React developer for my e-commerce project</p>
-                  </div>
-                  <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-xs">
-                    You
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-xs">
-                    AI
-                  </div>
-                  <div className="bg-gray-700 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-slate-100">Great! We have 120+ React developers available. What's your project timeline and experience level requirement?</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex gap-3">
-              <input 
-                type="text" 
-                placeholder="Type your message..."
-                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-              />
-              <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                Send
-              </button>
-            </div>
-            
-            <div className="text-center mt-4">
-              <p className="text-gray-400 text-sm">💬 Get instant responses from our AI assistant or connect with a human expert</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className={`${styles.paddingX} ${styles.flexCenter} py-20 bg-gradient-to-r from-cyan-600/10 to-blue-600/10`}>
         <div className={`${styles.boxWidth} text-center`}>
