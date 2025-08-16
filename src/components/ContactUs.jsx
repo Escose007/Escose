@@ -13,7 +13,7 @@ const ContactUs = ({ handleSuccessToster }) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        'service_z2djj1k',
+        'service_ccb920l',
         'template_key7wtr',
         form.current,
         'user_OQDlxm04mac90RvzQrEsi'
