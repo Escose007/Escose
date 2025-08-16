@@ -13,7 +13,7 @@ const ContactUsHero = () => (
               <h1 className="flex-1 blut-text__gradient font-poppins font-semibold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]">
                 Let's work together
               </h1>
-              <p className={`${styles.paragraph} mt-5`}>
+              <p className={`${styles.paragraph} mt-5 text-gray-700`}>
                 We would to like more about the needs of your business. Please
                 fill out the form below and let's grow together. We look forword
                 to hearing from you.

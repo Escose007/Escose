@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { navLinks } from '../constants';
 import { close, menu, escose_logo } from '../assets';
@@ -7,23 +7,30 @@ import styles from '../style';
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
-  const [toggle, setToggle] = useState(false);
-  const [active, setActive] = useState('Home');
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
-    <nav className="w-full bg-white">
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+    <nav className="w-full">
+      <div className="justify-between pl-0 pr-2 mx-auto lg:max-w-7xl md:items-center md:flex md:pl-0 md:pr-4">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <img
-              src={escose_logo}
-              alt="escose_logo"
-              className="md:w-[240px] md:h-[80px] w-[200px] h-[60px] text-red-100 relative "
-            />
+          <div className="flex items-center justify-between py-4 md:py-6 md:block">
+            {/* Make logo clickable */}
+            <Link to="/" className="cursor-pointer">
+              <img
+                src={escose_logo}
+                alt="escose_logo"
+                className="md:w-[200px] md:h-[60px] w-[160px] h-[48px] filter brightness-150 hover:opacity-80 transition-opacity duration-300"
+              />
+            </Link>
             <div className="md:hidden">
               <img
-                src={toggle ? close : menu}
+                src={navbar ? close : menu}
                 alt="menu"
-                className="w-[28px] h-[28px] object-contain text-black color-black"
+                className="w-[28px] h-[28px] object-contain filter brightness-0 invert cursor-pointer"
                 onClick={() => setNavbar(!navbar)}
               />
             </div>
@@ -31,35 +38,32 @@ export default function NavBar() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ml-6 sm:ml-16 ${
               navbar ? 'block' : 'hidden'
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? 'text-white' : 'text-dimWhite'
-                  } `}
-                  onClick={() => {
-                    setActive(nav.title);
-                    setNavbar(!navbar);
-                  }}
-                >
-                  <Link to={nav.id} className="text-dimBlack hover:text-black">
+                <li key={nav.id}>
+                  <Link
+                    to={nav.id}
+                    className={`font-poppins font-medium cursor-pointer text-[16px] hover:text-cyan-400 transition-colors duration-300 ${
+                      isActive(nav.id) ? 'text-cyan-400' : 'text-gray-300'
+                    }`}
+                    onClick={() => setNavbar(false)}
+                  >
                     {nav.title}
                   </Link>
                 </li>
               ))}
-              <li
-                className={`cursor-pointer hover:text-blue-700 py-2 px-4 relative bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full outline-none `}
-                onClick={() => {
-                  setActive('');
-                  setNavbar(!navbar);
-                }}
-              >
-                <Link to="/contact">Contact Us</Link>
+              <li>
+                <Link
+                  to="/contact"
+                  className="cursor-pointer hover:text-blue-700 py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-full transition-all duration-300 font-medium"
+                  onClick={() => setNavbar(false)}
+                >
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>

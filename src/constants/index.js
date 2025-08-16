@@ -34,34 +34,24 @@ import {
 
 export const navLinks = [
   {
-    id: 'home',
+    id: '/',
     title: 'Home',
   },
   {
-    id: 'Services',
+    id: '/services',
     title: 'Services',
-    children: [
-      {
-        id: 'Software Development & Support',
-        title: 'Software Development & Support',
-      },
-      {
-        id: 'Mobile App Development',
-        title: 'Mobile App Development',
-      },
-      {
-        id: 'Web Development',
-        title: 'Web Development',
-      },
-    ],
   },
   {
-    id: 'Blogs',
+    id: '/blogs',
     title: 'Blogs',
   },
   {
-    id: 'aboutus',
+    id: '/aboutus',
     title: 'About Us',
+  },
+  {
+    id: '/outsourcing',
+    title: 'Hire Developers',
   },
 ];
 
@@ -83,6 +73,12 @@ export const footerLinks = [
       },
       {
         name: 'Flutter Developers',
+      },
+      {
+        name: 'Full Stack Developers',
+      },
+      {
+        name: 'DevOps Engineers',
       },
     ],
   },
@@ -141,6 +137,152 @@ export const services = [
     description:
       'We serve in a wide range of industries, including manufacturing, healthcare, transportation, agriculture, smart cities and more.',
     img: iot,
+  },
+  {
+    title: 'Employee Outsourcing',
+    icon: 'groups',
+    description:
+      'Scale your team with our skilled professionals. We provide dedicated developers, designers, and technical experts to accelerate your projects.',
+    img: web_development, // Using web_development image as placeholder
+  },
+];
+
+// Employee Outsourcing Data
+export const outsourcingRoles = [
+  {
+    title: 'Frontend Developers',
+    skills: ['React', 'Vue.js', 'Angular', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass'],
+    experience: '2-8 years',
+    description: 'Expert frontend developers who create stunning user interfaces and exceptional user experiences.',
+    img: react,
+  },
+  {
+    title: 'Backend Developers',
+    skills: ['Node.js', 'Python', 'Java', 'PHP', 'C#', 'Ruby', 'Go', 'APIs'],
+    experience: '2-10 years',
+    description: 'Skilled backend developers who build robust server-side applications and APIs.',
+    img: node,
+  },
+  {
+    title: 'Full Stack Developers',
+    skills: ['MERN Stack', 'MEAN Stack', 'Django', 'Laravel', 'Spring Boot', 'DevOps'],
+    experience: '3-10 years',
+    description: 'Versatile full-stack developers who handle both frontend and backend development.',
+    img: python,
+  },
+  {
+    title: 'Mobile Developers',
+    skills: ['React Native', 'Flutter', 'iOS (Swift)', 'Android (Kotlin)', 'Ionic', 'Xamarin'],
+    experience: '2-8 years',
+    description: 'Mobile app developers who create cross-platform and native mobile applications.',
+    img: flutter,
+  },
+  {
+    title: 'DevOps Engineers',
+    skills: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Terraform', 'Ansible'],
+    experience: '3-12 years',
+    description: 'DevOps experts who optimize deployment pipelines and infrastructure management.',
+    img: aws,
+  },
+  {
+    title: 'UI/UX Designers',
+    skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Wireframing'],
+    experience: '2-8 years',
+    description: 'Creative designers who craft intuitive user interfaces and delightful user experiences.',
+    img: uiux,
+  },
+];
+
+export const engagementModels = [
+  {
+    title: 'Dedicated Team',
+    description: 'A dedicated team of professionals working exclusively on your project with full commitment.',
+    features: ['Full-time commitment', 'Direct communication', 'Flexible team size', 'Long-term partnership'],
+    bestFor: 'Large projects, ongoing development, product scaling',
+  },
+  {
+    title: 'Staff Augmentation',
+    description: 'Extend your existing team with our skilled professionals to fill specific skill gaps.',
+    features: ['Quick integration', 'Skill-specific hiring', 'Flexible duration', 'Cost-effective'],
+    bestFor: 'Short-term projects, specific skill requirements, temporary team expansion',
+  },
+  {
+    title: 'Project-Based',
+    description: 'Complete project delivery from start to finish with defined scope and timeline.',
+    features: ['Fixed scope delivery', 'Milestone-based payments', 'End-to-end responsibility', 'Quality assurance'],
+    bestFor: 'Well-defined projects, MVP development, specific deliverables',
+  },
+  {
+    title: 'Hourly Engagement',
+    description: 'Flexible hourly engagement for consultation, maintenance, or small development tasks.',
+    features: ['Pay per hour', 'Flexible scheduling', 'On-demand availability', 'No long-term commitment'],
+    bestFor: 'Consultations, maintenance work, small enhancements, support tasks',
+  },
+];
+
+export const outsourcingBenefits = [
+  {
+    title: 'Cost Optimization',
+    description: 'Reduce operational costs by up to 60% while maintaining high-quality deliverables.',
+    icon: 'savings',
+  },
+  {
+    title: 'Access to Global Talent',
+    description: 'Tap into a vast pool of skilled professionals from around the world.',
+    icon: 'public',
+  },
+  {
+    title: 'Faster Time-to-Market',
+    description: 'Accelerate your development timeline with experienced teams ready to start immediately.',
+    icon: 'schedule',
+  },
+  {
+    title: 'Scalability',
+    description: 'Scale your team up or down based on project requirements and business needs.',
+    icon: 'trending_up',
+  },
+  {
+    title: 'Focus on Core Business',
+    description: 'Focus on your core business while we handle the technical development.',
+    icon: 'business_center',
+  },
+  {
+    title: 'Risk Mitigation',
+    description: 'Reduce project risks with our experienced project management and quality assurance.',
+    icon: 'security',
+  },
+];
+
+export const hiringProcess = [
+  {
+    step: 1,
+    title: 'Requirements Analysis',
+    description: 'We analyze your project requirements, technical needs, and team structure.',
+    timeframe: '1-2 days',
+  },
+  {
+    step: 2,
+    title: 'Talent Matching',
+    description: 'Our experts identify and shortlist the best candidates matching your specific requirements.',
+    timeframe: '3-5 days',
+  },
+  {
+    step: 3,
+    title: 'Interview & Selection',
+    description: 'Conduct interviews with shortlisted candidates and select the perfect fit for your team.',
+    timeframe: '2-3 days',
+  },
+  {
+    step: 4,
+    title: 'Contract & Onboarding',
+    description: 'Finalize contracts, NDAs, and onboard your new team members with proper documentation.',
+    timeframe: '1-2 days',
+  },
+  {
+    step: 5,
+    title: 'Project Kickoff',
+    description: 'Start your project with dedicated support, regular communication, and progress tracking.',
+    timeframe: '1 day',
   },
 ];
 
@@ -321,5 +463,63 @@ export const contactUsFields = [
     labelText: 'Message',
     fieldType: 'textarea',
     placeholder: 'Enter Message',
+  },
+];
+
+export const outsourcingFormFields = [
+  {
+    id: 'from_name',
+    labelText: 'Name',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Enter Your Name',
+  },
+  {
+    id: 'company_name',
+    labelText: 'Company Name',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Enter Company Name',
+  },
+  {
+    id: 'from_email',
+    labelText: 'Email',
+    fieldType: 'email',
+    isRequired: true,
+    placeholder: 'Enter Email',
+  },
+  {
+    id: 'contact_number',
+    labelText: 'Contact Number',
+    fieldType: 'integer',
+    isRequired: true,
+    placeholder: 'Enter Contact Number',
+  },
+  {
+    id: 'developer_type',
+    labelText: 'Developer Type Needed',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'e.g., Frontend, Backend, Full Stack',
+  },
+  {
+    id: 'team_size',
+    labelText: 'Team Size',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Number of developers needed',
+  },
+  {
+    id: 'project_duration',
+    labelText: 'Project Duration',
+    fieldType: 'text',
+    isRequired: false,
+    placeholder: 'Expected project timeline',
+  },
+  {
+    id: 'message',
+    labelText: 'Additional Requirements',
+    fieldType: 'textarea',
+    placeholder: 'Describe your project and specific requirements',
   },
 ];
