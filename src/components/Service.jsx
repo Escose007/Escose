@@ -19,8 +19,8 @@ const Service = () => (
     <ul
       className={`${styles.flexCenter} flex-row flex-wrap justify-center gap-6 mb-6`}
     >
-      {services.map((service) => (
-        <li
+      {services.map((service, idx) => (
+        <li data-animate={idx % 2 === 0 ? 'left' : 'right'}
           className="relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 bg-gradient-to-br from-gray-800/50 to-blue-900/30 border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
           style={{ aspectRatio: '1 / 1' }}
           key={service.title}

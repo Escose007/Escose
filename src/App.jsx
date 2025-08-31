@@ -73,6 +73,25 @@ const App = () => {
     };
   }, []);
 
+  // Scroll reveal: observe elements with data-animate
+  useEffect(() => {
+    const animated = Array.from(document.querySelectorAll('[data-animate]'));
+    if (animated.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sr-show');
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.15 }
+    );
+    animated.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-slate-100 relative overflow-hidden">
       {/* Global spotlight overlay */}

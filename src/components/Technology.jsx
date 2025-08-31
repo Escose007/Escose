@@ -14,7 +14,7 @@ const Technology = () => {
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
       >
-        <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold">
+        <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold" data-animate>
           Technologies we work with
         </div>
       </div>
@@ -29,7 +29,7 @@ const Technology = () => {
       <div
         className={`${styles.flexCenter} w-full hidden md:flex flex-col mb-6`}
       >
-        <ul className={`w-full flex border-b border-cyan-400/30`}>
+        <ul className={`w-full flex border-b border-cyan-400/30`} data-animate="down">
           {technologies.map((techType, index) => (
             <li
               className={`-mb-px mr-1 cursor-pointer text-lg`}
@@ -50,6 +50,7 @@ const Technology = () => {
         </ul>
         <div
           className={`${styles.flexCenter} flex pt-10 justify-between bg-gradient-to-br from-gray-800/30 to-blue-900/20 border border-cyan-400/20 rounded-b-xl rounded-tr-xl align-center px-5 py-10 w-full`}
+          data-animate
         >
           {technologySectionTitle.tech.map((individualTechnology, index) => (
             <div
@@ -72,7 +73,7 @@ const Technology = () => {
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden w-full">
+      <div className="md:hidden w-full" data-animate>
         <div className="grid grid-cols-2 gap-4 mb-6">
           {technologies.map((techType, index) => (
             <button

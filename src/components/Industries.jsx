@@ -12,7 +12,7 @@ const Industries = () => {
 
   return (
     <div id="industries" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
-      <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold">
+      <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold" data-animate>
         Industries We Serve
       </div>
       <div className={`${styles.flexCenter} text-center text-lg text-gray-300 xl:w-1/2 mb-16`}>
@@ -22,7 +22,7 @@ const Industries = () => {
       </div>
 
       {/* Industry Selection */}
-      <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+      <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12" data-animate>
         {reordered.map((industry, index) => (
           <button
             key={index}
@@ -48,7 +48,7 @@ const Industries = () => {
       </div>
 
       {/* Selected Industry Details */}
-      <div className="w-full bg-gradient-to-br from-gray-800/30 to-blue-900/20 border border-cyan-400/20 rounded-2xl p-8">
+      <div className="w-full bg-gradient-to-br from-gray-800/30 to-blue-900/20 border border-cyan-400/20 rounded-2xl p-8" data-animate>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Content */}
           <div className="lg:w-2/3">

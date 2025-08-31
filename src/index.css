@@ -45,6 +45,37 @@ html, body {
   text-fill-color: transparent;
 }
 
+/* Scroll reveal animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  transition-duration: 1200ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade"] {
+  transform: none;
+}
+
+[data-animate="left"] {
+  transform: translateX(-24px);
+}
+
+[data-animate="right"] {
+  transform: translateX(24px);
+}
+
+[data-animate="down"] {
+  transform: translateY(-24px);
+}
+
+[data-animate].sr-show {
+  opacity: 1;
+  transform: none;
+}
+
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
