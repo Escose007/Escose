@@ -1,12 +1,41 @@
 import styles from '../style';
 import { star } from '../assets';
 import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const handleMove = (e) => {
+      const rect = sectionEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      sectionEl.style.setProperty('--spotlight-x', `${x}px`);
+      sectionEl.style.setProperty('--spotlight-y', `${y}px`);
+    };
+
+    const handleLeave = () => {
+      sectionEl.style.setProperty('--spotlight-x', `-9999px`);
+      sectionEl.style.setProperty('--spotlight-y', `-9999px`);
+    };
+
+    sectionEl.addEventListener('mousemove', handleMove);
+    sectionEl.addEventListener('mouseleave', handleLeave);
+    handleLeave();
+    return () => {
+      sectionEl.removeEventListener('mousemove', handleMove);
+      sectionEl.removeEventListener('mouseleave', handleLeave);
+    };
+  }, []);
   return (
     <section
       id="home"
       data-scrollspy
+      ref={sectionRef}
       className={`flex md:flex-row flex-col ${styles.paddingY} pt-32 md:pt-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 relative overflow-hidden`}
     >
       {/* Background Elements */}
@@ -16,21 +45,27 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-400/5 rounded-full blur-2xl"></div>
       </div>
 
+      {/* Spotlight overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(2000px 2000px at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px), rgba(59,130,246,0.15), transparent 60%)',
+          mixBlendMode: 'screen',
+        }}
+      />
+
       <div
         className={`flex-1 ${styles.flexStart} flex-col px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 relative z-10`}
       >
         <div className="flex flex-row justify-between items-center w-full mb-8">
-          <h1 className="text-slate-100 flex-1 font-poppins font-bold ss:text-[72px] text-[52px] ss:leading-[100.8px] leading-[75px]">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Transform Ideas
-            </span>
-            <br className="sm:block hidden" />
-            Into{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Digital Reality
-            </span>
+          <h1 className="text-slate-100 flex-1 font-poppins font-bold ss:text-[64px] text-[46px] ss:leading-[84px] leading-[56px]">
+            GenAI & Agentic Workflow Solutions for Enterprise IT Services
           </h1>
         </div>
+        <h2 className="text-xl text-gray-300 mb-4">
+          Custom LLM development, agentic flows, and intelligent automation for growth
+        </h2>
         
         {/* New Value Proposition */}
         <div className="mb-8 p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
@@ -96,7 +131,7 @@ const Hero = () => {
                 <div className="text-center">
                   <div className="text-6xl mb-4">🚀</div>
                   <div className="text-2xl font-bold text-cyan-300">Digital Innovation</div>
-                  <div className="text-gray-300">Powered by AI & Global Talent</div>
+                  <div className="text-gray-300">GenAI for workflow automation & agentic flows</div>
                 </div>
               </div>
             </div>

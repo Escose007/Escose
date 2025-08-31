@@ -54,8 +54,36 @@ const App = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [location.pathname]);
 
+  // Global spotlight effect
+  useEffect(() => {
+    const onMove = (e) => {
+      document.documentElement.style.setProperty('--spotlight-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--spotlight-y', `${e.clientY}px`);
+    };
+    const onLeave = () => {
+      document.documentElement.style.setProperty('--spotlight-x', `-9999px`);
+      document.documentElement.style.setProperty('--spotlight-y', `-9999px`);
+    };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    window.addEventListener('mouseleave', onLeave);
+    onLeave();
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseleave', onLeave);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-slate-100 relative overflow-hidden">
+      {/* Global spotlight overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-40"
+        style={{
+          background:
+            'radial-gradient(2000px 2000px at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px), rgba(59,130,246,0.12), transparent 60%)',
+          mixBlendMode: 'screen',
+        }}
+      />
       {/* Navbar - Dark theme to match overall design */}
       <div className="fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-slate-900/85 via-slate-800/85 to-slate-900/85 backdrop-blur-sm border-b border-cyan-400/15 shadow-lg shadow-gray-900/40">
         <div className={`pl-0 pr-6 sm:pr-16 ${styles.flexCenter}`}>

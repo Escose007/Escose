@@ -29,7 +29,7 @@ const Service = () => (
             {service.img ? (
               <img
                 src={service.img}
-                alt="service"
+                alt={`${service.title} - ${service.description}`}
                 className="object-contain w-10 h-10 filter brightness-150"
               />
             ) : (
