@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { industries } from '../constants';
 import styles from '../style';
 
@@ -52,8 +53,15 @@ const Industries = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Content */}
           <div className="lg:w-2/3">
-            <h3 className="text-3xl font-bold text-cyan-400 mb-6">
-              {selectedIndustry.title} Solutions
+            <h3 className="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-3">
+              {selectedIndustry.img && selectedIndustry.img[0] && (
+                <img
+                  src={selectedIndustry.img[0]}
+                  alt={`${selectedIndustry.title} logo`}
+                  className="w-10 h-10 object-contain"
+                />
+              )}
+              <span>{selectedIndustry.title} Solutions</span>
             </h3>
             
             <div className="text-gray-300 mb-6 text-lg leading-relaxed">
@@ -80,9 +88,15 @@ const Industries = () => {
 
             {/* CTA */}
             <div className="mt-8">
-              <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
-                Explore {selectedIndustry.title} Solutions
-              </button>
+              {['GenAI', 'Agentic Workflow'].includes(selectedIndustry.title) ? (
+                <Link to="/#solutions" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+                  Explore {selectedIndustry.title} Solutions
+                </Link>
+              ) : (
+                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+                  Explore {selectedIndustry.title} Solutions
+                </button>
+              )}
             </div>
           </div>
 

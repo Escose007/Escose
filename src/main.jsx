@@ -9,6 +9,7 @@ import Blogs from './page/Blogs';
 import BlogDetail from './page/BlogDetail';
 import Contact from './page/Contact';
 import EmployeeOutsourcing from './page/EmployeeOutsourcing';
+import SolutionsFlow from './page/SolutionsFlow';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="blogs/:slug" element={<BlogDetail />} />
           <Route path="contact" element={<Contact />} />
           <Route path="outsourcing" element={<EmployeeOutsourcing />} />
+          <Route path="solutions-flow" element={<SolutionsFlow />} />
         </Route>
       </Routes>
     </BrowserRouter>

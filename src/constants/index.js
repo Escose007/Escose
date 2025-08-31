@@ -38,6 +38,10 @@ export const navLinks = [
     title: 'Home',
   },
   {
+    id: '/#solutions',
+    title: 'Solutions',
+  },
+  {
     id: '/#services',
     title: 'Services',
   },
@@ -418,7 +422,7 @@ export const industries = [
   },
   {
     title: 'GenAI',
-    img: [gcp],
+    img: ['https://cdn.simpleicons.org/openai/22d3ee'],
     description: {
       header:
         'Generative AI solutions that automate workflows, accelerate development, and augment teams across functions while meeting enterprise-grade security and governance.',
@@ -438,7 +442,7 @@ export const industries = [
   },
   {
     title: 'Agentic Workflow',
-    img: [aws],
+    img: ['https://cdn.simpleicons.org/apacheairflow/22d3ee'],
     description: {
       header:
         'Design and deploy reliable agentic systems that combine tools, planners, and memory to automate complex workflows with safety and observability.',
