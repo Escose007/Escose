@@ -56,11 +56,11 @@ const Technology = () => {
               className="flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 group"
               key={index}
             >
-              <div className="w-20 h-20 mb-4 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300">
+              <div className="w-24 h-24 mb-4 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300">
                 <img
                   src={individualTechnology.img}
                   alt={individualTechnology.title}
-                  className="w-12 h-12 object-contain filter brightness-150"
+                  className="w-16 h-16 object-contain filter brightness-150"
                 />
               </div>
               <div className="text-center text-white font-medium">
@@ -99,11 +99,11 @@ const Technology = () => {
                 className="flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group"
                 key={index}
               >
-                <div className="w-16 h-16 mb-3 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300">
+                <div className="w-20 h-20 mb-3 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300">
                   <img
                     src={individualTechnology.img}
                     alt={individualTechnology.title}
-                    className="w-8 h-8 object-contain filter brightness-150"
+                    className="w-12 h-12 object-contain filter brightness-150"
                   />
                 </div>
                 <div className="text-center text-white text-sm font-medium">

@@ -3,7 +3,12 @@ import { industries } from '../constants';
 import styles from '../style';
 
 const Industries = () => {
-  const [selectedIndustry, setSelectedIndustry] = useState(industries[0]);
+  const reordered = [
+    ...industries.filter((i) => i.title === 'GenAI'),
+    ...industries.filter((i) => i.title === 'Agentic Workflow'),
+    ...industries.filter((i) => i.title !== 'GenAI' && i.title !== 'Agentic Workflow'),
+  ];
+  const [selectedIndustry, setSelectedIndustry] = useState(reordered[0] || industries[0]);
 
   return (
     <div id="industries" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
@@ -18,7 +23,7 @@ const Industries = () => {
 
       {/* Industry Selection */}
       <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-        {industries.map((industry, index) => (
+        {reordered.map((industry, index) => (
           <button
             key={index}
             onClick={() => setSelectedIndustry(industry)}

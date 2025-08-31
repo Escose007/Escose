@@ -416,6 +416,44 @@ export const industries = [
       ],
     },
   },
+  {
+    title: 'GenAI',
+    img: [gcp],
+    description: {
+      header:
+        'Generative AI solutions that automate workflows, accelerate development, and augment teams across functions while meeting enterprise-grade security and governance.',
+      title: 'Solutions we deliver include:',
+      list: [
+        `AI Coding Co-pilots: Context-aware code generation, refactoring suggestions, and PR summaries to speed up delivery.`,
+        `Requirements → Tests: Convert product requirements into test cases, scenarios, and edge checks to improve quality.`,
+        `Knowledge Assistants (RAG): Private, secure chat over your docs, wikis, and tickets with source citations.`,
+        `Content Automation: Multi-step workflows for marketing assets, blogs, and localization with review loops.`,
+        `Data Extraction & Enrichment: Structured outputs from PDFs, emails, forms, and logs for downstream systems.`,
+        `Agentic Automation: Tool orchestration with planners and memory for reliable, repeatable business processes.`,
+        `Evaluation & Guardrails: Prompt safety filters, hallucination checks, and red-teaming with measurable KPIs.`,
+        `LLMOps/MLOps: Prompt versioning, offline/online evaluations, tracing, and analytics dashboards.`,
+        `Secure Deployment: Private/VPC hosting, no data retention, role-based access, and audit trails.`,
+      ],
+    },
+  },
+  {
+    title: 'Agentic Workflow',
+    img: [aws],
+    description: {
+      header:
+        'Design and deploy reliable agentic systems that combine tools, planners, and memory to automate complex workflows with safety and observability.',
+      title: 'Core capabilities include:',
+      list: [
+        `Act/Observe Loops: Stepwise tool usage with feedback and guarded execution for predictable outcomes.`,
+        `Hierarchical Planning: Break down high-level goals into verifiable subtasks with clear success criteria.`,
+        `Memory Layers: Short-term scratchpads and long-term vector/structured stores to maintain context.`,
+        `Tooling Ecosystem: Deterministic, idempotent tools with timeouts, retries, and circuit breakers.`,
+        `Evaluators & Guardrails: Safety, quality, and hallucination checks before actions are committed.`,
+        `Tracing & Analytics: Full observability into prompts, tool calls, and decisions for debugging and audit.`,
+        `Deployment Patterns: Budget caps, SLAs, and sandboxed environments for production reliability.`,
+      ],
+    },
+  },
 ];
 
 export const contactUsFields = [
