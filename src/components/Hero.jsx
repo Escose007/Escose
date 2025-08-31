@@ -2,6 +2,7 @@ import styles from '../style';
 import { star } from '../assets';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
+import useTilt3D from './hooks/useTilt3D';
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -123,12 +124,12 @@ const Hero = () => {
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative z-10 px-6 sm:px-8 md:px-12`}
       >
-        <div className="relative">
+        <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
           {/* Main Visual Element */}
           <div className="relative">
-            <div className="w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-cyan-400/30">
-              <div className="w-80 h-80 bg-gradient-to-br from-blue-600/30 to-cyan-500/30 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-400/30">
-                <div className="text-center">
+            <div className="w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-cyan-400/30" style={{ transform: 'translateZ(40px)' }}>
+              <div className="w-80 h-80 bg-gradient-to-br from-blue-600/30 to-cyan-500/30 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-400/30" style={{ transform: 'translateZ(60px)' }}>
+                <div className="text-center" style={{ transform: 'translateZ(80px)' }}>
                   <div className="text-6xl mb-4">🚀</div>
                   <div className="text-2xl font-bold text-cyan-300">Digital Innovation</div>
                   <div className="text-gray-300">GenAI for workflow automation & agentic flows</div>
@@ -138,22 +139,22 @@ const Hero = () => {
           </div>
           
           {/* Floating Elements */}
-          <div className="absolute -top-4 -left-4 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default">
+          <div className="absolute -top-4 -left-4 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default" style={{ transform: 'translateZ(30px)' }}>
             <div className="text-2xl">⚡</div>
             <div className="text-sm font-semibold text-cyan-300">Fast Delivery</div>
           </div>
           
-          <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-500/20 to-cyan-600/20 backdrop-blur-sm rounded-xl p-4 border border-blue-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-blue-400/60 hover:shadow-lg hover:shadow-blue-500/30 cursor-default">
+          <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-500/20 to-cyan-600/20 backdrop-blur-sm rounded-xl p-4 border border-blue-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-blue-400/60 hover:shadow-lg hover:shadow-blue-500/30 cursor-default" style={{ transform: 'translateZ(20px)' }}>
             <div className="text-2xl">🎯</div>
             <div className="text-sm font-semibold text-blue-300">Perfect Match</div>
           </div>
           
-          <div className="absolute top-1/2 -right-8 bg-gradient-to-r from-cyan-600/20 to-blue-500/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default">
+          <div className="absolute top-1/2 -right-8 bg-gradient-to-r from-cyan-600/20 to-blue-500/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default" style={{ transform: 'translateZ(25px)' }}>
             <div className="text-2xl">💎</div>
             <div className="text-sm font-semibold text-cyan-300">Premium Quality</div>
           </div>
 
-          <div className="absolute top-1/4 -left-8 bg-gradient-to-r from-blue-600/20 to-cyan-500/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default">
+          <div className="absolute top-1/4 -left-8 bg-gradient-to-r from-blue-600/20 to-cyan-500/20 backdrop-blur-sm rounded-xl p-4 border border-cyan-400/30 animate-pulse transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-cyan-400/60 hover:shadow-lg hover:shadow-cyan-500/30 cursor-default" style={{ transform: 'translateZ(15px)' }}>
             <div className="text-2xl">🌍</div>
             <div className="text-sm font-semibold text-blue-300">Global Reach</div>
           </div>
