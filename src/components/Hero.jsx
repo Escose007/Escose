@@ -6,6 +6,7 @@ const Hero = () => {
   return (
     <section
       id="home"
+      data-scrollspy
       className={`flex md:flex-row flex-col ${styles.paddingY} pt-32 md:pt-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 relative overflow-hidden`}
     >
       {/* Background Elements */}

@@ -50,7 +50,12 @@ export default function NavBar() {
                     className={`font-poppins font-medium cursor-pointer text-[16px] hover:text-cyan-400 transition-colors duration-300 ${
                       isActive(nav.id) ? 'text-cyan-400' : 'text-gray-300'
                     }`}
-                    onClick={() => setNavbar(false)}
+                    onClick={() => {
+                      if (nav.id === '/' && location.pathname === '/') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                      setNavbar(false);
+                    }}
                   >
                     {nav.title}
                   </Link>

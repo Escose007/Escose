@@ -3,7 +3,7 @@ import styles from '../style';
 import { Link } from 'react-router-dom';
 
 const Service = () => (
-  <div
+  <div id="services" data-scrollspy
     className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 mt-10 text-white`}
   >
     <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold text-center">
@@ -17,42 +17,43 @@ const Service = () => (
       numerous domains to transform our client's Dream into reality.
     </div>
     <ul
-      className={`${styles.flexCenter} flex-row justify-between flex-wrap mb-6`}
+      className={`${styles.flexCenter} flex-row flex-wrap justify-center gap-6 mb-6`}
     >
       {services.map((service) => (
         <li
-          className="flex h-60 justify-center flex-col mr-3 w-full sm:w-1/2 md:w-1/3 xl:w-1/5 md:mb-0 mb-4 md:mb-6 p-6 bg-gradient-to-br from-gray-800/50 to-blue-900/30 border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/20 rounded-xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
+          className="relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 bg-gradient-to-br from-gray-800/50 to-blue-900/30 border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
+          style={{ aspectRatio: '1 / 1' }}
           key={service.title}
         >
-          <div className="w-[60px] h-[60px] mx-auto mb-4 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <div className="w-[72px] h-[72px] mx-auto mb-5 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
             {service.img ? (
               <img
                 src={service.img}
                 alt="service"
-                className="object-cover w-8 h-8 filter brightness-150"
+                className="object-contain w-10 h-10 filter brightness-150"
               />
             ) : (
-              <span className="material-icons text-cyan-400 text-2xl">{service.icon}</span>
+              <span className="material-icons text-cyan-400 text-3xl">{service.icon}</span>
             )}
           </div>
-          <div className={`${styles.flexCenter} text-center text-lg text-white mb-2 font-semibold`}>
+          <div className={`${styles.flexCenter} text-center text-xl text-white mb-3 font-semibold min-w-0`}>
             {service.title}
           </div>
-          <div className="text-center text-gray-300 text-sm leading-relaxed">
+          <div className="text-center text-gray-300 text-base leading-relaxed break-words overflow-hidden px-1">
             {service.description}
           </div>
           
           {/* CTA Button */}
-          <div className="mt-4">
+          <div className="mt-6">
             {service.title === 'Employee Outsourcing' ? (
               <Link
                 to="/outsourcing"
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center block"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate"
               >
                 Explore Now
               </Link>
             ) : (
-              <button className="w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-cyan-500 hover:to-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm">
+              <button className="w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-cyan-500 hover:to-blue-600 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base truncate">
                 Learn More
               </button>
             )}

@@ -6,7 +6,7 @@ const Industries = () => {
   const [selectedIndustry, setSelectedIndustry] = useState(industries[0]);
 
   return (
-    <div className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
+    <div id="industries" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
       <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold">
         Industries We Serve
       </div>

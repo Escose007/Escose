@@ -10,7 +10,7 @@ const Technology = () => {
   }
 
   return (
-    <div className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
+    <div id="technology" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
       >

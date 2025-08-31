@@ -38,7 +38,7 @@ export const navLinks = [
     title: 'Home',
   },
   {
-    id: '/services',
+    id: '/#services',
     title: 'Services',
   },
   {
@@ -107,13 +107,6 @@ export const footerLinks = [
 
 export const services = [
   {
-    title: 'UI UX Design',
-    icon: 'design_services',
-    description:
-      "Our goal is to create an interface that integrates the product's  layout, visual appearance and color scheme.",
-    img: uiux,
-  },
-  {
     title: 'Mobile App Development',
     icon: 'developer_mode',
     description:
@@ -126,6 +119,13 @@ export const services = [
     description:
       'We specialize in creating custom websites that are visually appealing, user-friendly and optimized for search engines.',
     img: web_development,
+  },
+  {
+    title: 'UI UX Design',
+    icon: 'design_services',
+    description:
+      "Our goal is to create an interface that integrates the product's  layout, visual appearance and color scheme.",
+    img: uiux,
   },
   {
     title: 'IOT Development',
