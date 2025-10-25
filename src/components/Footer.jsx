@@ -1,46 +1,112 @@
+import styles from '../style';
+import { escose_logo } from '../assets';
+import { footerLinks } from '../constants';
 import { Link } from 'react-router-dom';
 
-import styles from '../style';
-import { footerLinks } from '../constants';
-
 const Footer = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col `}>
+  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-white bg-[#0E2F55]`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
-        <h1 className="text-[24px]">Escose Technology</h1>
-        <p className={`${styles.paragraph} mt-4 max-w-[312px] text-[14px]`}>
-          Make your Dream successfull.
+        <Link to="/" className="mb-6">
+          <img
+            src={escose_logo}
+            alt="escose"
+            className="w-[266px] h-[72.14px] object-contain filter brightness-150 hover:opacity-80 transition-opacity duration-300"
+          />
+        </Link>
+        <p className={`${styles.paragraph} mt-4 max-w-[312px] text-gray-300 leading-relaxed`}>
+          Transforming ideas into digital reality with innovative solutions and global talent.
+          Your trusted partner for complete digital transformation.
         </p>
+        
+        {/* Social Links */}
+        <div className="flex mt-6 gap-4">
+          {[
+            { icon: '📧', label: 'Email', link: 'mailto:info@escose.com' },
+            { icon: '📱', label: 'Phone', link: 'tel:+917568288997' },
+            { icon: '💬', label: 'WhatsApp', link: 'https://wa.me/917568288997' },
+            { icon: '💼', label: 'LinkedIn', link: 'https://linkedin.com/company/escose' }
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.link}
+              className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30"
+              title={social.label}
+            >
+              <span className="text-lg">{social.icon}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
-      <div className="flex-[2] w-full flex flex-col md:flex-row justify-between flex-wrap md:mt-0 mt-10">
+      <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
         {footerLinks.map((footerlink) => (
-          <div
-            key={footerlink.title}
-            className={`flex flex-col ss:my-0 my-4 min-w-[150px]`}
-          >
-            <h4 className="font-poppins font-xl text-[18px] leading-[27px] text-black">
+          <div key={footerlink.title} className="flex flex-col ss:my-0 my-4 min-w-[150px]">
+            <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-brand-primary-300 mb-4">
               {footerlink.title}
             </h4>
-            <ul className="list-none mt-4">
+            {footerlink.description && (
+              <p className="font-poppins font-normal text-[14px] leading-[20px] text-gray-300/90 mb-4">
+                {footerlink.description}
+              </p>
+            )}
+            <ul className="list-none">
               {footerlink.links.map((link, index) => (
                 <li
                   key={link.name}
-                  className={`font-small text-[16px] leading-[24px] text-dimBlack hover:text-secondary cursor-pointer ${
-                    index !== footerlink.links.length - 1 ? 'mb-4' : 'mb-0'
+                  className={`font-poppins font-normal text-[14px] leading-[24px] text-gray-300/90 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300 ${
+                    index !== footerlink.links.length - 1 ? 'mb-3' : 'mb-0'
                   }`}
                 >
-                  <Link
-                    to={'/contact'}
-                    className="text-dimBlack hover:text-black"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.header && (
+                    <div className="font-semibold text-slate-100 mb-1">{link.header}</div>
+                  )}
+                  {link.name}
                 </li>
               ))}
             </ul>
           </div>
         ))}
+        
+        {/* Quick Actions */}
+        <div className="flex flex-col ss:my-0 my-4 min-w-[200px]">
+          <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-brand-primary-300 mb-4">
+            Quick Actions
+          </h4>
+          <div className="space-y-3">
+            <Link
+              to="/outsourcing"
+              className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
+            >
+              Hire Developers
+            </Link>
+            <Link
+              to="/services"
+              className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
+            >
+              View Services
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom Section */}
+    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t border-white/10">
+      <p className="font-poppins font-normal text-center text-[14px] leading-[27px] text-slate-400">
+        Copyright Ⓒ 2024 Escose Technologies. All Rights Reserved.
+      </p>
+
+      <div className="flex flex-row md:mt-0 mt-6 gap-6">
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+          Privacy Policy
+        </p>
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+          Terms & Conditions
+        </p>
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+          Cookie Policy
+        </p>
       </div>
     </div>
   </section>

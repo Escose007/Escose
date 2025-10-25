@@ -1,116 +1,150 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { industries } from '../constants';
 import styles from '../style';
 
 const Industries = () => {
-  const [industriesSectionTitle, setIndustries] = useState(industries[0]);
-
-  function changeIndustries(tech) {
-    setIndustries(tech);
-  }
+  const reordered = [
+    ...industries.filter((i) => i.title === 'GenAI'),
+    ...industries.filter((i) => i.title === 'Agentic Workflow'),
+    ...industries.filter((i) => i.title !== 'GenAI' && i.title !== 'Agentic Workflow'),
+  ];
+  const [selectedIndustry, setSelectedIndustry] = useState(reordered[0] || industries[0]);
 
   return (
-    <div className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6`}>
-      <div
-        className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
-      >
-        <div className="text-4xl mb-6 blut-text__gradient">
-          Industries We Cater
-        </div>
+    <div id="industries" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
+      <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold" data-animate>
+        Industries We Serve
       </div>
-      <div
-        className={`${styles.flexCenter} text-center text-lg text-dimBlack xl:w-1/2 mb-16`}
-      >
-        We serve diverse industry verticals, helping business startegize for new
-        ventures or make an impact in the existing one. Regardless your industry
-        or enterprise size, we offer custom software development services that
-        address your business challenges and address your needs.
+      <div className={`${styles.flexCenter} text-center text-lg text-gray-300 xl:w-1/2 mb-16`}>
+        We have experience working across various industries, delivering
+        customized solutions that meet specific business requirements and drive
+        digital transformation.
       </div>
-      <div className={`${styles.flexStart} w-full hidden md:flex mb-6`}>
-        <ul className="md:flex flex-col w-25">
-          {industries.map((industry) => (
-            <li
-              className={`mb-6 pb-2 capitalize cursor-pointer flex ${
-                industriesSectionTitle.title === industry.title &&
-                'md:border-b-4 md:border-blue-300 rounded-sm blut-text__gradient'
-              }`}
-              onClick={() => changeIndustries(industry)}
-              key={industry.title}
-            >
-              <img
-                src={industry.img[0]}
-                alt="billing"
-                className="w-[32px] h-[32px] relative z-[5] mr-5 "
-              />
-              {industry.title}
-            </li>
-          ))}
-        </ul>
-        <div className="flex-auto w-60 ml-20">
-          {industriesSectionTitle.img.map((img) => (
-            <div>
-              <div className="flex justify-between w-full mb-6">
-                <label className="text-2xl blut-text__gradient">
-                  {industriesSectionTitle.title}
-                </label>
-              </div>
-              <div className="flex flex-col text-dimBlack">
-                {industriesSectionTitle?.description && (
-                  <div>
-                    {industriesSectionTitle.description.header && (
-                      <div
-                        className={`${styles.paragraph} mb-2 title-font text-lg `}
-                      >
-                        {industriesSectionTitle.description.header}
-                      </div>
-                    )}
-                    <div
-                      className={`${styles.paragraph} title-font font-medium mb-2`}
-                    >
-                      {industriesSectionTitle.description.title}
-                    </div>
-                    {industriesSectionTitle.description?.list?.length && (
-                      <ul className="list-disc list-inside leading-relaxed text-base">
-                        {industriesSectionTitle.description.list.map(
-                          (listItem) => (
-                            <li className="mb-2 mb-16">{listItem}</li>
-                          )
-                        )}
-                      </ul>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="w-full md:hidden block mx-auto">
-        <ul className="md:flex flex-col ">
-          {industries.map((industry) => (
-            <li
-              className={`mb-6 pb-2 capitalize cursor-pointer flex pt-[30px] px-[24px] pb-[100px] shadow-2xl mb-20 rounded-xl`}
-              onClick={() => changeIndustries(industry)}
-              key={industry.title}
-            >
-              <div className="flex flex-col">
+
+      {/* Industry Selection */}
+      <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12" data-animate>
+        {reordered.map((industry, index) => (
+          <button
+            key={index}
+            onClick={() => setSelectedIndustry(industry)}
+            className={`p-4 rounded-xl text-center transition-all duration-300 group ${
+              selectedIndustry.title === industry.title
+                ? 'bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/50 text-cyan-400'
+                : 'bg-gray-800/30 border border-gray-600/30 hover:border-cyan-400/30 text-gray-300 hover:text-cyan-400'
+            }`}
+          >
+            {industry.img && industry.img[0] && (
+              <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <img
                   src={industry.img[0]}
-                  alt="billing"
-                  className="w-[200px] h-[200px] relative z-[5] mr-5 mb-[50px] "
+                  alt={industry.title}
+                  className="w-8 h-8 object-contain filter brightness-150"
                 />
-                <h2
-                  className={`font-poppins font-semibold mx-auto xs:text-[48px] text-[40px] text-dimBlack xs:leading-[76.8px] leading-[66.8px] w-full text-dimBlack mb-[24px]`}
-                >
-                  {industry.title}
-                </h2>
-                <p className={`${styles.paragraph}`}>
-                  {industry.description.header}
-                </p>
               </div>
-            </li>
-          ))}
-        </ul>
+            )}
+            <div className="font-semibold text-sm">{industry.title}</div>
+          </button>
+        ))}
+      </div>
+
+      {/* Selected Industry Details */}
+      <div className="w-full bg-gradient-to-br from-gray-800/30 to-blue-900/20 border border-cyan-400/20 rounded-2xl p-8" data-animate>
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Content */}
+          <div className="lg:w-2/3">
+            <h3 className="text-3xl font-bold text-cyan-400 mb-6 flex items-center gap-3">
+              {selectedIndustry.img && selectedIndustry.img[0] && (
+                <img
+                  src={selectedIndustry.img[0]}
+                  alt={`${selectedIndustry.title} logo`}
+                  className="w-10 h-10 object-contain"
+                />
+              )}
+              <span>{selectedIndustry.title} Solutions</span>
+            </h3>
+            
+            <div className="text-gray-300 mb-6 text-lg leading-relaxed">
+              {selectedIndustry.description.header}
+            </div>
+
+            {selectedIndustry.description.title && (
+              <h4 className="text-xl font-semibold text-white mb-4">
+                {selectedIndustry.description.title}
+              </h4>
+            )}
+
+            <div className="space-y-3">
+              {selectedIndustry.description.list.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-3 bg-gray-700/30 rounded-lg border border-gray-600/30 hover:border-cyan-400/30 transition-all duration-300"
+                >
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="text-gray-300 text-sm leading-relaxed">{item}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8">
+              {['GenAI', 'Agentic Workflow'].includes(selectedIndustry.title) ? (
+                <Link to="/#solutions" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+                  Explore {selectedIndustry.title} Solutions
+                </Link>
+              ) : (
+                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+                  Explore {selectedIndustry.title} Solutions
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Visual */}
+          <div className="lg:w-1/3 flex justify-center items-center">
+            <div className="relative">
+              <div className="w-64 h-64 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-2xl flex items-center justify-center border border-cyan-400/20 backdrop-blur-sm">
+                {selectedIndustry.img && selectedIndustry.img[0] && (
+                  <img
+                    src={selectedIndustry.img[0]}
+                    alt={selectedIndustry.title}
+                    className="w-32 h-32 object-contain filter brightness-150 hover:scale-110 transition-transform duration-300"
+                  />
+                )}
+              </div>
+              
+              {/* Floating Stats */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-sm rounded-lg p-3 border border-cyan-400/30 animate-pulse">
+                <div className="text-lg">📈</div>
+                <div className="text-xs font-semibold text-cyan-300">Growth</div>
+              </div>
+              
+              <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-blue-500/20 to-cyan-600/20 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 animate-pulse">
+                <div className="text-lg">🎯</div>
+                <div className="text-xs font-semibold text-blue-300">Precision</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Industry Stats */}
+      <div className="w-full mt-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { label: 'Industries Served', value: '25+', icon: '🏢' },
+          { label: 'Successful Projects', value: '150+', icon: '✅' },
+          { label: 'Years Experience', value: '8+', icon: '📅' },
+          { label: 'Client Retention', value: '95%', icon: '🤝' }
+        ].map((stat, index) => (
+          <div 
+            key={index}
+            className="bg-gradient-to-br from-gray-800/50 to-blue-900/30 rounded-xl p-6 text-center border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 hover:transform hover:-translate-y-1 group"
+          >
+            <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+            <div className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{stat.value}</div>
+            <div className="text-gray-300 text-sm">{stat.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

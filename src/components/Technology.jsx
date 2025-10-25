@@ -10,24 +10,26 @@ const Technology = () => {
   }
 
   return (
-    <div className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6`}>
+    <div id="technology" data-scrollspy className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 text-white`}>
       <div
         className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}
       >
-        <div className="text-4xl mb-6 blut-text__gradient text-center">
+        <div className="text-4xl mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-center font-bold" data-animate>
           Technologies we work with
         </div>
       </div>
       <div
-        className={`${styles.flexCenter} text-center text-lg text-dimBlack xl:w-1/2 mb-16`}
+        className={`${styles.flexCenter} text-center text-lg text-gray-300 xl:w-1/2 mb-16`}
       >
         We have teamed up with major technology platforms to keep giving our
-        customers most upgraded world-className software performance.
+        customers most upgraded world-class software performance.
       </div>
+      
+      {/* Desktop Version */}
       <div
-        className={`${styles.flexCenter} w-full hidden md:flex flex-col mb-6 font-size-[14px]`}
+        className={`${styles.flexCenter} w-full hidden md:flex flex-col mb-6`}
       >
-        <ul className={`w-full flex  md:border-b md:border-slate-300`}>
+        <ul className={`w-full flex border-b border-white/10`} data-animate="down">
           {technologies.map((techType, index) => (
             <li
               className={`-mb-px mr-1 cursor-pointer text-lg`}
@@ -35,10 +37,10 @@ const Technology = () => {
               onClick={() => changeTechnology(techType)}
             >
               <span
-                className={`bg-white inline-block py-2 px-8 hover:blut-text__gradient capitalize
+                className={`bg-white/5 inline-block py-2 px-8 hover:text-brand-primary-300 capitalize transition-all duration-300 rounded-t-xl border-l border-t border-r border-white/10
                 ${
                   technologySectionTitle.title === techType.title &&
-                  'border-l border-t border-r rounded-t blut-text__gradient border border-b-white'
+                  'bg-white/10 text-brand-primary-300 border-white/30 border-b-transparent'
                 }`}
               >
                 {techType.title}
@@ -47,55 +49,71 @@ const Technology = () => {
           ))}
         </ul>
         <div
-          className={`${styles.flexCenter} flex pt-10 flex justify-between bg-slate-50  align-center px-5 py-10 w-full bordor-box`}
+          className={`${styles.flexCenter} flex pt-10 justify-between bg-white/5 border border-white/10 rounded-b-xl rounded-tr-xl align-center px-5 py-10 w-full`}
+          data-animate
         >
-          {technologySectionTitle.tech.map((tech) => (
-            <img
-              src={tech.img}
-              alt="menu"
-              className="w-[120px] h-[100px] object-contain text-white-100"
-              key={tech.title}
-            />
+          {technologySectionTitle.tech.map((individualTechnology, index) => (
+            <div
+              className="flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 group"
+              key={index}
+            >
+              <div className="w-24 h-24 mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-brand-primary-300/25 transition-all duration-300">
+                <img
+                  src={individualTechnology.img}
+                  alt={individualTechnology.title}
+                  className="w-16 h-16 object-contain filter brightness-150"
+                />
+              </div>
+              <div className="text-center text-white font-medium">
+                {individualTechnology.title}
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      <div className="w-full md:hidden block mx-auto">
-        {technologies.map((techType, index) => (
-          <div className="group outline-none" tabIndex={index} key={index}>
-            <div className="group flex justify-between px-4 py-3 items-center text-gray-500 transition ease duration-500 cursor-pointer pr-10 relative">
-              <div className="transition ease duration-500 capitalize">
-                {techType.title}
-              </div>
-              <div className="h-8 w-8 items-center inline-flex justify-center transform transition ease duration-500 group-focus:-rotate-180 absolute top-0 right-0 mb-auto ml-auto mt-2 mr-2">
-                <svg
-                  data-accordion-icon
-                  className="w-6 h-6 shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div className="group-focus:max-h-screen max-h-0 px-4 overflow-hidden ease duration-500">
-              <div className="py-5  flex overflow-x-auto">
-                {techType.tech.map((tech) => (
+
+      {/* Mobile Version */}
+        <div className="md:hidden w-full" data-animate>
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          {technologies.map((techType, index) => (
+            <button
+              key={index}
+              onClick={() => changeTechnology(techType)}
+              className={`p-3 rounded-xl text-sm font-medium transition-all duration-300 capitalize ${
+                technologySectionTitle.title === techType.title
+                  ? 'bg-white/10 text-brand-primary-300 border border-white/30'
+                  : 'bg-white/5 text-gray-300 border border-white/10 hover:border-brand-primary-300/30'
+              }`}
+            >
+              {techType.title}
+            </button>
+          ))}
+        </div>
+        
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-brand-primary-300 mb-6 text-center capitalize">
+            {technologySectionTitle.title} Technologies
+          </h3>
+          <div className="grid grid-cols-2 gap-6">
+            {technologySectionTitle.tech.map((individualTechnology, index) => (
+              <div
+                className="flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group"
+                key={index}
+              >
+                <div className="w-20 h-20 mb-3 bg-white/10 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-brand-primary-300/25 transition-all duration-300">
                   <img
-                    src={tech.img}
-                    alt="menu"
-                    className="w-[100px] h-[80px] object-contain text-white-100 mr-10"
-                    key={tech.title}
+                    src={individualTechnology.img}
+                    alt={individualTechnology.title}
+                    className="w-12 h-12 object-contain filter brightness-150"
                   />
-                ))}
+                </div>
+                <div className="text-center text-white text-sm font-medium">
+                  {individualTechnology.title}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

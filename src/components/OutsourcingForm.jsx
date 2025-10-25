@@ -2,11 +2,11 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import styles from '../style';
-import { contactUsFields } from '../constants';
+import { outsourcingFormFields } from '../constants';
 import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
 
-const ContactUs = ({ handleSuccessToster }) => {
+const OutsourcingForm = ({ handleSuccessToster }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -20,21 +20,23 @@ const ContactUs = ({ handleSuccessToster }) => {
     const formData = new FormData(form.current);
     const templateParams = {
       from_name: formData.get('from_name'),
+      company_name: formData.get('company_name'),
       from_email: formData.get('from_email'),
       contact_number: formData.get('contact_number'),
-      project_type: formData.get('project_type'),
-      estimated_budget: formData.get('estimated_budget'),
+      developer_type: formData.get('developer_type'),
+      team_size: formData.get('team_size'),
+      employment_type: formData.get('employment_type'),
       message: formData.get('message'),
       to_email: 'info@escose.com',
-      form_type: 'general_inquiry'
+      form_type: 'outsourcing_request'
     };
     
-    // console.log('Sending email with params:', templateParams);
+    console.log('Sending outsourcing request with params:', templateParams);
     
     emailjs
-      .sendForm(
+      .send(
         'service_ccb920l',
-        'template_key7wtr',
+        'template_t5904kb',
         templateParams,
         // form.current,
         '2HswVx6NHPH32wUNU'
@@ -63,15 +65,17 @@ const ContactUs = ({ handleSuccessToster }) => {
 
   const sendFallbackEmail = () => {
     const formData = new FormData(form.current);
-    const subject = 'General Inquiry - Escose Technologies';
+    const subject = 'Developer Outsourcing Request - Escose Technologies';
     const body = `
 Name: ${formData.get('from_name')}
+Company: ${formData.get('company_name')}
 Email: ${formData.get('from_email')}
 Contact Number: ${formData.get('contact_number')}
-Project Type: ${formData.get('project_type')}
-Estimated Budget: ${formData.get('estimated_budget')}
+Developer Type: ${formData.get('developer_type')}
+Team Size: ${formData.get('team_size')}
+Employment Type: ${formData.get('employment_type')}
 
-Message:
+Additional Requirements:
 ${formData.get('message')}
     `;
     
@@ -81,32 +85,38 @@ ${formData.get('message')}
 
   return (
     <section
-      id="contact-us-form"
+      id="outsourcing-form"
       className="w-full"
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 w-full">
-        {/* Contact Information */}
+        {/* Info Section */}
         <div className="lg:col-span-1">
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-cyan-400/20 h-full">
-            <h3 className="text-2xl font-bold text-cyan-300 mb-8">Get In Touch</h3>
-            <ul className="space-y-8">
-              {[
-                { title: 'Location', value: 'Bengalore, India', icon: '📍' },
-                { title: 'Phone', value: '+91 7568288997', icon: '📞' },
-                { title: 'Email', value: 'info@escose.com', icon: '✉️' },
-              ].map((item) => (
-                <li key={item.title} className="flex items-start">
-                  <span className="text-3xl mr-4">{item.icon}</span>
-                  <div>
-                    <h4 className="text-lg font-semibold text-slate-200 mb-1">{item.title}</h4>
-                    <p className="text-slate-300">{item.value}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-2xl font-bold text-cyan-300 mb-4">Hire Developers</h2>
+            <p className="text-slate-300 mb-8 leading-relaxed">
+              Looking to scale your team with top talent? Fill out this form to get started with our IT staffing services.
+            </p>
+            
+            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl p-6 border border-cyan-400/20">
+              <h3 className="text-xl font-bold text-cyan-300 mb-4">Why Choose Us?</h3>
+              <ul className="space-y-3">
+                {[
+                  'Access to 500+ pre-vetted developers',
+                  'Flexible engagement models',
+                  'Cost savings up to 60%',
+                  'Quick onboarding within 2 weeks',
+                  '24/7 support and management'
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-cyan-400 mr-2 text-lg">✓</span>
+                    <span className="text-slate-200">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-
+        
         {/* Form */}
         <div className="lg:col-span-2">
           <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-cyan-400/20">
@@ -115,7 +125,7 @@ ${formData.get('message')}
               ref={form}
               onSubmit={sendEmail}
             >
-              <h2 className="text-2xl font-bold text-slate-100 mb-6">General Inquiry</h2>
+              <h2 className="text-2xl font-bold text-slate-100 mb-6">Developer Outsourcing Request</h2>
               
               {errorMessage && (
                 <div className="bg-red-500/20 border border-red-500/50 text-red-200 p-3 mb-4 rounded-md">
@@ -130,7 +140,7 @@ ${formData.get('message')}
                 </div>
               )}
               
-              {contactUsFields.map((field) => (
+              {outsourcingFormFields.map((field) => (
                 <Input
                   key={field.id}
                   labelText={field.labelText}
@@ -144,7 +154,7 @@ ${formData.get('message')}
                 />
               ))}
               <Button 
-                text={isSubmitting ? 'Sending...' : 'Submit'} 
+                text={isSubmitting ? 'Sending...' : 'Submit Request'} 
                 type="submit" 
                 styles={isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}
                 disabled={isSubmitting}
@@ -157,4 +167,4 @@ ${formData.get('message')}
   );
 };
 
-export default ContactUs;
+export default OutsourcingForm; 

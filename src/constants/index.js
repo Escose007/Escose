@@ -34,34 +34,32 @@ import {
 
 export const navLinks = [
   {
-    id: 'home',
+    id: '/',
     title: 'Home',
   },
   {
-    id: 'Services',
-    title: 'Services',
-    children: [
-      {
-        id: 'Software Development & Support',
-        title: 'Software Development & Support',
-      },
-      {
-        id: 'Mobile App Development',
-        title: 'Mobile App Development',
-      },
-      {
-        id: 'Web Development',
-        title: 'Web Development',
-      },
-    ],
+    id: '/about',
+    title: 'About Us',
   },
   {
-    id: 'Blogs',
+    id: '/#solutions',
+    title: 'Solutions',
+  },
+  {
+    id: '/#services',
+    title: 'Services',
+  },
+  {
+    id: '/blogs',
     title: 'Blogs',
   },
   {
-    id: 'aboutus',
-    title: 'About Us',
+    id: '/outsourcing',
+    title: 'IT Staffing',
+  },
+  {
+    id: '/careers',
+    title: 'Careers',
   },
 ];
 
@@ -83,6 +81,12 @@ export const footerLinks = [
       },
       {
         name: 'Flutter Developers',
+      },
+      {
+        name: 'Full Stack Developers',
+      },
+      {
+        name: 'DevOps Engineers',
       },
     ],
   },
@@ -115,13 +119,6 @@ export const footerLinks = [
 
 export const services = [
   {
-    title: 'UI UX Design',
-    icon: 'design_services',
-    description:
-      "Our goal is to create an interface that integrates the product's  layout, visual appearance and color scheme.",
-    img: uiux,
-  },
-  {
     title: 'Mobile App Development',
     icon: 'developer_mode',
     description:
@@ -136,11 +133,164 @@ export const services = [
     img: web_development,
   },
   {
+    title: 'UI UX Design',
+    icon: 'design_services',
+    description:
+      "Our goal is to create an interface that integrates the product's  layout, visual appearance and color scheme.",
+    img: uiux,
+  },
+  {
     title: 'IOT Development',
     icon: 'cloud_download',
     description:
       'We serve in a wide range of industries, including manufacturing, healthcare, transportation, agriculture, smart cities and more.',
     img: iot,
+  },
+  {
+    title: 'IT Staffing',
+    icon: 'groups',
+    description:
+      'Flexible staffing for critical tech roles: staff augmentation, dedicated teams, and contract-to-hire. Quickly ramp up with pre-vetted talent across frontend, backend, DevOps, mobile, data, and QA.',
+    img: web_development,
+  },
+];
+
+// Employee Outsourcing Data
+export const outsourcingRoles = [
+  {
+    title: 'Frontend Developers',
+    skills: ['React', 'Vue.js', 'Angular', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass'],
+    experience: '2-8 years',
+    description: 'Expert frontend developers who create stunning user interfaces and exceptional user experiences.',
+    img: react,
+  },
+  {
+    title: 'Backend Developers',
+    skills: ['Node.js', 'Python', 'Java', 'PHP', 'C#', 'Ruby', 'Go', 'APIs'],
+    experience: '2-10 years',
+    description: 'Skilled backend developers who build robust server-side applications and APIs.',
+    img: node,
+  },
+  {
+    title: 'Full Stack Developers',
+    skills: ['MERN Stack', 'MEAN Stack', 'Django', 'Laravel', 'Spring Boot', 'DevOps'],
+    experience: '3-10 years',
+    description: 'Versatile full-stack developers who handle both frontend and backend development.',
+    img: python,
+  },
+  {
+    title: 'Mobile Developers',
+    skills: ['React Native', 'Flutter', 'iOS (Swift)', 'Android (Kotlin)', 'Ionic', 'Xamarin'],
+    experience: '2-8 years',
+    description: 'Mobile app developers who create cross-platform and native mobile applications.',
+    img: flutter,
+  },
+  {
+    title: 'DevOps Engineers',
+    skills: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD', 'Terraform', 'Ansible'],
+    experience: '3-12 years',
+    description: 'DevOps experts who optimize deployment pipelines and infrastructure management.',
+    img: aws,
+  },
+  {
+    title: 'UI/UX Designers',
+    skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Wireframing'],
+    experience: '2-8 years',
+    description: 'Creative designers who craft intuitive user interfaces and delightful user experiences.',
+    img: uiux,
+  },
+];
+
+export const engagementModels = [
+  {
+    title: 'Dedicated Team',
+    description: 'A dedicated team of professionals working exclusively on your project with full commitment.',
+    features: ['Full-time commitment', 'Direct communication', 'Flexible team size', 'Long-term partnership'],
+    bestFor: 'Large projects, ongoing development, product scaling',
+  },
+  {
+    title: 'Staff Augmentation',
+    description: 'Extend your existing team with our skilled professionals to fill specific skill gaps.',
+    features: ['Quick integration', 'Skill-specific hiring', 'Flexible duration', 'Cost-effective'],
+    bestFor: 'Short-term projects, specific skill requirements, temporary team expansion',
+  },
+  {
+    title: 'Project-Based',
+    description: 'Complete project delivery from start to finish with defined scope and timeline.',
+    features: ['Fixed scope delivery', 'Milestone-based payments', 'End-to-end responsibility', 'Quality assurance'],
+    bestFor: 'Well-defined projects, MVP development, specific deliverables',
+  },
+  {
+    title: 'Hourly Engagement',
+    description: 'Flexible hourly engagement for consultation, maintenance, or small development tasks.',
+    features: ['Pay per hour', 'Flexible scheduling', 'On-demand availability', 'No long-term commitment'],
+    bestFor: 'Consultations, maintenance work, small enhancements, support tasks',
+  },
+];
+
+export const outsourcingBenefits = [
+  {
+    title: 'Cost Optimization',
+    description: 'Reduce operational costs by up to 60% while maintaining high-quality deliverables.',
+    icon: 'savings',
+  },
+  {
+    title: 'Access to Global Talent',
+    description: 'Tap into a vast pool of skilled professionals from around the world.',
+    icon: 'public',
+  },
+  {
+    title: 'Faster Time-to-Market',
+    description: 'Accelerate your development timeline with experienced teams ready to start immediately.',
+    icon: 'schedule',
+  },
+  {
+    title: 'Scalability',
+    description: 'Scale your team up or down based on project requirements and business needs.',
+    icon: 'trending_up',
+  },
+  {
+    title: 'Focus on Core Business',
+    description: 'Focus on your core business while we handle the technical development.',
+    icon: 'business_center',
+  },
+  {
+    title: 'Risk Mitigation',
+    description: 'Reduce project risks with our experienced project management and quality assurance.',
+    icon: 'security',
+  },
+];
+
+export const hiringProcess = [
+  {
+    step: 1,
+    title: 'Requirements Analysis',
+    description: 'We analyze your project requirements, technical needs, and team structure.',
+    timeframe: '1-2 days',
+  },
+  {
+    step: 2,
+    title: 'Talent Matching',
+    description: 'Our experts identify and shortlist the best candidates matching your specific requirements.',
+    timeframe: '3-5 days',
+  },
+  {
+    step: 3,
+    title: 'Interview & Selection',
+    description: 'Conduct interviews with shortlisted candidates and select the perfect fit for your team.',
+    timeframe: '2-3 days',
+  },
+  {
+    step: 4,
+    title: 'Contract & Onboarding',
+    description: 'Finalize contracts, NDAs, and onboard your new team members with proper documentation.',
+    timeframe: '1-2 days',
+  },
+  {
+    step: 5,
+    title: 'Project Kickoff',
+    description: 'Start your project with dedicated support, regular communication, and progress tracking.',
+    timeframe: '1 day',
   },
 ];
 
@@ -278,6 +428,44 @@ export const industries = [
       ],
     },
   },
+  {
+    title: 'GenAI',
+    img: ['https://cdn.simpleicons.org/openai/22d3ee'],
+    description: {
+      header:
+        'Generative AI solutions that automate workflows, accelerate development, and augment teams across functions while meeting enterprise-grade security and governance.',
+      title: 'Solutions we deliver include:',
+      list: [
+        `AI Coding Co-pilots: Context-aware code generation, refactoring suggestions, and PR summaries to speed up delivery.`,
+        `Requirements → Tests: Convert product requirements into test cases, scenarios, and edge checks to improve quality.`,
+        `Knowledge Assistants (RAG): Private, secure chat over your docs, wikis, and tickets with source citations.`,
+        `Content Automation: Multi-step workflows for marketing assets, blogs, and localization with review loops.`,
+        `Data Extraction & Enrichment: Structured outputs from PDFs, emails, forms, and logs for downstream systems.`,
+        `Agentic Automation: Tool orchestration with planners and memory for reliable, repeatable business processes.`,
+        `Evaluation & Guardrails: Prompt safety filters, hallucination checks, and red-teaming with measurable KPIs.`,
+        `LLMOps/MLOps: Prompt versioning, offline/online evaluations, tracing, and analytics dashboards.`,
+        `Secure Deployment: Private/VPC hosting, no data retention, role-based access, and audit trails.`,
+      ],
+    },
+  },
+  {
+    title: 'Agentic Workflow',
+    img: ['https://cdn.simpleicons.org/apacheairflow/22d3ee'],
+    description: {
+      header:
+        'Design and deploy reliable agentic systems that combine tools, planners, and memory to automate complex workflows with safety and observability.',
+      title: 'Core capabilities include:',
+      list: [
+        `Act/Observe Loops: Stepwise tool usage with feedback and guarded execution for predictable outcomes.`,
+        `Hierarchical Planning: Break down high-level goals into verifiable subtasks with clear success criteria.`,
+        `Memory Layers: Short-term scratchpads and long-term vector/structured stores to maintain context.`,
+        `Tooling Ecosystem: Deterministic, idempotent tools with timeouts, retries, and circuit breakers.`,
+        `Evaluators & Guardrails: Safety, quality, and hallucination checks before actions are committed.`,
+        `Tracing & Analytics: Full observability into prompts, tool calls, and decisions for debugging and audit.`,
+        `Deployment Patterns: Budget caps, SLAs, and sandboxed environments for production reliability.`,
+      ],
+    },
+  },
 ];
 
 export const contactUsFields = [
@@ -321,5 +509,174 @@ export const contactUsFields = [
     labelText: 'Message',
     fieldType: 'textarea',
     placeholder: 'Enter Message',
+  },
+];
+
+export const outsourcingFormFields = [
+  {
+    id: 'from_name',
+    labelText: 'Name',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Enter Your Name',
+  },
+  {
+    id: 'company_name',
+    labelText: 'Company Name',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Enter Company Name',
+  },
+  {
+    id: 'from_email',
+    labelText: 'Email',
+    fieldType: 'email',
+    isRequired: true,
+    placeholder: 'Enter Email',
+  },
+  {
+    id: 'contact_number',
+    labelText: 'Contact Number',
+    fieldType: 'integer',
+    isRequired: true,
+    placeholder: 'Enter Contact Number',
+  },
+  {
+    id: 'developer_type',
+    labelText: 'Developer Type Needed',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'e.g., Frontend, Backend, Full Stack',
+  },
+  {
+    id: 'team_size',
+    labelText: 'Team Size',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'Number of developers needed',
+  },
+  {
+    id: 'employment_type',
+    labelText: 'Employment Type',
+    fieldType: 'text',
+    isRequired: true,
+    placeholder: 'e.g., Full-time, Part-time, Contract, Freelance',
+  },
+  {
+    id: 'message',
+    labelText: 'Additional Requirements',
+    fieldType: 'textarea',
+    placeholder: 'Describe your project and specific requirements',
+  },
+];
+
+export const openPositions = [
+  {
+    title: 'Java Developer',
+    department: 'Engineering',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '3–5 years',
+    skills: ['Java', 'Spring Boot', 'REST APIs', 'SQL', 'Git'],
+    summary: 'Build scalable backend services and APIs using Java and Spring. Collaborate with cross-functional teams to deliver high-quality features.',
+    jd: {
+      responsibilities: [
+        'Design, develop, and maintain backend services using Java and Spring Boot',
+        'Build RESTful APIs and integrate with databases (MySQL/PostgreSQL)',
+        'Write unit/integration tests and participate in code reviews',
+        'Collaborate with frontend, QA, and DevOps to ship high-quality features',
+      ],
+      requirements: [
+        '3–5 years professional Java experience',
+        'Solid knowledge of Spring Boot, JPA/Hibernate',
+        'Experience with SQL databases and performance tuning basics',
+        'Familiarity with Git, CI/CD, Docker is a plus',
+      ],
+      niceToHave: [
+        'Experience with microservices and messaging (Kafka/RabbitMQ)',
+        'Cloud exposure (AWS/Azure/GCP)'
+      ],
+    },
+  },
+  {
+    title: 'Python Developer',
+    department: 'Engineering',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '3–5 years',
+    skills: ['Python', 'Django/Flask', 'REST APIs', 'PostgreSQL', 'Docker'],
+    summary: 'Design and implement robust backend services and integrations using Python frameworks. Focus on reliability, performance, and clean code.',
+    jd: {
+      responsibilities: [
+        'Develop backend services and APIs using Django or Flask',
+        'Model relational data and optimize queries on PostgreSQL/MySQL',
+        'Ensure code quality with tests, reviews, and CI checks',
+        'Work closely with product, design, and frontend teams',
+      ],
+      requirements: [
+        '3–5 years professional Python experience',
+        'Strong experience in Django/Flask and building REST APIs',
+        'Good understanding of relational databases and ORMs',
+        'Docker and basic cloud knowledge preferred',
+      ],
+      niceToHave: [
+        'Experience with Celery, Redis, or async frameworks',
+        'Exposure to FastAPI and microservices'
+      ],
+    },
+  },
+  {
+    title: 'AI/ML Developer',
+    department: 'AI & Data',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '4–5 years',
+    skills: ['Python', 'Machine Learning', 'Scikit-learn', 'TensorFlow/PyTorch', 'SQL'],
+    summary: 'Build, train, and deploy ML models for classification, forecasting, and recommendation with production-grade pipelines.',
+    jd: {
+      responsibilities: [
+        'Design and implement ML models from experimentation to production',
+        'Build data pipelines and feature stores with robust validation',
+        'Evaluate models with clear metrics and iterate for performance',
+        'Collaborate with engineering to deploy and monitor models in prod',
+      ],
+      requirements: [
+        '4–5 years in ML engineering or data science with production delivery',
+        'Strong Python and SQL; experience with pandas, numpy, scikit-learn',
+        'Deep learning exposure using TensorFlow or PyTorch',
+        'Basics of MLOps (versioning, tracking, deployments) are preferred',
+      ],
+      niceToHave: [
+        'Experience with Airflow/Prefect, MLflow/Weights & Biases',
+        'Cloud services (AWS/GCP/Azure) for training and serving',
+      ],
+    },
+  },
+  {
+    title: 'GenAI / Agentic Developer',
+    department: 'AI & Data',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '4–5 years',
+    skills: ['Python/TypeScript', 'LLMs', 'RAG', 'Vector DBs', 'Prompting'],
+    summary: 'Build GenAI apps: RAG assistants, evaluators/guardrails, and multi-agent flows with tool orchestration.',
+    jd: {
+      responsibilities: [
+        'Design RAG pipelines: chunking, embeddings, retrieval, and synthesis',
+        'Implement evaluators/guardrails and prompt versioning with analytics',
+        'Build agentic workflows with tools, memory, and planners',
+        'Ship secure deployments with tracing and cost/latency controls',
+      ],
+      requirements: [
+        '4–5 years in software/ML; 1–2 yrs hands-on with LLM apps',
+        'Experience with OpenAI/Anthropic and vector DBs (FAISS/PGVector/Weaviate)',
+        'Solid backend skills (Python or TypeScript) and API design',
+        'Comfort with evaluations, safety, and observability for LLMs',
+      ],
+      niceToHave: [
+        'Experience with LangChain/LlamaIndex, OpenTelemetry, and model tracing',
+        'Knowledge of RLHF, fine-tuning, or synthetic data generation',
+      ],
+    },
   },
 ];

@@ -33,11 +33,8 @@ import close from './close.svg';
 import escose_logo from './escose_logo.png';
 import menu from './menu.svg';
 import star from './Star.svg';
-import about_us from './about_us.png';
-import yongPassionat from './yongPassionat.svg';
-import enthusiasmandCreativity from './enthusiasmandCreativity.svg';
-import cheerfulandComfortable from './cheerfulandComfortable.svg';
 import hosting from './hosting.svg';
+
 export {
   react,
   vue,
@@ -74,9 +71,5 @@ export {
   escose_logo,
   menu,
   star,
-  about_us,
-  yongPassionat,
-  enthusiasmandCreativity,
-  cheerfulandComfortable,
   hosting,
 };

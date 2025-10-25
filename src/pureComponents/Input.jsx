@@ -30,9 +30,9 @@ const InputField = ({
 
   return (
     <label htmlFor={labelFor} className="form-group block">
-      <span className="block mb-2 flex  text-gray-700">
+      <span className="block mb-2 flex text-slate-200">
         {labelText}
-        {isRequired && <span className="block mb-2  text-gray-700">*</span>}
+        {isRequired && <span className="ml-1 text-cyan-400">*</span>}
       </span>
 
       <DynamicInput
