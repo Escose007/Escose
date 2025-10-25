@@ -10,6 +10,7 @@ import BlogDetail from './page/BlogDetail';
 import Contact from './page/Contact';
 import EmployeeOutsourcing from './page/EmployeeOutsourcing';
 import SolutionsFlow from './page/SolutionsFlow';
+// Favicon assets are now served from /public and referenced in index.html
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
