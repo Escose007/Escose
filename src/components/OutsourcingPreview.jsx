@@ -27,7 +27,7 @@ const OutsourcingPreview = () => {
   };
 
   const quickStats = [
-    { label: 'Average Hire Time', value: '7 Days', icon: '⏱️' },
+    { label: 'Average Hire Time', value: '2 Weeks', icon: '⏱️' },
     { label: 'Client Satisfaction', value: '98%', icon: '⭐' },
     { label: 'Cost Savings', value: '60%', icon: '💰' },
     { label: 'Time Zones', value: '24/7', icon: '🕐' }
@@ -54,7 +54,7 @@ const OutsourcingPreview = () => {
               <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
                 Hire World-Class
                 <br />
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Developers in 7 Days</span>
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Developers in 2 Weeks</span>
               </h2>
               
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">

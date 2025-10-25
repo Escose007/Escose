@@ -7,32 +7,8 @@ const EmployeeOutsourcing = () => {
   const [selectedRole, setSelectedRole] = useState(outsourcingRoles[0]);
   const [selectedModel, setSelectedModel] = useState(engagementModels[0]);
   const [activeStep, setActiveStep] = useState(0);
-  const [showCalculator, setShowCalculator] = useState(false);
-  const [costCalculation, setCostCalculation] = useState({
-    role: 'frontend',
-    experience: 'mid',
-    duration: '6',
-    developers: '2'
-  });
 
-  const calculateCost = () => {
-    const baseCosts = {
-      frontend: { junior: 2500, mid: 4000, senior: 6000 },
-      backend: { junior: 2800, mid: 4500, senior: 6500 },
-      fullstack: { junior: 3000, mid: 5000, senior: 7000 },
-      mobile: { junior: 2700, mid: 4200, senior: 6200 },
-      devops: { junior: 3500, mid: 5500, senior: 7500 },
-      designer: { junior: 2000, mid: 3500, senior: 5500 }
-    };
-    
-    const monthlyCost = baseCosts[costCalculation.role][costCalculation.experience];
-    const totalCost = monthlyCost * parseInt(costCalculation.developers) * parseInt(costCalculation.duration);
-    const savings = totalCost * 0.6; // 60% savings
-    
-    return { monthlyCost, totalCost, savings };
-  };
-
-  const { monthlyCost, totalCost, savings } = calculateCost();
+  
 
   return (
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100">
@@ -51,10 +27,10 @@ const EmployeeOutsourcing = () => {
             
             <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Hire Elite Developers
+                IT Staffing
               </span>
               <br />
-              In Just 7 Days
+              Hire Elite Developers in 2 Weeks
             </h1>
             
             <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
@@ -65,7 +41,7 @@ const EmployeeOutsourcing = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               {[
                 { number: '500+', label: 'Expert Developers', icon: '👨‍💻' },
-                { number: '7 Days', label: 'Average Hire Time', icon: '⏱️' },
+                { number: '2 Weeks', label: 'Average Hire Time', icon: '⏱️' },
                 { number: '60%', label: 'Cost Reduction', icon: '💰' },
                 { number: '98%', label: 'Success Rate', icon: '🎯' }
               ].map((stat, index) => (
@@ -80,12 +56,6 @@ const EmployeeOutsourcing = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button 
-                onClick={() => setShowCalculator(!showCalculator)}
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
-              >
-                Calculate Hiring Cost
-              </button>
               <Link
                 to="/contact"
                 className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-center"
@@ -97,112 +67,44 @@ const EmployeeOutsourcing = () => {
         </div>
       </section>
 
-      {/* Cost Calculator Modal */}
-      {showCalculator && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-gray-800 to-blue-900 rounded-2xl p-8 max-w-md w-full border border-cyan-400/30">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-cyan-400">Cost Calculator</h3>
-              <button 
-                onClick={() => setShowCalculator(false)}
-                className="text-gray-400 hover:text-white transition-colors duration-300"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Role</label>
-                <select 
-                  value={costCalculation.role}
-                  onChange={(e) => setCostCalculation({...costCalculation, role: e.target.value})}
-                  className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-cyan-400"
-                >
-                  <option value="frontend">Frontend Developer</option>
-                  <option value="backend">Backend Developer</option>
-                  <option value="fullstack">Full Stack Developer</option>
-                  <option value="mobile">Mobile Developer</option>
-                  <option value="devops">DevOps Engineer</option>
-                  <option value="designer">UI/UX Designer</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Experience</label>
-                <select 
-                  value={costCalculation.experience}
-                  onChange={(e) => setCostCalculation({...costCalculation, experience: e.target.value})}
-                  className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-cyan-400"
-                >
-                  <option value="junior">Junior (1-3 years)</option>
-                  <option value="mid">Mid (3-6 years)</option>
-                  <option value="senior">Senior (6+ years)</option>
-                </select>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Developers</label>
-                  <input 
-                    type="number" 
-                    min="1" 
-                    max="20"
-                    value={costCalculation.developers}
-                    onChange={(e) => setCostCalculation({...costCalculation, developers: e.target.value})}
-                    className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Months</label>
-                  <input 
-                    type="number" 
-                    min="1" 
-                    max="24"
-                    value={costCalculation.duration}
-                    onChange={(e) => setCostCalculation({...costCalculation, duration: e.target.value})}
-                    className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-cyan-400"
-                  />
-                </div>
-              </div>
-              
-              <div className="bg-cyan-600/10 rounded-lg p-4 border border-cyan-400/30">
-                <div className="text-center">
-                  <div className="text-sm text-gray-300 mb-2">Monthly Cost per Developer</div>
-                  <div className="text-2xl font-bold text-cyan-400">${monthlyCost.toLocaleString()}</div>
-                  
-                  <div className="text-sm text-gray-300 mb-2 mt-4">Total Project Cost</div>
-                  <div className="text-3xl font-bold text-white">${totalCost.toLocaleString()}</div>
-                  
-                  <div className="text-sm text-green-400 mt-2">
-                    💰 Save ${savings.toLocaleString()} compared to local hiring
-                  </div>
-                </div>
-              </div>
-              
-              <Link
-                to="/contact"
-                onClick={() => setShowCalculator(false)}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center block"
-              >
-                Get Detailed Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Cost Calculator removed */}
 
-      {/* Available Roles Section */}
+      {/* IT Staffing Models */}
       <section className={`${styles.paddingX} ${styles.flexCenter} py-20`}>
         <div className={`${styles.boxWidth}`}>
           <h2 className="text-4xl font-bold text-center mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Available Talent
+              IT Staffing Models
             </span>
           </h2>
           <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-            Browse our carefully curated pool of expert developers and technical professionals.
+            Choose the right model for your needs: staff augmentation for speed, dedicated teams for long-term builds, or contract-to-hire to validate fit before conversion.
           </p>
+          {/* Highlighted Staffing Models */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="relative rounded-2xl p-6 border border-cyan-400/40 bg-gradient-to-br from-cyan-600/10 to-blue-700/10">
+              <div className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500 text-black">Most Popular</div>
+              <h3 className="text-2xl font-bold text-white mb-2">Elite</h3>
+              <div className="text-cyan-300 font-semibold mb-4">6–12 Months</div>
+              <ul className="space-y-2 text-gray-300 mb-6">
+                <li>• Rapid ramp-up with pre-vetted senior engineers</li>
+                <li>• Managed onboarding and replacement guarantee</li>
+                <li>• Time-zone overlap for daily syncs</li>
+              </ul>
+              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">Enquire for Elite</Link>
+            </div>
+            <div className="relative rounded-2xl p-6 border border-blue-400/40 bg-gradient-to-br from-blue-700/10 to-purple-700/10">
+              <div className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500 text-black">Best Value</div>
+              <h3 className="text-2xl font-bold text-white mb-2">Elite Plus</h3>
+              <div className="text-blue-300 font-semibold mb-4">1+ Years</div>
+              <ul className="space-y-2 text-gray-300 mb-6">
+                <li>• Long-term dedicated squads with Lead/PM options</li>
+                <li>• Continuity, knowledge retention, and lower TCO</li>
+                <li>• Flexible scale-up/down with quarterly planning</li>
+              </ul>
+              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">Enquire for Elite Plus</Link>
+            </div>
+          </div>
           
           {/* Role Selection */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
@@ -231,6 +133,7 @@ const EmployeeOutsourcing = () => {
               <div className="lg:w-2/3">
                 <h3 className="text-3xl font-bold text-cyan-400 mb-4">{selectedRole.title}</h3>
                 <p className="text-gray-300 mb-6 text-lg">{selectedRole.description}</p>
+                {/* Highlighted models are shown above; role details continue below */}
                 
                 <div className="mb-6">
                   <h4 className="text-xl font-semibold text-white mb-3">Core Skills</h4>
@@ -364,12 +267,7 @@ const EmployeeOutsourcing = () => {
             >
               Start Hiring Today
             </Link>
-            <button 
-              onClick={() => setShowCalculator(true)}
-              className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-center"
-            >
-              Calculate Your Savings
-            </button>
+            {/* Calculator button removed */}
           </div>
         </div>
       </section>

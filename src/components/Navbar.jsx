@@ -14,16 +14,17 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="w-full">
-      <div className="justify-between pl-0 pr-2 mx-auto lg:max-w-7xl md:items-center md:flex md:pl-0 md:pr-4">
+    <nav className="w-full fixed top-0 left-0 right-0 z-50">
+      <div className="bg-slate-900 border-b border-slate-700/50 shadow-lg">
+        <div className="justify-between pl-0 pr-2 mx-auto lg:max-w-7xl md:items-center md:flex md:pl-0 md:pr-4 h-20 md:h-24">
         <div>
-          <div className="flex items-center justify-between py-4 md:py-6 md:block">
+          <div className="flex items-center justify-between h-full md:block">
             {/* Make logo clickable */}
             <Link to="/" className="cursor-pointer">
               <img
                 src={escose_logo}
                 alt="escose_logo"
-                className="md:w-[200px] md:h-[60px] w-[160px] h-[48px] filter brightness-150 hover:opacity-80 transition-opacity duration-300"
+                className="md:w-[200px] md:h-[60px] w-[160px] h-[48px] filter brightness-125 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] hover:opacity-90 transition-opacity duration-300"
               />
             </Link>
             <div className="md:hidden">
@@ -47,8 +48,8 @@ export default function NavBar() {
                 <li key={nav.id}>
                   <Link
                     to={nav.id}
-                    className={`font-poppins font-medium cursor-pointer text-[16px] hover:text-cyan-400 transition-colors duration-300 ${
-                      isActive(nav.id) ? 'text-cyan-400' : 'text-gray-300'
+                    className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 ${
+                      isActive(nav.id) ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
                     }`}
                     onClick={() => {
                       if (nav.id === '/' && location.pathname === '/') {
@@ -64,7 +65,7 @@ export default function NavBar() {
               <li>
                 <Link
                   to="/contact"
-                  className="cursor-pointer hover:text-blue-700 py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white rounded-full transition-all duration-300 font-medium"
+                  className="cursor-pointer py-3 px-6 text-white rounded-full transition-all duration-300 font-medium shadow-sm hover:shadow-lg bg-brand-gradient hover:brightness-110"
                   onClick={() => setNavbar(false)}
                 >
                   Contact Us
@@ -72,6 +73,7 @@ export default function NavBar() {
               </li>
             </ul>
           </div>
+        </div>
         </div>
       </div>
     </nav>

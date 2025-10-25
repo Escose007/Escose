@@ -38,6 +38,10 @@ export const navLinks = [
     title: 'Home',
   },
   {
+    id: '/about',
+    title: 'About Us',
+  },
+  {
     id: '/#solutions',
     title: 'Solutions',
   },
@@ -52,6 +56,10 @@ export const navLinks = [
   {
     id: '/outsourcing',
     title: 'Hire Developers',
+  },
+  {
+    id: '/careers',
+    title: 'Careers',
   },
 ];
 
@@ -139,11 +147,11 @@ export const services = [
     img: iot,
   },
   {
-    title: 'Employee Outsourcing',
+    title: 'IT Staffing',
     icon: 'groups',
     description:
-      'Scale your team with our skilled professionals. We provide dedicated developers, designers, and technical experts to accelerate your projects.',
-    img: web_development, // Using web_development image as placeholder
+      'Flexible staffing for critical tech roles: staff augmentation, dedicated teams, and contract-to-hire. Quickly ramp up with pre-vetted talent across frontend, backend, DevOps, mobile, data, and QA.',
+    img: web_development,
   },
 ];
 
@@ -559,5 +567,116 @@ export const outsourcingFormFields = [
     labelText: 'Additional Requirements',
     fieldType: 'textarea',
     placeholder: 'Describe your project and specific requirements',
+  },
+];
+
+export const openPositions = [
+  {
+    title: 'Java Developer',
+    department: 'Engineering',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '3–5 years',
+    skills: ['Java', 'Spring Boot', 'REST APIs', 'SQL', 'Git'],
+    summary: 'Build scalable backend services and APIs using Java and Spring. Collaborate with cross-functional teams to deliver high-quality features.',
+    jd: {
+      responsibilities: [
+        'Design, develop, and maintain backend services using Java and Spring Boot',
+        'Build RESTful APIs and integrate with databases (MySQL/PostgreSQL)',
+        'Write unit/integration tests and participate in code reviews',
+        'Collaborate with frontend, QA, and DevOps to ship high-quality features',
+      ],
+      requirements: [
+        '3–5 years professional Java experience',
+        'Solid knowledge of Spring Boot, JPA/Hibernate',
+        'Experience with SQL databases and performance tuning basics',
+        'Familiarity with Git, CI/CD, Docker is a plus',
+      ],
+      niceToHave: [
+        'Experience with microservices and messaging (Kafka/RabbitMQ)',
+        'Cloud exposure (AWS/Azure/GCP)'
+      ],
+    },
+  },
+  {
+    title: 'Python Developer',
+    department: 'Engineering',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '3–5 years',
+    skills: ['Python', 'Django/Flask', 'REST APIs', 'PostgreSQL', 'Docker'],
+    summary: 'Design and implement robust backend services and integrations using Python frameworks. Focus on reliability, performance, and clean code.',
+    jd: {
+      responsibilities: [
+        'Develop backend services and APIs using Django or Flask',
+        'Model relational data and optimize queries on PostgreSQL/MySQL',
+        'Ensure code quality with tests, reviews, and CI checks',
+        'Work closely with product, design, and frontend teams',
+      ],
+      requirements: [
+        '3–5 years professional Python experience',
+        'Strong experience in Django/Flask and building REST APIs',
+        'Good understanding of relational databases and ORMs',
+        'Docker and basic cloud knowledge preferred',
+      ],
+      niceToHave: [
+        'Experience with Celery, Redis, or async frameworks',
+        'Exposure to FastAPI and microservices'
+      ],
+    },
+  },
+  {
+    title: 'AI/ML Developer',
+    department: 'AI & Data',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '4–5 years',
+    skills: ['Python', 'Machine Learning', 'Scikit-learn', 'TensorFlow/PyTorch', 'SQL'],
+    summary: 'Build, train, and deploy ML models for classification, forecasting, and recommendation with production-grade pipelines.',
+    jd: {
+      responsibilities: [
+        'Design and implement ML models from experimentation to production',
+        'Build data pipelines and feature stores with robust validation',
+        'Evaluate models with clear metrics and iterate for performance',
+        'Collaborate with engineering to deploy and monitor models in prod',
+      ],
+      requirements: [
+        '4–5 years in ML engineering or data science with production delivery',
+        'Strong Python and SQL; experience with pandas, numpy, scikit-learn',
+        'Deep learning exposure using TensorFlow or PyTorch',
+        'Basics of MLOps (versioning, tracking, deployments) are preferred',
+      ],
+      niceToHave: [
+        'Experience with Airflow/Prefect, MLflow/Weights & Biases',
+        'Cloud services (AWS/GCP/Azure) for training and serving',
+      ],
+    },
+  },
+  {
+    title: 'GenAI / Agentic Developer',
+    department: 'AI & Data',
+    location: 'Remote / India',
+    type: 'Full-time',
+    experience: '4–5 years',
+    skills: ['Python/TypeScript', 'LLMs', 'RAG', 'Vector DBs', 'Prompting'],
+    summary: 'Build GenAI apps: RAG assistants, evaluators/guardrails, and multi-agent flows with tool orchestration.',
+    jd: {
+      responsibilities: [
+        'Design RAG pipelines: chunking, embeddings, retrieval, and synthesis',
+        'Implement evaluators/guardrails and prompt versioning with analytics',
+        'Build agentic workflows with tools, memory, and planners',
+        'Ship secure deployments with tracing and cost/latency controls',
+      ],
+      requirements: [
+        '4–5 years in software/ML; 1–2 yrs hands-on with LLM apps',
+        'Experience with OpenAI/Anthropic and vector DBs (FAISS/PGVector/Weaviate)',
+        'Solid backend skills (Python or TypeScript) and API design',
+        'Comfort with evaluations, safety, and observability for LLMs',
+      ],
+      niceToHave: [
+        'Experience with LangChain/LlamaIndex, OpenTelemetry, and model tracing',
+        'Knowledge of RLHF, fine-tuning, or synthetic data generation',
+      ],
+    },
   },
 ];

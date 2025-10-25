@@ -81,45 +81,47 @@ const Contact = () => {
           </button>
         </div>
       )}
-      <div className={`md:mt-10 sm:mt-24 ${styles.flexStart} wave_banner`}>
-        <ContactUsHero />
-      </div>
+      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
+        <div className={`md:mt-10 sm:mt-24 ${styles.flexStart}`}>
+          <ContactUsHero />
+        </div>
 
-      {/* Form Tabs */}
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter} pt-10`}>
-        <div className={`${styles.boxWidth} flex justify-center`}>
-          <div className="inline-flex rounded-lg border border-cyan-400/30 p-1 mb-8">
-            <button
-              onClick={() => setActiveTab('general')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                activeTab === 'general'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
-                  : 'text-slate-300 hover:text-cyan-400'
-              }`}
-            >
-              General Inquiry
-            </button>
-            <button
-              onClick={() => setActiveTab('outsourcing')}
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                activeTab === 'outsourcing'
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
-                  : 'text-slate-300 hover:text-cyan-400'
-              }`}
-            >
-              Hire Developers
-            </button>
+        {/* Form Tabs */}
+        <div className={`${styles.paddingX} ${styles.flexCenter} pt-10`}>
+          <div className={`${styles.boxWidth} flex justify-center`}>
+            <div className="inline-flex rounded-lg border border-cyan-400/30 p-1 mb-8">
+              <button
+                onClick={() => setActiveTab('general')}
+                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  activeTab === 'general'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    : 'text-slate-300 hover:text-cyan-400'
+                }`}
+              >
+                General Inquiry
+              </button>
+              <button
+                onClick={() => setActiveTab('outsourcing')}
+                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  activeTab === 'outsourcing'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    : 'text-slate-300 hover:text-cyan-400'
+                }`}
+              >
+                Hire Developers
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          {activeTab === 'general' ? (
-            <ContactUs handleSuccessToster={handleSuccessToster} />
-          ) : (
-            <OutsourcingForm handleSuccessToster={handleSuccessToster} />
-          )}
+        <div className={`${styles.paddingX} ${styles.flexCenter} pb-20`}>
+          <div className={`${styles.boxWidth}`}>
+            {activeTab === 'general' ? (
+              <ContactUs handleSuccessToster={handleSuccessToster} />
+            ) : (
+              <OutsourcingForm handleSuccessToster={handleSuccessToster} />
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -22,7 +22,7 @@ const Service = () => (
     >
       {services.map((service, idx) => (
         <li data-animate={idx % 2 === 0 ? 'left' : 'right'}
-          className="relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 bg-gradient-to-br from-gray-800/50 to-blue-900/30 border border-cyan-400/20 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
+          className="relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 bg-white/5 border border-white/10 hover:border-brand-accent-500/50 hover:shadow-2xl hover:shadow-brand-primary-300/20 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
           style={{ aspectRatio: '1 / 1', transformStyle: 'preserve-3d' }}
           key={service.title}
         >
@@ -46,15 +46,15 @@ const Service = () => (
           
           {/* CTA Button */}
           <div className="mt-6">
-            {service.title === 'Employee Outsourcing' ? (
+            {service.title === 'IT Staffing' ? (
               <Link
                 to="/outsourcing"
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate"
+                className="w-full bg-brand-gradient hover:brightness-110 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate"
               >
                 Explore Now
               </Link>
             ) : (
-              <button className="w-full bg-gradient-to-r from-gray-700 to-gray-600 hover:from-cyan-500 hover:to-blue-600 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base truncate">
+              <button className="w-full bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base truncate border border-white/10">
                 Learn More
               </button>
             )}

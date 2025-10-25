@@ -258,7 +258,7 @@ section {
 
 /* Override any potential light backgrounds */
 div:not(.bg-white):not([class*="bg-white"]) {
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 /* Ensure proper contrast for text */

@@ -4,7 +4,7 @@ import { footerLinks } from '../constants';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-white`}>
+  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-white bg-[#0E2F55]`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
         <Link to="/" className="mb-6">
@@ -30,7 +30,7 @@ const Footer = () => (
             <a
               key={index}
               href={social.link}
-              className="w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center hover:from-cyan-500/30 hover:to-blue-600/30 transition-all duration-300 border border-cyan-400/30 hover:border-cyan-400/50"
+              className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30"
               title={social.label}
             >
               <span className="text-lg">{social.icon}</span>
@@ -42,7 +42,7 @@ const Footer = () => (
       <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
         {footerLinks.map((footerlink) => (
           <div key={footerlink.title} className="flex flex-col ss:my-0 my-4 min-w-[150px]">
-            <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-cyan-300 mb-4">
+            <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-brand-primary-300 mb-4">
               {footerlink.title}
             </h4>
             {footerlink.description && (
@@ -54,7 +54,7 @@ const Footer = () => (
               {footerlink.links.map((link, index) => (
                 <li
                   key={link.name}
-                  className={`font-poppins font-normal text-[14px] leading-[24px] text-gray-300/90 hover:text-cyan-300 cursor-pointer transition-colors duration-300 ${
+                  className={`font-poppins font-normal text-[14px] leading-[24px] text-gray-300/90 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300 ${
                     index !== footerlink.links.length - 1 ? 'mb-3' : 'mb-0'
                   }`}
                 >
@@ -70,19 +70,19 @@ const Footer = () => (
         
         {/* Quick Actions */}
         <div className="flex flex-col ss:my-0 my-4 min-w-[200px]">
-          <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-cyan-400 mb-4">
+          <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-brand-primary-300 mb-4">
             Quick Actions
           </h4>
           <div className="space-y-3">
             <Link
               to="/outsourcing"
-              className="block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
+              className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
             >
               Hire Developers
             </Link>
             <Link
               to="/services"
-              className="block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
+              className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
             >
               View Services
             </Link>
@@ -92,19 +92,19 @@ const Footer = () => (
     </div>
 
     {/* Bottom Section */}
-    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t border-cyan-400/20">
+    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t border-white/10">
       <p className="font-poppins font-normal text-center text-[14px] leading-[27px] text-slate-400">
         Copyright Ⓒ 2024 Escose Technologies. All Rights Reserved.
       </p>
 
       <div className="flex flex-row md:mt-0 mt-6 gap-6">
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-cyan-300 cursor-pointer transition-colors duration-300">
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
           Privacy Policy
         </p>
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-cyan-300 cursor-pointer transition-colors duration-300">
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
           Terms & Conditions
         </p>
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-cyan-300 cursor-pointer transition-colors duration-300">
+        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
           Cookie Policy
         </p>
       </div>
