@@ -60,7 +60,8 @@ const Technology = () => {
               <div className="w-24 h-24 mb-4 bg-white/10 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-brand-primary-300/25 transition-all duration-300">
                 <img
                   src={individualTechnology.img}
-                  alt={individualTechnology.title}
+                  alt={`${individualTechnology.title} logo - Expert ${individualTechnology.title} development services`}
+                  loading="lazy"
                   className="w-16 h-16 object-contain filter brightness-150"
                 />
               </div>
@@ -103,7 +104,8 @@ const Technology = () => {
                 <div className="w-20 h-20 mb-3 bg-white/10 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-brand-primary-300/25 transition-all duration-300">
                   <img
                     src={individualTechnology.img}
-                    alt={individualTechnology.title}
+                    alt={`${individualTechnology.title} logo - Expert ${individualTechnology.title} development services`}
+                    loading="lazy"
                     className="w-12 h-12 object-contain filter brightness-150"
                   />
                 </div>

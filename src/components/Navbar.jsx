@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { navLinks } from '../constants';
@@ -8,6 +8,17 @@ import styles from '../style';
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const location = useLocation();
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && navbar) {
+        setNavbar(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [navbar]);
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -23,17 +34,23 @@ export default function NavBar() {
             <Link to="/" className="cursor-pointer">
               <img
                 src={escose_logo}
-                alt="escose_logo"
+                alt="Escose Technologies - IT Staffing & Software Development Services"
                 className="md:w-[200px] md:h-[60px] w-[160px] h-[48px] filter brightness-125 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] hover:opacity-90 transition-opacity duration-300"
               />
             </Link>
             <div className="md:hidden">
-              <img
-                src={navbar ? close : menu}
-                alt="menu"
-                className="w-[28px] h-[28px] object-contain filter brightness-0 invert cursor-pointer"
+              <button
+                aria-label={navbar ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={navbar}
                 onClick={() => setNavbar(!navbar)}
-              />
+                className="p-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+              >
+                <img
+                  src={navbar ? close : menu}
+                  alt=""
+                  className="w-[28px] h-[28px] object-contain filter brightness-0 invert"
+                />
+              </button>
             </div>
           </div>
         </div>

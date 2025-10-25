@@ -30,11 +30,12 @@ const Service = () => (
             {service.img ? (
               <img
                 src={service.img}
-                alt={`${service.title} - ${service.description}`}
+                alt={`${service.title} icon - Professional ${service.title} services`}
+                loading="lazy"
                 className="object-contain w-10 h-10 filter brightness-150"
               />
             ) : (
-              <span className="material-icons text-cyan-400 text-3xl">{service.icon}</span>
+              <span className="material-icons text-cyan-400 text-3xl" aria-label={service.icon}>{service.icon}</span>
             )}
           </div>
           <div className={`${styles.flexCenter} text-center text-xl text-white mb-3 font-semibold min-w-0`}>
@@ -54,9 +55,12 @@ const Service = () => (
                 Explore Now
               </Link>
             ) : (
-              <button className="w-full bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base truncate border border-white/10">
+              <Link
+                to="/contact"
+                className="w-full bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate border border-white/10"
+              >
                 Learn More
-              </button>
+              </Link>
             )}
           </div>
         </li>

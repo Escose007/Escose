@@ -38,7 +38,8 @@ const Industries = () => {
               <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <img
                   src={industry.img[0]}
-                  alt={industry.title}
+                  alt={`${industry.title} industry solutions - Custom software development for ${industry.title}`}
+                  loading="lazy"
                   className="w-8 h-8 object-contain filter brightness-150"
                 />
               </div>
@@ -57,7 +58,8 @@ const Industries = () => {
               {selectedIndustry.img && selectedIndustry.img[0] && (
                 <img
                   src={selectedIndustry.img[0]}
-                  alt={`${selectedIndustry.title} logo`}
+                  alt={`${selectedIndustry.title} industry icon`}
+                  loading="lazy"
                   className="w-10 h-10 object-contain"
                 />
               )}
@@ -107,7 +109,8 @@ const Industries = () => {
                 {selectedIndustry.img && selectedIndustry.img[0] && (
                   <img
                     src={selectedIndustry.img[0]}
-                    alt={selectedIndustry.title}
+                    alt={`${selectedIndustry.title} software development and IT solutions`}
+                    loading="lazy"
                     className="w-32 h-32 object-contain filter brightness-150 hover:scale-110 transition-transform duration-300"
                   />
                 )}

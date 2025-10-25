@@ -10,7 +10,8 @@ const Footer = () => (
         <Link to="/" className="mb-6">
           <img
             src={escose_logo}
-            alt="escose"
+            alt="Escose Technologies - IT Staffing & Software Development Company"
+            loading="lazy"
             className="w-[266px] h-[72.14px] object-contain filter brightness-150 hover:opacity-80 transition-opacity duration-300"
           />
         </Link>
@@ -30,8 +31,9 @@ const Footer = () => (
             <a
               key={index}
               href={social.link}
-              className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30"
+              className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30"
               title={social.label}
+              aria-label={social.label}
             >
               <span className="text-lg">{social.icon}</span>
             </a>

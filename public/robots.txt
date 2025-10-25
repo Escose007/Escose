@@ -1,20 +1,15 @@
-# robots.txt for Escose Technologies
-# https://escose.com/robots.txt
-
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap
 Sitemap: https://escose.com/sitemap.xml
 
-# Crawl delay (optional, helps prevent server overload)
-Crawl-delay: 1
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /api/
 
-# Block any admin or internal pages (if applicable)
-# Disallow: /admin/
-# Disallow: /api/
-
-# Allow all major search engines
+# Allow all common crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -23,13 +18,3 @@ Allow: /
 
 User-agent: Slurp
 Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-

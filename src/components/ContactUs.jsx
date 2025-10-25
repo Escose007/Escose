@@ -5,19 +5,38 @@ import styles from '../style';
 import { contactUsFields } from '../constants';
 import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
+import { useToast } from './ToastContainer';
 
 const ContactUs = ({ handleSuccessToster }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const { showSuccess, showError } = useToast();
 
   const sendEmail = (e) => {
     e.preventDefault();
+    
+    // Validate form
+    const formData = new FormData(form.current);
+    const email = formData.get('from_email');
+    const name = formData.get('from_name');
+    
+    if (!name || name.trim().length < 2) {
+      showError('Please enter a valid name (at least 2 characters)');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showError('Please enter a valid email address');
+      return;
+    }
+    
     setIsSubmitting(true);
     setErrorMessage('');
     
     // Get form data
-    const formData = new FormData(form.current);
     const templateParams = {
       from_name: formData.get('from_name'),
       from_email: formData.get('from_email'),
@@ -29,14 +48,11 @@ const ContactUs = ({ handleSuccessToster }) => {
       form_type: 'general_inquiry'
     };
     
-    // console.log('Sending email with params:', templateParams);
-    
     emailjs
       .sendForm(
         'service_ccb920l',
         'template_key7wtr',
         templateParams,
-        // form.current,
         '2HswVx6NHPH32wUNU'
       )
       .then(
@@ -44,19 +60,14 @@ const ContactUs = ({ handleSuccessToster }) => {
           console.log('Email sent successfully:', result.text);
           form.current.reset();
           setIsSubmitting(false);
-          handleSuccessToster(true);
+          showSuccess('Message sent successfully! We will get back to you soon.');
+          if (handleSuccessToster) handleSuccessToster(true);
         },
         (error) => {
           console.error('Failed to send email:', error);
           setErrorMessage(`Failed to send message: ${error.text}`);
           setIsSubmitting(false);
-          
-          // Show fallback option
-          if (error.text.includes('Gmail_API: Invalid grant')) {
-            alert('Email service temporarily unavailable. Please email us directly at info@escose.com or try again later.');
-          } else {
-            alert(`Failed to send message: ${error.text || 'Unknown error'}`);
-          }
+          showError('Failed to send message. Please try again or contact us directly.');
         }
       );
   };

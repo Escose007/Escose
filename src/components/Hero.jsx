@@ -101,7 +101,7 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="flex flex-wrap gap-8">
+        <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8">
           <div className="text-center transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:drop-shadow-[0_4px_20px_rgba(34,211,238,0.25)]">
             <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">500+</div>
             <div className="text-gray-400">Expert Developers</div>
@@ -127,8 +127,8 @@ const Hero = () => {
         <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
           {/* Main Visual Element */}
           <div className="relative">
-            <div className="w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-cyan-400/30" style={{ transform: 'translateZ(40px)' }}>
-              <div className="w-80 h-80 bg-gradient-to-br from-blue-600/30 to-cyan-500/30 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-400/30" style={{ transform: 'translateZ(60px)' }}>
+            <div className="w-[min(384px,85vw)] h-[min(384px,85vw)] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-cyan-400/30" style={{ transform: 'translateZ(40px)' }}>
+              <div className="w-[90%] h-[90%] bg-gradient-to-br from-blue-600/30 to-cyan-500/30 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-400/30" style={{ transform: 'translateZ(60px)' }}>
                 <div className="text-center" style={{ transform: 'translateZ(80px)' }}>
                   <div className="text-6xl mb-4">🚀</div>
                   <div className="text-2xl font-bold text-cyan-300">Digital Innovation</div>
