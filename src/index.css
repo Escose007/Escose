@@ -277,4 +277,14 @@ div:not(.bg-white):not([class*="bg-white"]) {
   .to-black {
     --tw-gradient-to: #000000;
   }
+  
+  /* Card Hover Effect - Apply to all CTAs and Cards */
+  .card-hover-effect {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20;
+  }
+  
+  /* Button Hover Effect */
+  .btn-hover-effect {
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25;
+  }
 }

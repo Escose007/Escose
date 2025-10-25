@@ -139,10 +139,10 @@ export default function About() {
             Let's discuss your staffing needs and find the right engineers to accelerate your growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/outsourcing" className="bg-brand-gradient hover:brightness-110 text-white px-8 py-4 rounded-xl font-semibold transition-all">
+            <Link to="/outsourcing" className="bg-brand-gradient hover:brightness-110 text-white px-8 py-4 rounded-xl font-semibold btn-hover-effect">
               Explore IT Staffing
             </Link>
-            <Link to="/contact" className="border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-semibold transition-all">
+            <Link to="/contact" className="border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-xl font-semibold btn-hover-effect">
               Contact Us
             </Link>
           </div>

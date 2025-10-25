@@ -56,8 +56,8 @@ export default function Careers() {
                   <p className="text-gray-300 text-sm mb-4">{job.summary}</p>
                 </div>
                 <div className="flex gap-3">
-                  <Link to="/contact" className="bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all">Apply Now</Link>
-                  <button onClick={() => setActiveJob(job)} className="border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg font-medium transition-all">View JD</button>
+                  <Link to="/contact" className="bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
+                  <button onClick={() => setActiveJob(job)} className="border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">View JD</button>
                 </div>
               </div>
             ))}
@@ -109,7 +109,7 @@ export default function Careers() {
               <div className="bg-white/5 border border-white/10 rounded-xl p-4 h-max">
                 <h4 className="text-lg font-semibold mb-2">Apply for this role</h4>
                 <p className="text-gray-300 text-sm mb-4">Share your profile and availability. Our talent team will reach out within 24 hours.</p>
-                <Link to="/contact" className="block text-center bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all">Apply Now</Link>
+                <Link to="/contact" className="block text-center bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
               </div>
             </div>
           </div>

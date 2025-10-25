@@ -55,7 +55,7 @@ export const navLinks = [
   },
   {
     id: '/outsourcing',
-    title: 'Hire Developers',
+    title: 'IT Staffing',
   },
   {
     id: '/careers',

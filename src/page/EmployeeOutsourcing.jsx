@@ -91,7 +91,7 @@ const EmployeeOutsourcing = () => {
                 <li>• Managed onboarding and replacement guarantee</li>
                 <li>• Time-zone overlap for daily syncs</li>
               </ul>
-              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">Enquire for Elite</Link>
+              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold btn-hover-effect">Enquire for Elite</Link>
             </div>
             <div className="relative rounded-2xl p-6 border border-blue-400/40 bg-gradient-to-br from-blue-700/10 to-purple-700/10">
               <div className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500 text-black">Best Value</div>
@@ -102,7 +102,7 @@ const EmployeeOutsourcing = () => {
                 <li>• Continuity, knowledge retention, and lower TCO</li>
                 <li>• Flexible scale-up/down with quarterly planning</li>
               </ul>
-              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">Enquire for Elite Plus</Link>
+              <Link to="/contact" className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold btn-hover-effect">Enquire for Elite Plus</Link>
             </div>
           </div>
           
