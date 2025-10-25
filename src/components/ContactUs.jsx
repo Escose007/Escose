@@ -32,7 +32,7 @@ const ContactUs = ({ handleSuccessToster }) => {
     // console.log('Sending email with params:', templateParams);
     
     emailjs
-      .send(
+      .sendForm(
         'service_ccb920l',
         'template_key7wtr',
         templateParams,
