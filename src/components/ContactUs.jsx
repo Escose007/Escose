@@ -41,8 +41,6 @@ const ContactUs = ({ handleSuccessToster }) => {
       from_name: formData.get('from_name'),
       from_email: formData.get('from_email'),
       contact_number: formData.get('contact_number'),
-      project_type: formData.get('project_type'),
-      estimated_budget: formData.get('estimated_budget'),
       message: formData.get('message'),
       to_email: 'info@escose.com',
       form_type: 'general_inquiry'
@@ -50,10 +48,10 @@ const ContactUs = ({ handleSuccessToster }) => {
     
     emailjs
       .sendForm(
-        'service_ccb920l',
-        'template_key7wtr',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        '2HswVx6NHPH32wUNU'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         (result) => {
@@ -79,8 +77,6 @@ const ContactUs = ({ handleSuccessToster }) => {
 Name: ${formData.get('from_name')}
 Email: ${formData.get('from_email')}
 Contact Number: ${formData.get('contact_number')}
-Project Type: ${formData.get('project_type')}
-Estimated Budget: ${formData.get('estimated_budget')}
 
 Message:
 ${formData.get('message')}
@@ -103,7 +99,7 @@ ${formData.get('message')}
             <ul className="space-y-8">
               {[
                 { title: 'Location', value: 'Bengalore, India', icon: '📍' },
-                { title: 'Phone', value: '+91 7568288997', icon: '📞' },
+                { title: 'Phone', value: '+91 7416857052', icon: '📞' },
                 { title: 'Email', value: 'info@escose.com', icon: '✉️' },
               ].map((item) => (
                 <li key={item.title} className="flex items-start">

@@ -7,6 +7,7 @@ import styles from '../style';
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
 
   // Close menu on Escape key
@@ -14,6 +15,7 @@ export default function NavBar() {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && navbar) {
         setNavbar(false);
+        setOpenDropdown(null);
       }
     };
     document.addEventListener('keydown', handleEscape);
@@ -21,7 +23,15 @@ export default function NavBar() {
   }, [navbar]);
 
   const isActive = (path) => {
+    if (path.includes('#')) {
+      return false;
+    }
     return location.pathname === path;
+  };
+
+  const handleDropdownToggle = (navId, e) => {
+    e.preventDefault();
+    setOpenDropdown(openDropdown === navId ? null : navId);
   };
 
   return (
@@ -43,7 +53,7 @@ export default function NavBar() {
                 aria-label={navbar ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={navbar}
                 onClick={() => setNavbar(!navbar)}
-                className="p-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <img
                   src={navbar ? close : menu}
@@ -62,31 +72,111 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               {navLinks.map((nav) => (
-                <li key={nav.id}>
-                  <Link
-                    to={nav.id}
-                    className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 ${
-                      isActive(nav.id) ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
-                    }`}
-                    onClick={() => {
-                      if (nav.id === '/' && location.pathname === '/') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                      setNavbar(false);
-                    }}
-                  >
-                    {nav.title}
-                  </Link>
+                <li 
+                  key={nav.id} 
+                  className="relative"
+                  onMouseEnter={() => nav.subItems && window.innerWidth >= 768 && setOpenDropdown(nav.id)}
+                  onMouseLeave={() => nav.subItems && window.innerWidth >= 768 && setOpenDropdown(null)}
+                >
+                  {nav.subItems ? (
+                    <>
+                      <button
+                        onClick={(e) => handleDropdownToggle(nav.id, e)}
+                        className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 flex items-center gap-1 ${
+                          openDropdown === nav.id ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
+                        }`}
+                      >
+                        {nav.title}
+                        <svg 
+                          className={`w-4 h-4 transition-transform duration-300 ${openDropdown === nav.id ? 'rotate-180' : ''}`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {/* Dropdown Menu */}
+                      <ul 
+                        className={`${
+                          openDropdown === nav.id ? 'block' : 'hidden'
+                        } md:block absolute md:top-full md:left-0 mt-4 md:mt-2 ml-4 md:ml-0 bg-slate-800 rounded-lg shadow-xl border border-slate-700 min-w-[180px] overflow-hidden transition-all duration-300 z-50 ${
+                          openDropdown === nav.id 
+                            ? 'md:opacity-100 md:visible md:translate-y-0' 
+                            : 'md:opacity-0 md:invisible md:-translate-y-2'
+                        }`}
+                      >
+                        {nav.subItems.map((subItem) => (
+                          <li key={subItem.id}>
+                            <Link
+                              to={subItem.id}
+                              className={`block px-4 py-3 text-sm font-poppins transition-colors duration-300 ${
+                                isActive(subItem.id) 
+                                  ? 'text-brand-accent-500 bg-slate-700/50' 
+                                  : 'text-gray-300 hover:text-brand-primary-300 hover:bg-slate-700/30'
+                              }`}
+                              onClick={() => {
+                                if (subItem.id.includes('#')) {
+                                  // Handle hash links
+                                  const [path, hash] = subItem.id.split('#');
+                                  if (path && location.pathname === path) {
+                                    const element = document.querySelector(`#${hash}`);
+                                    if (element) {
+                                      element.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                  }
+                                }
+                                setNavbar(false);
+                                setOpenDropdown(null);
+                              }}
+                            >
+                              {subItem.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <Link
+                      to={nav.id}
+                      className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 ${
+                        isActive(nav.id) ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
+                      }`}
+                      onClick={() => {
+                        if (nav.id === '/' && location.pathname === '/') {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                        if (nav.id.includes('#')) {
+                          // Handle hash links
+                          const [path, hash] = nav.id.split('#');
+                          if (path && location.pathname === path) {
+                            const element = document.querySelector(`#${hash}`);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }
+                        }
+                        setNavbar(false);
+                        setOpenDropdown(null);
+                      }}
+                    >
+                      {nav.title}
+                    </Link>
+                  )}
                 </li>
               ))}
-              <li>
-                <Link
-                  to="/contact"
-                  className="cursor-pointer py-3 px-6 text-white rounded-full transition-all duration-300 font-medium shadow-sm hover:shadow-lg bg-brand-gradient hover:brightness-110"
-                  onClick={() => setNavbar(false)}
+              {/* Phone Number - Hidden on mobile, shown on desktop */}
+              <li className="hidden lg:flex items-center gap-2">
+                <a
+                  href="tel:+917416857052"
+                  className="cursor-pointer py-2 px-4 text-cyan-300 hover:text-cyan-400 rounded-lg transition-all duration-300 font-medium flex items-center gap-2 border border-cyan-400/20 hover:border-cyan-400/40"
+                  title="Call Escose Technologies"
                 >
-                  Contact Us
-                </Link>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  +91 7416 8570 52
+                </a>
               </li>
             </ul>
           </div>

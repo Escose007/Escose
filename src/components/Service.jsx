@@ -13,16 +13,19 @@ const Service = () => (
     <div
       className={`${styles.flexCenter} text-center text-lg text-gray-300 xl:w-1/2 mb-16`}
     >
-      Escose can help you to build applications that automate your business
-      processes, improve efficiency, and enhance customer experience. We serve
-      numerous domains to transform our client's Dream into reality.
+      IT Staffing is our primary service - hire pre-vetted engineers across 9+ roles in just 2 weeks. 
+      We also offer custom software development services for clients seeking end-to-end project delivery.
     </div>
     <ul
       className={`${styles.flexCenter} flex-row flex-wrap justify-center gap-6 mb-6`}
     >
       {services.map((service, idx) => (
         <li data-animate={idx % 2 === 0 ? 'left' : 'right'}
-          className="relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 bg-white/5 border border-white/10 hover:border-brand-accent-500/50 hover:shadow-2xl hover:shadow-brand-primary-300/20 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group"
+          className={`relative min-w-0 flex flex-col justify-between w-full sm:w-1/2 md:w-1/3 xl:w-[30%] p-7 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-2 group ${
+            service.isPrimary 
+              ? 'bg-gradient-to-br from-cyan-600/20 to-blue-700/20 border-2 border-cyan-400/50 hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-500/30' 
+              : 'bg-white/5 border border-white/10 hover:border-brand-accent-500/50 hover:shadow-2xl hover:shadow-brand-primary-300/20'
+          }`}
           style={{ aspectRatio: '1 / 1', transformStyle: 'preserve-3d' }}
           key={service.title}
         >
@@ -47,16 +50,16 @@ const Service = () => (
           
           {/* CTA Button */}
           <div className="mt-6">
-            {service.title === 'IT Staffing' ? (
+            {service.isPrimary ? (
               <Link
                 to="/outsourcing"
-                className="w-full bg-brand-gradient hover:brightness-110 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate"
               >
-                Explore Now
+                Hire Engineers Now
               </Link>
             ) : (
               <Link
-                to="/contact"
+                to="/csd"
                 className="w-full bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate border border-white/10"
               >
                 Learn More

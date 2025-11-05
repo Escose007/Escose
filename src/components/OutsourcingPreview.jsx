@@ -89,12 +89,6 @@ const OutsourcingPreview = () => {
                 >
                   Start Hiring Now
                 </Link>
-                <Link 
-                  to="/contact"
-                  className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-center backdrop-blur-sm"
-                >
-                  Schedule Consultation
-                </Link>
               </div>
             </div>
             

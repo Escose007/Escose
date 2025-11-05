@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { Link } from 'react-router-dom';
 
@@ -125,6 +126,25 @@ const DataExtractDiagram = () => (
 
 export default function SolutionsFlow() {
   return (
+    <>
+      <Helmet>
+        <title>GenAI Solutions & Agentic Workflow Architecture | Escose Technologies</title>
+        <meta name="description" content="Explore our GenAI and agentic workflow solution architectures. RAG knowledge assistants, content automation, agentic systems, dev velocity tools, and data extraction flows with LLMs and enterprise-grade guardrails." />
+        <meta name="keywords" content="GenAI solutions, agentic workflows, RAG architecture, AI automation, LLMOps, GenAI development, AI workflow automation, enterprise AI, knowledge assistants, LLM integration" />
+        <link rel="canonical" href="https://escose.com/solutions-flow" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="GenAI & Agentic Workflow Solutions | Escose" />
+        <meta property="og:description" content="Explore enterprise GenAI solution architectures: RAG, content automation, agentic systems, and more." />
+        <meta property="og:url" content="https://escose.com/solutions-flow" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GenAI Solutions & Workflows | Escose" />
+        <meta name="twitter:description" content="Enterprise GenAI architectures and agentic workflow solutions." />
+      </Helmet>
+    
     <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 ${styles.paddingX}`}>
       <section className={`pt-32 md:pt-28 pb-8 ${styles.flexCenter} text-white`}>
         <div className={`${styles.boxWidth}`}>
@@ -194,6 +214,7 @@ export default function SolutionsFlow() {
 
       <div className="h-12" />
     </div>
+    </>
   );
 }
 

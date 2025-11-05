@@ -130,9 +130,6 @@ const OutsourcingBenefits = () => (
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
           Start Your Project
         </button>
-        <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
-          Schedule Consultation
-        </button>
       </div>
     </div>
   </div>

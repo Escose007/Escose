@@ -54,7 +54,7 @@ const NotFound = () => {
         <div className="mt-16 pt-8 border-t border-white/10 w-full">
           <p className="text-gray-400 mb-4">You might be looking for:</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/services" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200">
+            <Link to="/csd" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200">
               Services
             </Link>
             <span className="text-gray-600">•</span>

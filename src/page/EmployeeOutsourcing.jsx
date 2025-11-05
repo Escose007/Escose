@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { outsourcingRoles, engagementModels, outsourcingBenefits, hiringProcess } from '../constants';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,25 @@ const EmployeeOutsourcing = () => {
   
 
   return (
+    <>
+      <Helmet>
+        <title>IT Staffing & Employee Outsourcing | Hire Pre-Vetted Developers | Escose</title>
+        <meta name="description" content="Hire elite developers in 2 weeks. IT staff augmentation, dedicated teams, and contract-to-hire models. 500+ pre-vetted engineers. Save 60% on costs. Flexible engagement models with replacement guarantee." />
+        <meta name="keywords" content="IT staffing, employee outsourcing, hire developers, staff augmentation, dedicated development teams, contract to hire, offshore developers, IT recruitment, hire React developers, hire Python developers, hire Java developers" />
+        <link rel="canonical" href="https://escose.com/outsourcing" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="IT Staffing & Employee Outsourcing | Hire Developers | Escose" />
+        <meta property="og:description" content="Hire pre-vetted developers in 2 weeks. Staff augmentation, dedicated teams, contract-to-hire. Save 60% on costs." />
+        <meta property="og:url" content="https://escose.com/outsourcing" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="IT Staffing & Employee Outsourcing | Escose" />
+        <meta name="twitter:description" content="Hire pre-vetted developers in 2 weeks. Save 60% with flexible engagement models." />
+      </Helmet>
+    
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100">
       {/* Hero Section */}
       <section className={`${styles.paddingX} ${styles.flexCenter} pt-32 md:pt-28 relative overflow-hidden`}>
@@ -53,15 +73,6 @@ const EmployeeOutsourcing = () => {
                   <div className="text-gray-400">{stat.label}</div>
                 </div>
               ))}
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link
-                to="/contact"
-                className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-center"
-              >
-                Start Free Consultation
-              </Link>
             </div>
           </div>
         </div>
@@ -156,9 +167,6 @@ const EmployeeOutsourcing = () => {
                   >
                     Hire {selectedRole.title}
                   </Link>
-                  <button className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                    View Profiles
-                  </button>
                 </div>
               </div>
               
@@ -272,6 +280,7 @@ const EmployeeOutsourcing = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

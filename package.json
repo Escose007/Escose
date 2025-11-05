@@ -1,6 +1,6 @@
 {
-  "homepage": "https://ahmeddbahaa.github.io/hoo-bank",
-  "name": "hoobank",
+  "homepage": "https://escose.com",
+  "name": "escose",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d deploy",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",

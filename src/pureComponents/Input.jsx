@@ -4,7 +4,7 @@ import Email from './Email';
 import Textarea from './Textarea';
 
 const fixedInputClass =
-  'mb-5 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-3 px-4 leading-8 transition-colors duration-200 ease-in-out min-h-[44px]';
+  'mb-5 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-sm outline-none text-gray-700 py-2 px-3 leading-6 transition-colors duration-200 ease-in-out';
 
 const components = {
   text: Text,

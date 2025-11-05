@@ -38,55 +38,76 @@ export const navLinks = [
     title: 'Home',
   },
   {
+    id: '#',
+    title: 'Our Offering',
+    subItems: [
+      {
+        id: '/outsourcing',
+        title: 'IT Staffing',
+      },
+      {
+        id: '/csd',
+        title: 'Custom Software Development',
+      },
+    ],
+  },
+  {
     id: '/about',
     title: 'About Us',
   },
   {
-    id: '/#solutions',
-    title: 'Solutions',
+    id: '/careers',
+    title: 'Career',
   },
   {
-    id: '/#services',
-    title: 'Services',
+    id: '/contact',
+    title: 'Contact US',
   },
   {
     id: '/blogs',
     title: 'Blogs',
   },
-  {
-    id: '/outsourcing',
-    title: 'IT Staffing',
-  },
-  {
-    id: '/careers',
-    title: 'Careers',
-  },
 ];
 
 export const footerLinks = [
   {
-    title: 'Hire Developers',
+    title: 'Hire Engineers',
     links: [
       {
-        name: 'Python Developers',
+        name: 'Backend Engineers',
+        link: '/outsourcing',
       },
       {
-        name: 'React Developers',
+        name: 'Frontend Engineers',
+        link: '/services/react-developers',
       },
       {
-        name: 'Java Developers',
-      },
-      {
-        name: 'Android Developers',
-      },
-      {
-        name: 'Flutter Developers',
-      },
-      {
-        name: 'Full Stack Developers',
+        name: 'Full Stack Engineers',
+        link: '/services/fullstack-developers',
       },
       {
         name: 'DevOps Engineers',
+        link: '/services/devops-engineers',
+      },
+      {
+        name: 'QA Engineers',
+        link: '/services/qa-engineers',
+      },
+      {
+        name: 'Data Engineers',
+        link: '/services/data-engineers',
+      },
+      {
+        name: 'GenAI Engineers',
+        link: '/services/genai-engineers',
+      },
+      {
+        name: 'Android Developers',
+        link: '/outsourcing',
+      },
+      {
+        name: 'iOS Developers',
+        link: '/outsourcing',
       },
     ],
   },
@@ -107,11 +128,11 @@ export const footerLinks = [
     links: [
       {
         header: 'For Sales & Business',
-        name: 'Delhi: +91 7568288997',
+        name: 'Delhi: +91 7416857052',
       },
       {
         header: 'For Job',
-        name: 'Bengalore: +91 9632071255',
+        name: 'Bengalore: +91 7416857052',
       },
     ],
   },
@@ -119,39 +140,122 @@ export const footerLinks = [
 
 export const services = [
   {
-    title: 'Mobile App Development',
-    icon: 'developer_mode',
+    title: 'IT Staffing & Staff Augmentation',
+    icon: 'groups',
     description:
-      'We provide professional Android, IOS, React Native and Flutter development services.',
+      'Hire pre-vetted engineers in 2 weeks. Staff augmentation, dedicated teams, and contract-to-hire models for Backend, Frontend, Full Stack, DevOps, QA, Data Engineering, GenAI, Android, and iOS roles.',
+    img: web_development,
+    isPrimary: true,
+  },
+  {
+    title: 'Custom Software Development',
+    icon: 'code',
+    description:
+      'End-to-end development services: web, mobile, cloud, and IoT applications. We build scalable, maintainable products using modern tech stacks.',
+    img: web_development,
+    isPrimary: false,
+  },
+];
+
+export const customSoftwareServices = [
+  {
+    title: 'Cutting-edge Technology Development',
+    icon: '🤖',
+    description: 'Build next-generation AI-powered solutions with GenAI and agentic workflows that transform business operations.',
+    features: ['GenAI Solutions', 'Agentic Workflows'],
+    img: python, // Using python icon for AI/GenAI
+    details: {
+      overview: 'We specialize in building cutting-edge AI solutions that leverage Generative AI and agentic workflows to automate processes, enhance decision-making, and create intelligent systems that learn and adapt.',
+      capabilities: [
+        'GenAI Solutions: RAG systems, LLM integration, prompt engineering, and AI-powered chatbots',
+        'Agentic Workflows: Multi-agent systems, tool orchestration, memory management, and autonomous decision-making',
+        'AI Integration: Seamless integration of AI capabilities into existing systems and workflows',
+        'Model Training & Fine-tuning: Custom model development and optimization for specific use cases',
+        'AI Infrastructure: Scalable AI infrastructure setup with proper monitoring and governance',
+      ],
+      technologies: ['Python', 'LangChain', 'OpenAI/Anthropic APIs', 'Vector Databases', 'LLMOps', 'TensorFlow/PyTorch'],
+      benefits: [
+        'Automate complex workflows and reduce manual effort',
+        'Enhance decision-making with intelligent insights',
+        'Improve customer experiences with AI-powered interactions',
+        'Scale AI capabilities across your organization',
+      ],
+    },
+  },
+  {
+    title: 'Mobile App Development',
+    icon: '📱',
+    description: 'Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and native technologies.',
+    features: ['iOS Development', 'Android Development', 'Cross-platform Apps'],
     img: mobile_app_development,
+    details: {
+      overview: 'We develop high-performance mobile applications that deliver exceptional user experiences across iOS and Android platforms. From native apps to cross-platform solutions, we build scalable, secure, and feature-rich mobile applications.',
+      capabilities: [
+        'Native iOS Development: Swift, SwiftUI, UIKit, and iOS SDK expertise',
+        'Native Android Development: Kotlin, Jetpack Compose, and Android SDK',
+        'Cross-platform Development: React Native and Flutter applications',
+        'Mobile UI/UX Design: Intuitive, responsive, and platform-specific designs',
+        'API Integration: Seamless backend integration and third-party services',
+        'App Store Deployment: Complete submission and optimization process',
+      ],
+      technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'iOS SDK', 'Android SDK', 'REST APIs', 'GraphQL'],
+      benefits: [
+        'Faster time-to-market with cross-platform development',
+        'Consistent user experience across iOS and Android',
+        'Native performance with optimized code',
+        'Regular updates and maintenance support',
+      ],
+    },
   },
   {
     title: 'Web Development',
-    icon: 'display_settings',
-    description:
-      'We specialize in creating custom websites that are visually appealing, user-friendly and optimized for search engines.',
+    icon: '🌐',
+    description: 'Modern, responsive web applications and websites built with React, Vue, Angular, and other cutting-edge frameworks.',
+    features: ['Frontend Development', 'Backend Development', 'Full Stack Solutions'],
     img: web_development,
+    details: {
+      overview: 'We build scalable, high-performance web applications using modern frameworks and best practices. From single-page applications to complex enterprise solutions, we deliver robust web platforms that drive business growth.',
+      capabilities: [
+        'Frontend Development: React, Vue.js, Angular, and modern JavaScript frameworks',
+        'Backend Development: Node.js, Python, Java, and microservices architecture',
+        'Full Stack Solutions: End-to-end development from design to deployment',
+        'Progressive Web Apps (PWA): Mobile-like experiences in web browsers',
+        'E-commerce Solutions: Custom online stores and payment integrations',
+        'Enterprise Applications: Scalable solutions for large organizations',
+      ],
+      technologies: ['React', 'Vue.js', 'Angular', 'Node.js', 'Python', 'Java', 'TypeScript', 'REST/GraphQL', 'Docker', 'AWS'],
+      benefits: [
+        'Responsive design for all devices and screen sizes',
+        'Fast load times and optimized performance',
+        'SEO-friendly architecture for better visibility',
+        'Scalable infrastructure to grow with your business',
+      ],
+    },
   },
   {
-    title: 'UI UX Design',
-    icon: 'design_services',
-    description:
-      "Our goal is to create an interface that integrates the product's  layout, visual appearance and color scheme.",
+    title: 'UI/UX Design',
+    icon: '🎨',
+    description: 'User-centered design that combines aesthetics with functionality to create intuitive and engaging digital experiences.',
+    features: ['User Interface Design', 'User Experience Design', 'Prototyping'],
     img: uiux,
-  },
-  {
-    title: 'IOT Development',
-    icon: 'cloud_download',
-    description:
-      'We serve in a wide range of industries, including manufacturing, healthcare, transportation, agriculture, smart cities and more.',
-    img: iot,
-  },
-  {
-    title: 'IT Staffing',
-    icon: 'groups',
-    description:
-      'Flexible staffing for critical tech roles: staff augmentation, dedicated teams, and contract-to-hire. Quickly ramp up with pre-vetted talent across frontend, backend, DevOps, mobile, data, and QA.',
-    img: web_development,
+    details: {
+      overview: 'We create beautiful, intuitive user interfaces that enhance user engagement and drive conversions. Our design process focuses on understanding user needs, conducting research, and iterating on designs to deliver exceptional digital experiences.',
+      capabilities: [
+        'User Research: User interviews, surveys, and persona development',
+        'Wireframing & Prototyping: Low and high-fidelity prototypes',
+        'Visual Design: Modern, accessible, and brand-aligned interfaces',
+        'Interaction Design: Intuitive user flows and micro-interactions',
+        'Usability Testing: User testing and iterative design improvements',
+        'Design Systems: Comprehensive design systems and style guides',
+      ],
+      technologies: ['Figma', 'Adobe XD', 'Sketch', 'InVision', 'Prototyping Tools', 'Design Systems'],
+      benefits: [
+        'Improved user satisfaction and engagement',
+        'Reduced development time with clear design specifications',
+        'Better conversion rates through optimized user flows',
+        'Consistent brand experience across all touchpoints',
+      ],
+    },
   },
 ];
 
@@ -179,11 +283,18 @@ export const outsourcingRoles = [
     img: python,
   },
   {
-    title: 'Mobile Developers',
-    skills: ['React Native', 'Flutter', 'iOS (Swift)', 'Android (Kotlin)', 'Ionic', 'Xamarin'],
+    title: 'Android Developers',
+    skills: ['Kotlin', 'Java', 'Android SDK', 'Jetpack', 'Room', 'Retrofit', 'MVVM', 'Coroutines'],
     experience: '2-8 years',
-    description: 'Mobile app developers who create cross-platform and native mobile applications.',
-    img: flutter,
+    description: 'Expert Android developers who build native mobile applications with modern Android development practices.',
+    img: android,
+  },
+  {
+    title: 'iOS Developers',
+    skills: ['Swift', 'Objective-C', 'iOS SDK', 'SwiftUI', 'UIKit', 'Core Data', 'Combine', 'RxSwift'],
+    experience: '2-8 years',
+    description: 'Skilled iOS developers who create native iPhone and iPad applications using Apple\'s latest technologies.',
+    img: ios,
   },
   {
     title: 'DevOps Engineers',
@@ -193,11 +304,25 @@ export const outsourcingRoles = [
     img: aws,
   },
   {
-    title: 'UI/UX Designers',
-    skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Wireframing'],
+    title: 'QA Engineers',
+    skills: ['Selenium', 'Cypress', 'Jest', 'Test Automation', 'API Testing', 'Performance Testing', 'JIRA', 'TestRail'],
     experience: '2-8 years',
-    description: 'Creative designers who craft intuitive user interfaces and delightful user experiences.',
-    img: uiux,
+    description: 'Quality assurance engineers who ensure software reliability through comprehensive testing strategies and automation frameworks.',
+    img: node,
+  },
+  {
+    title: 'Data Engineers',
+    skills: ['Python', 'SQL', 'Spark', 'Airflow', 'Data Pipelines', 'ETL', 'Big Data', 'Data Warehousing', 'Kafka'],
+    experience: '3-10 years',
+    description: 'Data engineering specialists who build scalable data infrastructure, pipelines, and analytics platforms.',
+    img: python,
+  },
+  {
+    title: 'GenAI Engineers',
+    skills: ['LLMs', 'RAG', 'LangChain', 'Vector DBs', 'Prompt Engineering', 'OpenAI', 'Anthropic', 'LLMOps'],
+    experience: '3-8 years',
+    description: 'Generative AI engineers who build production-ready AI applications, RAG systems, and agentic workflows.',
+    img: python,
   },
 ];
 
@@ -491,20 +616,6 @@ export const contactUsFields = [
     placeholder: 'Enter Email',
   },
   {
-    id: 'project_type',
-    labelText: 'Project Type',
-    fieldType: 'text',
-    isRequired: false,
-    placeholder: 'Enter Project Type',
-  },
-  {
-    id: 'estimated_budget',
-    labelText: 'Estimated Budget',
-    fieldType: 'text',
-    isRequired: false,
-    placeholder: 'Enter Estimated Budget',
-  },
-  {
     id: 'message',
     labelText: 'Message',
     fieldType: 'textarea',
@@ -540,27 +651,6 @@ export const outsourcingFormFields = [
     fieldType: 'integer',
     isRequired: true,
     placeholder: 'Enter Contact Number',
-  },
-  {
-    id: 'developer_type',
-    labelText: 'Developer Type Needed',
-    fieldType: 'text',
-    isRequired: true,
-    placeholder: 'e.g., Frontend, Backend, Full Stack',
-  },
-  {
-    id: 'team_size',
-    labelText: 'Team Size',
-    fieldType: 'text',
-    isRequired: true,
-    placeholder: 'Number of developers needed',
-  },
-  {
-    id: 'employment_type',
-    labelText: 'Employment Type',
-    fieldType: 'text',
-    isRequired: true,
-    placeholder: 'e.g., Full-time, Part-time, Contract, Freelance',
   },
   {
     id: 'message',

@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { findPostBySlug, blogPosts } from '../constants/blogs';
 
@@ -51,6 +52,12 @@ export default function BlogDetail() {
 
   if (!post) {
     return (
+      <>
+        <Helmet>
+          <title>Article Not Found | Escose Technologies Blog</title>
+          <meta name="description" content="The requested blog article could not be found. Browse our other tech insights and IT staffing articles." />
+          <link rel="canonical" href="https://escose.com/blogs" />
+        </Helmet>
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 min-h-screen flex items-center justify-center">
         <div className={`${styles.paddingX} ${styles.flexCenter} pt-40`}>
           <div className="text-center py-20">
@@ -66,6 +73,7 @@ export default function BlogDetail() {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -89,6 +97,30 @@ export default function BlogDetail() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>{post.title} | Escose Technologies Blog</title>
+        <meta name="description" content={post.excerpt || post.description || `Read about ${post.title} on Escose Technologies blog.`} />
+        <meta name="keywords" content={`${post.category}, IT staffing, software development, ${post.title}`} />
+        <link rel="canonical" href={`https://escose.com/blogs/${post.slug}`} />
+        <meta name="author" content={post.author || 'Escose Technologies'} />
+        <meta name="publish-date" content={post.date} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || post.description || `Read about ${post.title}`} />
+        <meta property="og:url" content={`https://escose.com/blogs/${post.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:author" content={post.author || 'Escose Technologies'} />
+        <meta property="article:section" content={post.category} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt || post.description} />
+      </Helmet>
+    
     <div className="bg-white min-h-screen">
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
@@ -269,6 +301,7 @@ export default function BlogDetail() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

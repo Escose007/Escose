@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { openPositions } from '../constants';
 import { Link } from 'react-router-dom';
@@ -10,6 +11,25 @@ export default function Careers() {
   const filtered = selectedDept === 'All' ? openPositions : openPositions.filter(p => p.department === selectedDept);
 
   return (
+    <>
+      <Helmet>
+        <title>Careers at Escose Technologies | Join Our Global Engineering Team</title>
+        <meta name="description" content="Explore career opportunities at Escose Technologies. Join our team of 500+ engineers working on cutting-edge projects. Remote-first culture, competitive pay, and exciting challenges in IT staffing, software development, and GenAI." />
+        <meta name="keywords" content="escose careers, software engineer jobs, IT jobs, remote developer jobs, React developer jobs, Python developer jobs, full stack jobs, DevOps jobs, AI ML jobs, tech careers India" />
+        <link rel="canonical" href="https://escose.com/careers" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Careers at Escose Technologies | We're Hiring" />
+        <meta property="og:description" content="Join our global engineering team. Work on innovative projects with modern tech stacks. Remote-first culture and competitive benefits." />
+        <meta property="og:url" content="https://escose.com/careers" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Careers at Escose Technologies" />
+        <meta name="twitter:description" content="Join our team of 500+ engineers. Exciting opportunities in software development and GenAI." />
+      </Helmet>
+    
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">
       {/* Hero */}
       <section className={`${styles.paddingX} ${styles.flexCenter} pt-32 md:pt-28`}>
@@ -56,8 +76,22 @@ export default function Careers() {
                   <p className="text-gray-300 text-sm mb-4">{job.summary}</p>
                 </div>
                 <div className="flex gap-3">
-                  <Link to="/contact" className="bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
-                  <button onClick={() => setActiveJob(job)} className="border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">View JD</button>
+                  <Link to="/contact?tab=job&action=apply" className="bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
+                  <button 
+                    onClick={() => {
+                      setActiveJob(job);
+                      // Scroll to JD viewer after a short delay to ensure it's rendered
+                      setTimeout(() => {
+                        const jdViewer = document.getElementById('jd-viewer');
+                        if (jdViewer) {
+                          jdViewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 100);
+                    }} 
+                    className="border border-white/20 hover:border-white/40 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect"
+                  >
+                    View JD
+                  </button>
                 </div>
               </div>
             ))}
@@ -67,7 +101,7 @@ export default function Careers() {
 
       {/* In-page JD Viewer */}
       {activeJob && (
-        <section className={`${styles.paddingX} ${styles.flexCenter} pb-24`}>
+        <section id="jd-viewer" className={`${styles.paddingX} ${styles.flexCenter} pb-24`}>
           <div className={`${styles.boxWidth} bg-white/5 border border-white/10 rounded-2xl p-6`}> 
             <div className="flex items-start justify-between mb-2">
               <div>
@@ -109,12 +143,13 @@ export default function Careers() {
               <div className="bg-white/5 border border-white/10 rounded-xl p-4 h-max">
                 <h4 className="text-lg font-semibold mb-2">Apply for this role</h4>
                 <p className="text-gray-300 text-sm mb-4">Share your profile and availability. Our talent team will reach out within 24 hours.</p>
-                <Link to="/contact" className="block text-center bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
+                <Link to="/contact?tab=job&action=apply" className="block text-center bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium btn-hover-effect">Apply Now</Link>
               </div>
             </div>
           </div>
         </section>
       )}
     </div>
+    </>
   );
 }

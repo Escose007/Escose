@@ -23,9 +23,6 @@ const OutsourcingForm = ({ handleSuccessToster }) => {
       company_name: formData.get('company_name'),
       from_email: formData.get('from_email'),
       contact_number: formData.get('contact_number'),
-      developer_type: formData.get('developer_type'),
-      team_size: formData.get('team_size'),
-      employment_type: formData.get('employment_type'),
       message: formData.get('message'),
       to_email: 'info@escose.com',
       form_type: 'outsourcing_request'
@@ -71,9 +68,6 @@ Name: ${formData.get('from_name')}
 Company: ${formData.get('company_name')}
 Email: ${formData.get('from_email')}
 Contact Number: ${formData.get('contact_number')}
-Developer Type: ${formData.get('developer_type')}
-Team Size: ${formData.get('team_size')}
-Employment Type: ${formData.get('employment_type')}
 
 Additional Requirements:
 ${formData.get('message')}

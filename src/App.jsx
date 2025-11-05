@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styles from './style';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const App = () => {
   const location = useLocation();
@@ -123,6 +124,9 @@ const App = () => {
           <Footer />
         </div>
       </div>
+      
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
     </div>
   );
 };

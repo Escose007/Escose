@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../style';
 import ContactUs from '../components/ContactUs';
 import OutsourcingForm from '../components/OutsourcingForm';
+import JobApplicationForm from '../components/JobApplicationForm';
 import ContactUsHero from '../components/ContactUsHero';
 
 const Contact = () => {
@@ -24,16 +26,39 @@ const Contact = () => {
       setActiveTab('general');
     } else if (tab === 'outsourcing') {
       setActiveTab('outsourcing');
+    } else if (tab === 'job' || tab === 'career' || tab === 'application') {
+      setActiveTab('job');
     }
     // If action parameter indicates hiring-related action, default to outsourcing tab
     else if (action === 'hire' || action === 'hiring' || action === 'developers') {
       setActiveTab('outsourcing');
+    }
+    // If action parameter indicates job application
+    else if (action === 'apply' || action === 'job' || action === 'career') {
+      setActiveTab('job');
     }
     // Default is already set to 'outsourcing' in useState
   }, [searchParams]);
 
   return (
     <>
+      <Helmet>
+        <title>Contact Escose Technologies | Get Free Consultation | Hire Developers</title>
+        <meta name="description" content="Contact Escose Technologies for IT staffing, software development, and GenAI solutions. Get free consultation, hire pre-vetted developers, or discuss your project requirements. Response within 24 hours." />
+        <meta name="keywords" content="contact escose, hire developers, IT staffing inquiry, software development consultation, get quote, free consultation, contact IT company" />
+        <link rel="canonical" href="https://escose.com/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Escose Technologies | Get Free Consultation" />
+        <meta property="og:description" content="Get in touch for IT staffing, software development, or GenAI solutions. Free consultation available." />
+        <meta property="og:url" content="https://escose.com/contact" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Contact Escose Technologies" />
+        <meta name="twitter:description" content="Get free consultation for IT staffing and software development needs." />
+      </Helmet>
       {showSuccesToster && (
         <div
           id="toast-success"
@@ -110,6 +135,16 @@ const Contact = () => {
               >
                 Hire Developers
               </button>
+              <button
+                onClick={() => setActiveTab('job')}
+                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  activeTab === 'job'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                    : 'text-slate-300 hover:text-cyan-400'
+                }`}
+              >
+                Apply for Job
+              </button>
             </div>
           </div>
         </div>
@@ -118,8 +153,10 @@ const Contact = () => {
           <div className={`${styles.boxWidth}`}>
             {activeTab === 'general' ? (
               <ContactUs handleSuccessToster={handleSuccessToster} />
-            ) : (
+            ) : activeTab === 'outsourcing' ? (
               <OutsourcingForm handleSuccessToster={handleSuccessToster} />
+            ) : (
+              <JobApplicationForm handleSuccessToster={handleSuccessToster} />
             )}
           </div>
         </div>

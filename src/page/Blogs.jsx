@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../constants/blogs';
@@ -36,6 +37,25 @@ const Blogs = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Tech Insights & IT Staffing Blog | Escose Technologies</title>
+        <meta name="description" content="Read expert insights on IT staffing, software development, GenAI, and technology trends. Learn about hiring developers, tech stacks, best practices, and industry updates from Escose Technologies." />
+        <meta name="keywords" content="IT staffing blog, software development blog, tech blog, hiring developers guide, IT recruitment tips, GenAI insights, developer hiring best practices, technology trends" />
+        <link rel="canonical" href="https://escose.com/blogs" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Tech Insights & IT Staffing Blog | Escose" />
+        <meta property="og:description" content="Expert insights on IT staffing, software development, and technology trends." />
+        <meta property="og:url" content="https://escose.com/blogs" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Escose Technologies Blog" />
+        <meta name="twitter:description" content="Tech insights, IT staffing tips, and industry trends." />
+      </Helmet>
+    
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">
       {/* Hero Section */}
       <section className={`${styles.paddingX} ${styles.flexCenter} pt-32 md:pt-28 relative overflow-hidden`}>
@@ -151,6 +171,7 @@ const Blogs = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

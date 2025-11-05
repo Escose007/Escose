@@ -1,8 +1,28 @@
+import { Helmet } from 'react-helmet-async';
 import styles from '../style';
 import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
+    <>
+      <Helmet>
+        <title>About Escose Technologies | IT Staffing & Engineering Talent Solutions Provider</title>
+        <meta name="description" content="Learn about Escose Technologies - a leading IT staffing and engineering talent solutions provider. 500+ pre-vetted engineers available, 98% client satisfaction, 2-week average time-to-hire. Your trusted partner for staff augmentation and engineering talent placement." />
+        <meta name="keywords" content="about escose, IT staffing company, software development company, pre-vetted engineers, staff augmentation services, offshore development center, IT recruitment agency" />
+        <link rel="canonical" href="https://escose.com/about" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="About Escose Technologies | IT Staffing & Engineering Talent Solutions" />
+        <meta property="og:description" content="500+ pre-vetted engineers available, 98% client satisfaction, 2-week average time-to-hire. Your trusted partner for IT staffing and engineering talent placement." />
+        <meta property="og:url" content="https://escose.com/about" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Escose Technologies" />
+        <meta name="twitter:description" content="Leading IT staffing and software development company with 500+ engineers and 98% client satisfaction." />
+      </Helmet>
+    
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">
       {/* Hero */}
       <section className={`${styles.paddingX} ${styles.flexCenter} pt-32 md:pt-28 pb-12`}>
@@ -11,7 +31,7 @@ export default function About() {
             About <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Escose Technologies</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Your trusted partner for IT staffing, software development, and enterprise GenAI solutions.
+            Your trusted partner for IT staffing and engineering talent solutions. We provide pre-vetted engineers across 9+ roles to help you scale your team fast.
           </p>
         </div>
       </section>
@@ -23,10 +43,10 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Who We Are</h2>
               <p className="text-gray-300 mb-4 leading-relaxed">
-                Escose Technologies is a global IT services company specializing in <span className="text-white font-semibold">IT staffing and outsourcing</span>, custom software development, and cutting-edge GenAI solutions. Founded with a vision to bridge the talent gap for growing tech companies, we've evolved into a comprehensive technology partner serving startups, scale-ups, and enterprises worldwide.
+                Escose Technologies is a leading <span className="text-white font-semibold">IT staffing and engineering talent solutions provider</span>, specializing in connecting companies with pre-vetted engineers across Backend, Frontend, Full Stack, DevOps, QA, Data Engineering, GenAI, Android, and iOS roles. Founded with a vision to bridge the talent gap for growing tech companies, we've evolved into a trusted talent partner serving startups, scale-ups, and enterprises worldwide.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                Our core strength lies in delivering <span className="text-white font-semibold">pre-vetted, highly skilled engineers</span> who integrate seamlessly into your team—whether you need staff augmentation, dedicated squads, or contract-to-hire talent. We combine deep technical expertise with a client-first approach, ensuring you scale quickly without compromising quality.
+                Our core strength lies in delivering <span className="text-white font-semibold">pre-vetted, highly skilled engineers</span> who integrate seamlessly into your team in just 2 weeks. Whether you need staff augmentation, dedicated squads, or contract-to-hire talent, we combine deep technical expertise with rigorous vetting processes, ensuring you scale quickly without compromising quality. We also offer custom software development services as a secondary offering for clients seeking end-to-end project delivery.
               </p>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
@@ -36,8 +56,8 @@ export default function About() {
                   <div className="text-gray-300">Pre-vetted Engineers</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-cyan-400 mb-1">150+</div>
-                  <div className="text-gray-300">Projects Delivered</div>
+                  <div className="text-4xl font-bold text-cyan-400 mb-1">2 Weeks</div>
+                  <div className="text-gray-300">Average Time-to-Hire</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-cyan-400 mb-1">98%</div>
@@ -74,7 +94,7 @@ export default function About() {
               <div className="text-3xl mb-3">💻</div>
               <h3 className="text-xl font-bold mb-2">Custom Software Development</h3>
               <p className="text-gray-300 text-sm mb-4">
-                End-to-end development services: web, mobile, cloud, and IoT. We build scalable, maintainable products using modern stacks (React, Node, Python, Java, Flutter) with DevOps best practices.
+                As a secondary service, we offer end-to-end development projects: web, mobile, cloud, and IoT. We build scalable, maintainable products using modern stacks (React, Node, Python, Java, Flutter) with DevOps best practices.
               </p>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
@@ -149,6 +169,7 @@ export default function About() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

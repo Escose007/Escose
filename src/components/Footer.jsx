@@ -24,8 +24,8 @@ const Footer = () => (
         <div className="flex mt-6 gap-4">
           {[
             { icon: '📧', label: 'Email', link: 'mailto:info@escose.com' },
-            { icon: '📱', label: 'Phone', link: 'tel:+917568288997' },
-            { icon: '💬', label: 'WhatsApp', link: 'https://wa.me/917568288997' },
+            { icon: '📱', label: 'Phone', link: 'tel:+917416857052' },
+            { icon: '💬', label: 'WhatsApp', link: 'https://wa.me/917416857052' },
             { icon: '💼', label: 'LinkedIn', link: 'https://linkedin.com/company/escose' }
           ].map((social, index) => (
             <a
@@ -63,7 +63,13 @@ const Footer = () => (
                   {link.header && (
                     <div className="font-semibold text-slate-100 mb-1">{link.header}</div>
                   )}
-                  {link.name}
+                  {link.link ? (
+                    <Link to={link.link} className="hover:text-brand-primary-300 transition-colors">
+                      {link.name}
+                    </Link>
+                  ) : (
+                    link.name
+                  )}
                 </li>
               ))}
             </ul>
@@ -83,7 +89,7 @@ const Footer = () => (
               Hire Developers
             </Link>
             <Link
-              to="/services"
+              to="/csd"
               className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
             >
               View Services
@@ -100,15 +106,24 @@ const Footer = () => (
       </p>
 
       <div className="flex flex-row md:mt-0 mt-6 gap-6">
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+        <Link
+          to="/privacy-policy"
+          className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300"
+        >
           Privacy Policy
-        </p>
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+        </Link>
+        <Link
+          to="/terms"
+          className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300"
+        >
           Terms & Conditions
-        </p>
-        <p className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300">
+        </Link>
+        <Link
+          to="/cookies"
+          className="font-poppins font-normal text-[14px] leading-[27px] text-slate-400 hover:text-brand-primary-300 cursor-pointer transition-colors duration-300"
+        >
           Cookie Policy
-        </p>
+        </Link>
       </div>
     </div>
   </section>
