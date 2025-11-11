@@ -45,9 +45,16 @@ export default function BlogDetail() {
     return Math.max(1, Math.ceil(wordCount / 200));
   };
 
-  // Get related posts (same category, excluding current)
+  // Get related posts (same category, excluding current), sorted by dateFull (newest first)
   const relatedPosts = post 
-    ? blogPosts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0, 3)
+    ? blogPosts
+        .filter(p => p.category === post.category && p.slug !== post.slug)
+        .sort((a, b) => {
+          const dateA = new Date(a.dateFull || a.date);
+          const dateB = new Date(b.dateFull || b.date);
+          return dateB - dateA; // Descending order (newest first)
+        })
+        .slice(0, 3)
     : [];
 
   if (!post) {
@@ -185,7 +192,7 @@ export default function BlogDetail() {
             <img 
               src={post.image} 
               alt={post.title} 
-              className="w-full h-auto"
+              className="w-full h-auto rounded-lg shadow-lg"
             />
           </div>
         )}
@@ -218,6 +225,43 @@ export default function BlogDetail() {
                   <p key={tIdx} className="text-gray-700 text-lg leading-relaxed mb-6">
                     {tp}
                   </p>
+                ))}
+                {section.codeBlocks && section.codeBlocks.map((codeBlock, cbIdx) => (
+                  <div key={cbIdx} className="mb-8">
+                    {codeBlock.title && (
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                        {codeBlock.title}
+                      </h3>
+                    )}
+                    <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
+                      <div className="bg-gray-800 px-4 py-2 border-b border-gray-700 flex items-center justify-between">
+                        <span className="text-sm text-gray-400 font-mono">
+                          {codeBlock.language || 'code'}
+                        </span>
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(codeBlock.code);
+                            const btn = document.getElementById(`copy-btn-${sIdx}-${cbIdx}`);
+                            if (btn) {
+                              btn.textContent = 'Copied!';
+                              setTimeout(() => {
+                                btn.textContent = 'Copy';
+                              }, 2000);
+                            }
+                          }}
+                          id={`copy-btn-${sIdx}-${cbIdx}`}
+                          className="text-xs text-gray-400 hover:text-gray-200 transition-colors px-2 py-1 rounded"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <pre className="p-4 overflow-x-auto">
+                        <code className="text-sm text-gray-100 font-mono leading-relaxed">
+                          {codeBlock.code}
+                        </code>
+                      </pre>
+                    </div>
+                  </div>
                 ))}
               </section>
             ))

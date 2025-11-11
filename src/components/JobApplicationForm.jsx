@@ -4,33 +4,14 @@ import emailjs from '@emailjs/browser';
 import styles from '../style';
 import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
-import FileUpload from '../pureComponents/FileUpload';
 import { useToast } from './ToastContainer';
 
 const JobApplicationForm = ({ handleSuccessToster }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [resumeFile, setResumeFile] = useState(null);
   const { showSuccess, showError } = useToast();
 
-  const handleFileChange = (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setResumeFile(file);
-    } else {
-      setResumeFile(null);
-    }
-  };
-
-  const convertFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -60,61 +41,40 @@ const JobApplicationForm = ({ handleSuccessToster }) => {
       return;
     }
 
-    // Resume file validation
-    if (!resumeFile) {
-      showError('Please upload your resume/CV');
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      // Convert file to base64 for email attachment
-      const fileBase64 = await convertFileToBase64(resumeFile);
-      const fileName = resumeFile.name;
-
       // Get form data
       const templateParams = {
+        title: 'Apply for a Job',
         from_name: name,
+        company_name: formData.get('company_name') || '',
         from_email: email,
         contact_number: mobile,
-        resume_file_name: fileName,
-        resume_file_data: fileBase64,
+        message: formData.get('message') || '',
         to_email: 'info@escose.com',
         form_type: 'job_application',
         subject: `Job Application - ${name}`,
-        message: `Job Application Received\n\nName: ${name}\nEmail: ${email}\nMobile: ${mobile}\nResume: ${fileName}`,
       };
 
-      // Try to send with EmailJS
-      emailjs
-        .send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ccb920l',
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_t5904kb',
-          templateParams,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
-        )
-        .then(
-          (result) => {
-            console.log('Application sent successfully:', result.text);
-            form.current.reset();
-            setResumeFile(null);
-            setIsSubmitting(false);
-            showSuccess('Application submitted successfully! We will get back to you soon.');
-            if (handleSuccessToster) handleSuccessToster(true);
-          },
-          (error) => {
-            console.error('Failed to send application:', error);
-            setErrorMessage(`Failed to send application: ${error.text || 'Unknown error'}`);
-            setIsSubmitting(false);
-            showError('Failed to send application. Please try again or use the fallback option.');
-          }
-        );
-    } catch (error) {
-      console.error('Error processing file:', error);
-      setErrorMessage('Error processing resume file. Please try again.');
+      // Send email with EmailJS
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ccb920l',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_t5904kb',
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
+      );
+
+      console.log('Application sent successfully');
+      form.current.reset();
       setIsSubmitting(false);
-      showError('Error processing resume file. Please try again.');
+      showSuccess('Your application has been submitted successfully! We will get back to you soon.');
+      if (handleSuccessToster) handleSuccessToster(true);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      setErrorMessage(`Failed to send application: ${error.text || error.message || 'Unknown error'}`);
+      setIsSubmitting(false);
+      showError('Failed to send message. Please try again or contact us directly.');
     }
   };
 
@@ -125,8 +85,7 @@ const JobApplicationForm = ({ handleSuccessToster }) => {
 Name: ${formData.get('from_name')}
 Email: ${formData.get('from_email')}
 Mobile: ${formData.get('contact_number')}
-
-Please note: Resume file needs to be attached separately.
+Message: ${formData.get('message') || ''}
     `;
 
     const mailtoLink = `mailto:info@escose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -142,7 +101,7 @@ Please note: Resume file needs to be attached separately.
             <h3 className="text-2xl font-bold text-cyan-300 mb-8">Join Our Team</h3>
             <ul className="space-y-8">
               {[
-                { title: 'Location', value: 'Bengalore, India', icon: '📍' },
+                { title: 'Location', value: '190C, SAI-KRUPA, 6TH MAIN 16TH CROSS, BTM 2ND STAGE, N S PALYA, Bangalore - 560076', icon: '📍' },
                 { title: 'Phone', value: '+91 7416857052', icon: '📞' },
                 { title: 'Email', value: 'info@escose.com', icon: '✉️' },
               ].map((item) => (
@@ -221,15 +180,24 @@ Please note: Resume file needs to be attached separately.
                 fieldType="integer"
               />
 
-              <FileUpload
-                id="resume"
-                name="resume"
-                isRequired={true}
-                accept=".pdf,.doc,.docx"
-                maxSizeMB={2}
-                onChange={handleFileChange}
-                labelText="Upload Resume/CV"
-              />
+              <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl p-6 border border-cyan-400/20 mb-6">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">📎</span>
+                  <div>
+                    <h4 className="text-lg font-semibold text-cyan-300 mb-2">Resume Submission</h4>
+                    <p className="text-slate-200 text-sm leading-relaxed">
+                      Please share your resume at{' '}
+                      <a 
+                        href="mailto:info@escose.com" 
+                        className="text-cyan-400 hover:text-cyan-300 underline font-medium transition-colors duration-200"
+                      >
+                        info@escose.com
+                      </a>
+                      {' '}for applying to this job position.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               <Button
                 text={isSubmitting ? 'Submitting...' : 'Submit Application'}

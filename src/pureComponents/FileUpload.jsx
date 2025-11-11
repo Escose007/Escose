@@ -72,9 +72,14 @@ const FileUpload = ({
   return (
     <div className="mb-5">
       <label htmlFor={id} className="form-group block">
-        <span className="block mb-2 flex text-slate-200">
+        <span className="block mb-2 flex items-center text-slate-200">
           {labelText || 'Upload File'}
           {isRequired && <span className="ml-1 text-cyan-400">*</span>}
+          {fileName && (
+            <span className="ml-2 text-sm text-cyan-300 font-normal">
+              ({fileName})
+            </span>
+          )}
         </span>
       </label>
 
@@ -116,14 +121,14 @@ const FileUpload = ({
           </label>
 
           {fileName && (
-            <div className="flex items-center gap-2 flex-1 min-w-0">
+            <div className="group flex items-center gap-2 flex-1 min-w-0">
               <span className="text-sm text-gray-600 truncate" title={fileName}>
                 {fileName}
               </span>
               <button
                 type="button"
                 onClick={handleRemoveFile}
-                className="text-red-500 hover:text-red-700 text-sm font-medium"
+                className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 text-sm font-medium transition-opacity duration-200"
                 aria-label="Remove file"
               >
                 ✕

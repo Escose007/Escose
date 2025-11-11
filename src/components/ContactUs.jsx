@@ -38,27 +38,30 @@ const ContactUs = ({ handleSuccessToster }) => {
     
     // Get form data
     const templateParams = {
+      title: 'ContactUs',
       from_name: formData.get('from_name'),
+      company_name: formData.get('company_name') || '',
       from_email: formData.get('from_email'),
       contact_number: formData.get('contact_number'),
-      message: formData.get('message'),
+      message: formData.get('message') || '',
+      file_name: formData.get('file_name') || '',
       to_email: 'info@escose.com',
       form_type: 'general_inquiry'
     };
     
     emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ccb920l',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_t5904kb',
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       )
       .then(
         (result) => {
           console.log('Email sent successfully:', result.text);
           form.current.reset();
           setIsSubmitting(false);
-          showSuccess('Message sent successfully! We will get back to you soon.');
+          showSuccess('Your message has been sent successfully! We will get back to you soon.');
           if (handleSuccessToster) handleSuccessToster(true);
         },
         (error) => {
@@ -98,7 +101,7 @@ ${formData.get('message')}
             <h3 className="text-2xl font-bold text-cyan-300 mb-8">Get In Touch</h3>
             <ul className="space-y-8">
               {[
-                { title: 'Location', value: 'Bengalore, India', icon: '📍' },
+                { title: 'Location', value: '190C, SAI-KRUPA, 6TH MAIN 16TH CROSS, BTM 2ND STAGE, N S PALYA, Bangalore - 560076', icon: '📍' },
                 { title: 'Phone', value: '+91 7416857052', icon: '📞' },
                 { title: 'Email', value: 'info@escose.com', icon: '✉️' },
               ].map((item) => (

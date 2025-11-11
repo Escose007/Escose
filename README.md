@@ -163,7 +163,6 @@ npm run build
 3. Deploy the `dist/` folder to your hosting service:
    - **Vercel:** Connect GitHub repo
    - **Netlify:** Drop `dist/` folder
-   - **AWS Amplify:** Connect GitHub repo
    - **GitHub Pages:** Run `npm run deploy`
 
 ### Important: Before Deployment Checklist

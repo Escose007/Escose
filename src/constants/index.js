@@ -116,9 +116,11 @@ export const footerLinks = [
     links: [
       {
         name: 'Privacy Policy',
+        link: '/privacy-policy',
       },
       {
-        name: ' Terms & Conditions',
+        name: 'Terms & Conditions',
+        link: '/terms',
       },
     ],
   },
@@ -132,7 +134,7 @@ export const footerLinks = [
       },
       {
         header: 'For Job',
-        name: 'Bengalore: +91 7416857052',
+        name: 'Bangalore: +91 7416857052',
       },
     ],
   },

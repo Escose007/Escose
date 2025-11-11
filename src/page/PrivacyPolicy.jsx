@@ -129,7 +129,7 @@ const PrivacyPolicy = () => {
                   <p className="text-xs"><strong>Escose Technologies</strong></p>
                   <p className="text-xs">Email: info@escose.com</p>
                   <p className="text-xs">Phone: +91 7416 8570 52</p>
-                  <p className="text-xs">Address: Bangalore, Karnataka, India</p>
+                  <p className="text-xs">Address: 190C, SAI-KRUPA, 6TH MAIN 16TH CROSS, BTM 2ND STAGE, N S PALYA, Bangalore, Karnataka - 560076, India</p>
                 </div>
               </div>
 

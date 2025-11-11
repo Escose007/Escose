@@ -5,11 +5,13 @@ import styles from '../style';
 import { outsourcingFormFields } from '../constants';
 import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
+import { useToast } from './ToastContainer';
 
 const OutsourcingForm = ({ handleSuccessToster }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const { showSuccess, showError } = useToast();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -19,11 +21,13 @@ const OutsourcingForm = ({ handleSuccessToster }) => {
     // Get form data
     const formData = new FormData(form.current);
     const templateParams = {
+      title: 'Hire Developer',
       from_name: formData.get('from_name'),
-      company_name: formData.get('company_name'),
+      company_name: formData.get('company_name') || '',
       from_email: formData.get('from_email'),
       contact_number: formData.get('contact_number'),
-      message: formData.get('message'),
+      message: formData.get('message') || '',
+      file_name: formData.get('file_name') || '',
       to_email: 'info@escose.com',
       form_type: 'outsourcing_request'
     };
@@ -32,30 +36,24 @@ const OutsourcingForm = ({ handleSuccessToster }) => {
     
     emailjs
       .send(
-        'service_ccb920l',
-        'template_t5904kb',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ccb920l',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_t5904kb',
         templateParams,
-        // form.current,
-        '2HswVx6NHPH32wUNU'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       )
       .then(
         (result) => {
           console.log('Email sent successfully:', result.text);
           form.current.reset();
           setIsSubmitting(false);
-          handleSuccessToster(true);
+          showSuccess('Your message has been sent successfully! We will get back to you soon.');
+          if (handleSuccessToster) handleSuccessToster(true);
         },
         (error) => {
           console.error('Failed to send email:', error);
           setErrorMessage(`Failed to send message: ${error.text}`);
           setIsSubmitting(false);
-          
-          // Show fallback option
-          if (error.text.includes('Gmail_API: Invalid grant')) {
-            alert('Email service temporarily unavailable. Please email us directly at info@escose.com or try again later.');
-          } else {
-            alert(`Failed to send message: ${error.text || 'Unknown error'}`);
-          }
+          showError('Failed to send message. Please try again or contact us directly.');
         }
       );
   };

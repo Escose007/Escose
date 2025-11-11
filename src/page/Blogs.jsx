@@ -7,13 +7,20 @@ import { blogPosts } from '../constants/blogs';
 const Blogs = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   
+  // Sort blog posts by dateFull (newest first)
+  const sortedBlogPosts = [...blogPosts].sort((a, b) => {
+    const dateA = new Date(a.dateFull || a.date);
+    const dateB = new Date(b.dateFull || b.date);
+    return dateB - dateA; // Descending order (newest first)
+  });
+  
   // Get unique categories
-  const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
+  const categories = ['All', ...Array.from(new Set(sortedBlogPosts.map(post => post.category)))];
   
   // Filter posts by category
   const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    ? sortedBlogPosts 
+    : sortedBlogPosts.filter(post => post.category === selectedCategory);
 
   // Calculate reading time (rough estimate: 200 words per minute)
   const calculateReadingTime = (post) => {

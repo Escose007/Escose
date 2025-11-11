@@ -19,6 +19,7 @@ import CaseStudies from './page/CaseStudies';
 import PrivacyPolicy from './page/PrivacyPolicy';
 import TermsConditions from './page/TermsConditions';
 import CookiePolicy from './page/CookiePolicy';
+import BlogAdmin from './page/BlogAdmin';
 // Service Landing Pages
 import ReactDevelopers from './page/services/ReactDevelopers';
 import PythonDevelopers from './page/services/PythonDevelopers';
@@ -39,6 +40,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ToastProvider>
           <BrowserRouter>
             <Routes>
+              {/* Admin Routes - Hidden, not in navigation, standalone (no navbar/footer) */}
+              <Route path="admin/blogs" element={<BlogAdmin />} />
+              
               <Route path="/" element={<App />}>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
