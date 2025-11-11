@@ -6,12 +6,11 @@ import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
 import { useToast } from './ToastContainer';
 
-const JobApplicationForm = ({ handleSuccessToster }) => {
+const JobApplicationForm = ({ handleSuccessToast }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { showSuccess, showError } = useToast();
-
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -65,13 +64,11 @@ const JobApplicationForm = ({ handleSuccessToster }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       );
 
-      console.log('Application sent successfully');
       form.current.reset();
       setIsSubmitting(false);
       showSuccess('Your application has been submitted successfully! We will get back to you soon.');
-      if (handleSuccessToster) handleSuccessToster(true);
+      if (handleSuccessToast) handleSuccessToast(true);
     } catch (error) {
-      console.error('Error submitting application:', error);
       setErrorMessage(`Failed to send application: ${error.text || error.message || 'Unknown error'}`);
       setIsSubmitting(false);
       showError('Failed to send message. Please try again or contact us directly.');

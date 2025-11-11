@@ -8,12 +8,12 @@ import JobApplicationForm from '../components/JobApplicationForm';
 import ContactUsHero from '../components/ContactUsHero';
 
 const Contact = () => {
-  const [showSuccesToster, setSuccesToster] = useState(false);
+  const [showSuccessToast, setSuccessToast] = useState(false);
   const [activeTab, setActiveTab] = useState('outsourcing'); // Changed default to 'outsourcing'
   const [searchParams] = useSearchParams();
 
-  const handleSuccessToster = (value) => {
-    setSuccesToster(value);
+  const handleSuccessToast = (value) => {
+    setSuccessToast(value);
   };
 
   // Check URL parameters on component mount to set the correct tab
@@ -105,11 +105,11 @@ const Contact = () => {
         <div className={`${styles.paddingX} ${styles.flexCenter} pb-20`}>
           <div className={`${styles.boxWidth}`}>
             {activeTab === 'general' ? (
-              <ContactUs handleSuccessToster={handleSuccessToster} />
+              <ContactUs handleSuccessToast={handleSuccessToast} />
             ) : activeTab === 'outsourcing' ? (
-              <OutsourcingForm handleSuccessToster={handleSuccessToster} />
+              <OutsourcingForm handleSuccessToast={handleSuccessToast} />
             ) : (
-              <JobApplicationForm handleSuccessToster={handleSuccessToster} />
+              <JobApplicationForm handleSuccessToast={handleSuccessToast} />
             )}
           </div>
         </div>

@@ -99,7 +99,8 @@ export default function BlogDetail() {
         setTimeout(() => setShowShareToast(false), 3000);
       }
     } catch (err) {
-      console.log('Share failed:', err);
+      // Share functionality failed - silently handle error
+      // User can still manually copy the URL if needed
     }
   };
 

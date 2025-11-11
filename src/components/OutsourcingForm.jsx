@@ -7,55 +7,73 @@ import Input from '../pureComponents/Input';
 import Button from '../pureComponents/Button';
 import { useToast } from './ToastContainer';
 
-const OutsourcingForm = ({ handleSuccessToster }) => {
+const OutsourcingForm = ({ handleSuccessToast }) => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { showSuccess, showError } = useToast();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage('');
-    
-    // Get form data
+
+    // Validate form
     const formData = new FormData(form.current);
-    const templateParams = {
-      title: 'Hire Developer',
-      from_name: formData.get('from_name'),
-      company_name: formData.get('company_name') || '',
-      from_email: formData.get('from_email'),
-      contact_number: formData.get('contact_number'),
-      message: formData.get('message') || '',
-      file_name: formData.get('file_name') || '',
-      to_email: 'info@escose.com',
-      form_type: 'outsourcing_request'
-    };
-    
-    console.log('Sending outsourcing request with params:', templateParams);
-    
-    emailjs
-      .send(
+    const email = formData.get('from_email');
+    const name = formData.get('from_name');
+    const mobile = formData.get('contact_number');
+
+    if (!name || name.trim().length < 2) {
+      showError('Please enter a valid name (at least 2 characters)');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      showError('Please enter a valid email address');
+      return;
+    }
+
+    // Mobile validation (basic check)
+    if (mobile && mobile.trim().length > 0 && mobile.trim().length < 10) {
+      showError('Please enter a valid mobile number');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Get form data
+      const templateParams = {
+        title: 'Hire Developer',
+        from_name: formData.get('from_name'),
+        company_name: formData.get('company_name') || '',
+        from_email: formData.get('from_email'),
+        contact_number: formData.get('contact_number') || '',
+        message: formData.get('message') || '',
+        file_name: formData.get('file_name') || '',
+        to_email: 'info@escose.com',
+        form_type: 'outsourcing_request',
+      };
+
+      // Send email with EmailJS
+      await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ccb920l',
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_t5904kb',
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
-      )
-      .then(
-        (result) => {
-          console.log('Email sent successfully:', result.text);
-          form.current.reset();
-          setIsSubmitting(false);
-          showSuccess('Your message has been sent successfully! We will get back to you soon.');
-          if (handleSuccessToster) handleSuccessToster(true);
-        },
-        (error) => {
-          console.error('Failed to send email:', error);
-          setErrorMessage(`Failed to send message: ${error.text}`);
-          setIsSubmitting(false);
-          showError('Failed to send message. Please try again or contact us directly.');
-        }
       );
+
+      form.current.reset();
+      setIsSubmitting(false);
+      showSuccess('Your message has been sent successfully! We will get back to you soon.');
+      if (handleSuccessToast) handleSuccessToast(true);
+    } catch (error) {
+      setErrorMessage(`Failed to send message: ${error.text || error.message || 'Unknown error'}`);
+      setIsSubmitting(false);
+      showError('Failed to send message. Please try again or contact us directly.');
+    }
   };
 
   const sendFallbackEmail = () => {

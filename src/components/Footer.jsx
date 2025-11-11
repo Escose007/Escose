@@ -102,7 +102,7 @@ const Footer = () => (
     {/* Bottom Section */}
     <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t border-white/10">
       <p className="font-poppins font-normal text-center text-[14px] leading-[27px] text-slate-400">
-        Copyright Ⓒ 2024 Escose Technologies. All Rights Reserved.
+        Copyright © 2025 Escose Technologies. All Rights Reserved.
       </p>
 
       <div className="flex flex-row md:mt-0 mt-6 gap-6">
