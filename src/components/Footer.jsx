@@ -26,7 +26,7 @@ const Footer = () => (
             { icon: '📧', label: 'Email', link: 'mailto:info@escose.com' },
             { icon: '📱', label: 'Phone', link: 'tel:+917416857052' },
             { icon: '💬', label: 'WhatsApp', link: 'https://wa.me/917416857052' },
-            { icon: '💼', label: 'LinkedIn', link: 'https://linkedin.com/company/escose' }
+            { icon: '💼', label: 'LinkedIn', link: 'https://www.linkedin.com/company/escose-technologies/posts/?feedView=all' }
           ].map((social, index) => (
             <a
               key={index}
