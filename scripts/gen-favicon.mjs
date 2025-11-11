@@ -12,38 +12,74 @@ const manifest = path.join(outDir, 'site.webmanifest');
 
 const sizes = [16, 32, 48, 64, 128, 192, 256, 512];
 
-async function trimAndLeftSquareCrop(buffer) {
-  // Trim transparent/flat background then crop a left-aligned square area
-  const trimmedBuffer = await sharp(buffer).trim({ threshold: 10 }).png().toBuffer();
-  const meta = await sharp(trimmedBuffer).metadata();
-  const width = meta.width || 0;
-  const height = meta.height || 0;
+async function trimAndCenterSquareCrop(buffer) {
+  // Get original dimensions first
+  const originalMeta = await sharp(buffer).metadata();
+  const originalWidth = originalMeta.width || 0;
+  const originalHeight = originalMeta.height || 0;
 
-  if (width === 0 || height === 0) {
-    // Fallback: ensure square by padding
-    const maxSide = Math.max(width, height, 1);
-    return await sharp(trimmedBuffer)
-      .extend({
-        top: Math.floor((maxSide - height) / 2),
-        bottom: Math.ceil((maxSide - height) / 2),
-        left: Math.floor((maxSide - width) / 2),
-        right: Math.ceil((maxSide - width) / 2),
-        background: { r: 255, g: 255, b: 255, alpha: 0 },
-      })
-      .png()
-      .toBuffer();
+  if (originalWidth === 0 || originalHeight === 0) {
+    throw new Error('Invalid image dimensions');
   }
 
-  if (width > height) {
-    // Left-aligned square crop to emphasize the logo mark (assuming text on the right)
-    return await sharp(trimmedBuffer).extract({ left: 0, top: 0, width: height, height }).png().toBuffer();
-  } else if (height > width) {
-    // Taller than wide: center-crop vertically to square
-    const top = Math.floor((height - width) / 2);
-    return await sharp(trimmedBuffer).extract({ left: 0, top, width, height: width }).png().toBuffer();
+  // Trim transparent/flat background with a lower threshold to be more careful
+  // This ensures we don't accidentally trim parts of the logo
+  const trimmedBuffer = await sharp(buffer).trim({ threshold: 5 }).png().toBuffer();
+  const trimmedMeta = await sharp(trimmedBuffer).metadata();
+  let width = trimmedMeta.width || originalWidth;
+  let height = trimmedMeta.height || originalHeight;
+
+  // If trimming removed too much (more than 10% of width or height), use original
+  if (width < originalWidth * 0.9 || height < originalHeight * 0.9) {
+    console.log('Warning: Trim removed too much, using original dimensions');
+    width = originalWidth;
+    height = originalHeight;
+    const originalBuffer = await sharp(buffer).png().toBuffer();
+    return await createSquareLogo(originalBuffer, width, height);
   }
 
-  return trimmedBuffer;
+  return await createSquareLogo(trimmedBuffer, width, height);
+}
+
+async function createSquareLogo(imageBuffer, width, height) {
+  // Target square size (use a reasonable base size for processing)
+  const targetSize = 512;
+  
+  // Calculate scale factor to fit the logo within the square
+  // We want to fit the entire logo, so use the smaller scale factor
+  const scale = Math.min(targetSize / width, targetSize / height);
+  
+  // Calculate new dimensions after scaling
+  const newWidth = Math.round(width * scale);
+  const newHeight = Math.round(height * scale);
+  
+  // Scale the logo to fit within the square (maintain aspect ratio)
+  const scaledBuffer = await sharp(imageBuffer)
+    .resize(newWidth, newHeight, {
+      fit: 'inside',
+      withoutEnlargement: false, // Allow scaling up if needed for small logos
+    })
+    .png()
+    .toBuffer();
+  
+  // Calculate padding to center the scaled logo in the square
+  const paddingTop = Math.floor((targetSize - newHeight) / 2);
+  const paddingBottom = Math.ceil((targetSize - newHeight) / 2);
+  const paddingLeft = Math.floor((targetSize - newWidth) / 2);
+  const paddingRight = Math.ceil((targetSize - newWidth) / 2);
+
+  // Add padding to center the logo in a square canvas
+  // The extend will make it exactly targetSize x targetSize
+  return await sharp(scaledBuffer)
+    .extend({
+      top: paddingTop,
+      bottom: paddingBottom,
+      left: paddingLeft,
+      right: paddingRight,
+      background: { r: 255, g: 255, b: 255, alpha: 0 },
+    })
+    .png()
+    .toBuffer();
 }
 
 async function generatePngSizes(squareBuffer) {
@@ -84,11 +120,11 @@ async function writeManifest() {
 
 async function main() {
   const srcBuffer = await fs.promises.readFile(srcPng);
-  const logoOnlySquare = await trimAndLeftSquareCrop(srcBuffer);
+  const logoOnlySquare = await trimAndCenterSquareCrop(srcBuffer);
   await generatePngSizes(logoOnlySquare);
   await generateIco(logoOnlySquare);
   await writeManifest();
-  console.log('Favicons (logo-only) generated in', outDir);
+  console.log('Favicons (centered logo) generated in', outDir);
 }
 
 main().catch((err) => {

@@ -259,14 +259,6 @@ html, body {
   -webkit-text-fill-color: transparent;
 }
 
-.wave_banner {
-  background-image: url(./assets/wave.svg);
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 657px;
-  background-size: contain;
-}
-
 /* Dark theme specific overrides */
 .bg-primary {
   background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #0b1220 100%) !important;
