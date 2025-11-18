@@ -88,7 +88,6 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
 # Google Analytics
 VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
-
 ### How to Get EmailJS Credentials:
 1. Sign up at [EmailJS.com](https://www.emailjs.com/)
 2. Create an email service
