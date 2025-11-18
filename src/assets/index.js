@@ -20,11 +20,11 @@ import postgresql from './postgresql.webp';
 import mongodb from './mongodb.webp';
 import sqlite from './sqlite.webp';
 import node from './node.webp';
+import go from './go.webp';
 import web_development from './web_development.svg';
 import uiux from './uiux.svg';
 import mobile_app_development from './mobile_app_development.svg';
 import iot from './iot.svg';
-import education from './education.webp';
 import healthcare from './healthcare.svg';
 import education1 from './education1.webp';
 import startup from './startup.webp';
@@ -32,7 +32,6 @@ import ecommerce from './ecommerce.webp';
 import close from './close.svg';
 import escose_logo from './escose_logo.webp';
 import menu from './menu.svg';
-import star from './Star.svg';
 import hosting from './hosting.svg';
 
 export {
@@ -58,11 +57,11 @@ export {
   mongodb,
   sqlite,
   node,
+  go,
   web_development,
   uiux,
   mobile_app_development,
   iot,
-  education,
   healthcare,
   education1,
   startup,
@@ -70,6 +69,5 @@ export {
   close,
   escose_logo,
   menu,
-  star,
   hosting,
 };

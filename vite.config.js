@@ -19,11 +19,21 @@ export default defineConfig({
     // Code splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Vendor chunks
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          // Email service
-          'email-vendor': ['@emailjs/browser']
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('react-helmet')) {
+              return 'helmet-vendor';
+            }
+            if (id.includes('@emailjs')) {
+              return 'email-vendor';
+            }
+            // Other node_modules
+            return 'vendor';
+          }
         }
       }
     },

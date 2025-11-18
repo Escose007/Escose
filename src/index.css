@@ -1,3 +1,4 @@
+/* Optimized font loading with display swap for better performance */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -305,4 +306,29 @@ div:not(.bg-white):not([class*="bg-white"]) {
   .btn-hover-effect {
     @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25;
   }
+}
+
+/* Fade Animation for Client Logos */
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade {
+  animation: fade 10s linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  will-change: opacity;
+}
+
+/* Ensure tiles are visible when not animating */
+.tile-container {
+  opacity: 1;
 }

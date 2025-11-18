@@ -1,5 +1,4 @@
 import styles from '../style';
-import { star } from '../assets';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import useTilt3D from './hooks/useTilt3D';
