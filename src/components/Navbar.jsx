@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { navLinks } from '../constants';
@@ -9,8 +9,9 @@ export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
+  const panelRef = useRef(null);
 
-  // Close menu on Escape key
+  // Close menu on Escape key and prevent body scroll when menu is open
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && navbar) {
@@ -18,8 +19,19 @@ export default function NavBar() {
         setOpenDropdown(null);
       }
     };
+    
+    // Prevent body scroll when mobile menu is open
+    if (navbar) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
     document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
   }, [navbar]);
 
   const isActive = (path) => {
@@ -35,13 +47,14 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="w-full fixed top-0 left-0 right-0 z-50">
-      <div className="bg-slate-900 border-b border-slate-700/50 shadow-lg">
+    <>
+      <nav className="w-full fixed top-0 left-0 right-0 z-50">
+        <div className="bg-slate-900 border-b border-slate-700/50 shadow-lg relative">
         <div className="justify-between pl-0 pr-2 mx-auto lg:max-w-7xl md:items-center md:flex md:pl-0 md:pr-4 h-20 md:h-24">
         <div>
           <div className="flex items-center justify-between h-full md:block">
             {/* Make logo clickable */}
-            <Link to="/" className="cursor-pointer">
+            <Link to="/" className="cursor-pointer pl-4 pt-4 md:pl-0 md:pt-0">
               <img
                 src={escose_logo}
                 alt="Escose Technologies - IT Staffing & Software Development Services"
@@ -53,7 +66,7 @@ export default function NavBar() {
                 aria-label={navbar ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={navbar}
                 onClick={() => setNavbar(!navbar)}
-                className="p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className="p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded min-w-[44px] min-h-[44px] flex items-center justify-center bg-slate-900 z-50 relative"
               >
                 <img
                   src={navbar ? close : menu}
@@ -65,24 +78,52 @@ export default function NavBar() {
           </div>
         </div>
         <div>
+          {/* Backdrop overlay for mobile menu - below panel so clicks inside panel work */}
+          {navbar && (
+            <div 
+              className="fixed inset-0 bg-black/50 z-[40] md:hidden"
+              onClick={() => {
+                setNavbar(false);
+                setOpenDropdown(null);
+              }}
+            />
+          )}
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ml-6 sm:ml-16 ${
-              navbar ? 'block' : 'hidden'
+            ref={panelRef}
+            onClick={(e) => e.stopPropagation()}
+            className={`md:block md:pb-0 md:mt-0 md:w-auto md:ml-6 md:bg-transparent md:relative ${
+              navbar 
+                ? 'fixed top-20 left-0 right-0 bg-slate-900 w-full max-h-[calc(100vh-5rem)] overflow-y-auto z-[50] transition-all duration-300 ease-in-out pointer-events-none' 
+                : 'hidden'
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 px-4 py-8 md:px-0 md:py-0 pointer-events-auto">
               {navLinks.map((nav) => (
                 <li 
                   key={nav.id} 
-                  className="relative"
-                  onMouseEnter={() => nav.subItems && window.innerWidth >= 768 && setOpenDropdown(nav.id)}
-                  onMouseLeave={() => nav.subItems && window.innerWidth >= 768 && setOpenDropdown(null)}
+                  className="relative group"
+                  onMouseEnter={() => {
+                    if (nav.subItems && window.innerWidth >= 1060) {
+                      setOpenDropdown(nav.id);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (nav.subItems && window.innerWidth >= 1060) {
+                      setOpenDropdown(null);
+                    }
+                  }}
                 >
                   {nav.subItems ? (
                     <>
                       <button
-                        onClick={(e) => handleDropdownToggle(nav.id, e)}
-                        className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 flex items-center gap-1 ${
+                        onClick={(e) => {
+                          if (window.innerWidth < 1060) {
+                            handleDropdownToggle(nav.id, e);
+                          }
+                        }}
+                        className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 flex items-center gap-1 w-full md:w-auto md:bg-transparent md:px-0 md:py-0 md:rounded-none ${
+                          navbar ? 'bg-slate-800 px-4 py-3 rounded-lg text-left' : ''
+                        } ${
                           openDropdown === nav.id ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
                         }`}
                       >
@@ -100,11 +141,21 @@ export default function NavBar() {
                       <ul 
                         className={`${
                           openDropdown === nav.id ? 'block' : 'hidden'
-                        } md:block absolute md:top-full md:left-0 mt-4 md:mt-2 ml-4 md:ml-0 bg-slate-800 rounded-lg shadow-xl border border-slate-700 min-w-[180px] overflow-hidden transition-all duration-300 z-50 ${
+                        } md:block absolute md:top-full md:left-0 mt-4 md:mt-0 md:-mt-1 ml-4 md:ml-0 bg-slate-800 rounded-lg shadow-xl border border-slate-700 min-w-[180px] overflow-hidden z-50 md:pt-2 ${
                           openDropdown === nav.id 
-                            ? 'md:opacity-100 md:visible md:translate-y-0' 
-                            : 'md:opacity-0 md:invisible md:-translate-y-2'
-                        }`}
+                            ? 'md:opacity-100 md:visible md:translate-y-0 md:pointer-events-auto' 
+                            : 'md:opacity-0 md:invisible md:-translate-y-2 md:pointer-events-none'
+                        } transition-all duration-300 ease-in-out`}
+                        onMouseEnter={() => {
+                          if (nav.subItems && window.innerWidth >= 1060) {
+                            setOpenDropdown(nav.id);
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          if (nav.subItems && window.innerWidth >= 1060) {
+                            setOpenDropdown(null);
+                          }
+                        }}
                       >
                         {nav.subItems.map((subItem) => (
                           <li key={subItem.id}>
@@ -139,7 +190,9 @@ export default function NavBar() {
                   ) : (
                     <Link
                       to={nav.id}
-                      className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 ${
+                      className={`font-poppins font-medium cursor-pointer text-[16px] transition-colors duration-300 w-full md:w-auto md:bg-transparent md:px-0 md:py-0 md:rounded-none block ${
+                        navbar ? 'bg-slate-800 px-4 py-3 rounded-lg' : ''
+                      } ${
                         isActive(nav.id) ? 'text-brand-accent-500' : 'text-gray-300 hover:text-brand-primary-300'
                       }`}
                       onClick={() => {
@@ -184,5 +237,6 @@ export default function NavBar() {
         </div>
       </div>
     </nav>
+    </>
   );
 }
