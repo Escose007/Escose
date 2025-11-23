@@ -9,15 +9,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 
 ## Currently Active Job Postings
 
-### 1. Python Developer
-- **Job ID:** ESC2511
-- **Department:** Engineering
-- **Location:** Remote / India
-- **Type:** Full-time
-- **Experience:** 3–5 years
-- **Status:** Active (kept from original postings)
-
-### 2. Business Analyst (BA)
+### 1. Business Analyst (BA)
 - **Job ID:** ESC2514
 - **Department:** Product & AI
 - **Location:** HSR Layout, Bengaluru
@@ -27,7 +19,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Posted Date:** 18 Nov 2025
 - **Status:** Active (added today)
 
-### 3. Prompt Engineer (LLM / GenAI)
+### 2. Prompt Engineer (LLM / GenAI)
 - **Job ID:** ESC2515
 - **Department:** AI & Data
 - **Location:** HSR Layout, Bengaluru
@@ -37,7 +29,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Posted Date:** 18 Nov 2025
 - **Status:** Active (added today)
 
-### 4. Quality Assurance (QA) Engineer for AI product
+### 3. Quality Assurance (QA) Engineer for AI product
 - **Job ID:** ESC2516
 - **Department:** AI & Data
 - **Location:** HSR Layout, Bengaluru
@@ -47,7 +39,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Posted Date:** 18 Nov 2025
 - **Status:** Active (added today)
 
-### 5. DevOps Engineer
+### 4. DevOps Engineer
 - **Job ID:** ESC2517
 - **Department:** Engineering
 - **Location:** UB City & Bellandur, Bengaluru
@@ -57,7 +49,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Posted Date:** 18 Nov 2025
 - **Status:** Active (added today)
 
-### 6. Full Stack Engineer (Node + React)
+### 5. Full Stack Engineer (Node + React)
 - **Job ID:** ESC2518
 - **Department:** Engineering
 - **Location:** KR Puram, Bengaluru
@@ -98,6 +90,15 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Removed Date:** November 18, 2025
 - **Reason:** Older posting, removed to keep only Python Developer from original postings
 
+### 4. Python Developer
+- **Job ID:** ESC2511
+- **Department:** Engineering
+- **Location:** Remote / India
+- **Type:** Full-time
+- **Experience:** 3–5 years
+- **Removed Date:** November 18, 2025
+- **Reason:** Removed per request
+
 ---
 
 ## Job ID Sequence
@@ -106,7 +107,7 @@ Job IDs follow the pattern: **ESC25XX** where XX is an incrementing number.
 
 ### Used Job IDs:
 - ESC2510 - Java Developer (removed)
-- ESC2511 - Python Developer (active)
+- ESC2511 - Python Developer (removed)
 - ESC2512 - AI/ML Developer (removed)
 - ESC2513 - GenAI / Agentic Developer (removed)
 - ESC2514 - Business Analyst (BA) (active)
@@ -128,7 +129,6 @@ Job IDs follow the pattern: **ESC25XX** where XX is an incrementing number.
   - Number of openings
   - Custom application URL (Google Form)
 
-- Python Developer was kept from the original postings as it was specifically requested to be retained.
 
 - Application form for new postings: https://forms.gle/cczcwqa7xpKzLjio9
 

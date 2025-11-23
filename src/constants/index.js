@@ -703,34 +703,6 @@ export const outsourcingFormFields = [
 
 export const openPositions = [
   {
-    jobId: 'ESC2511',
-    title: 'Python Developer',
-    department: 'Engineering',
-    location: 'Remote / India',
-    type: 'Full-time',
-    experience: '3–5 years',
-    skills: ['Python', 'Django/Flask', 'REST APIs', 'PostgreSQL', 'Docker'],
-    summary: 'Design and implement robust backend services and integrations using Python frameworks. Focus on reliability, performance, and clean code.',
-    jd: {
-      responsibilities: [
-        'Develop backend services and APIs using Django or Flask',
-        'Model relational data and optimize queries on PostgreSQL/MySQL',
-        'Ensure code quality with tests, reviews, and CI checks',
-        'Work closely with product, design, and frontend teams',
-      ],
-      requirements: [
-        '3–5 years professional Python experience',
-        'Strong experience in Django/Flask and building REST APIs',
-        'Good understanding of relational databases and ORMs',
-        'Docker and basic cloud knowledge preferred',
-      ],
-      niceToHave: [
-        'Experience with Celery, Redis, or async frameworks',
-        'Exposure to FastAPI and microservices'
-      ],
-    },
-  },
-  {
     jobId: 'ESC2514',
     title: 'Business Analyst (BA)',
     department: 'Product & AI',
