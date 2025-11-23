@@ -37,7 +37,7 @@ This file tracks the history of job postings on the Escose Technologies Careers 
 - **Posted Date:** 18 Nov 2025
 - **Status:** Active (added today)
 
-### 4. Agentic AI QA Engineer
+### 4. Quality Assurance (QA) Engineer for AI product
 - **Job ID:** ESC2516
 - **Department:** AI & Data
 - **Location:** HSR Layout, Bengaluru
@@ -111,7 +111,7 @@ Job IDs follow the pattern: **ESC25XX** where XX is an incrementing number.
 - ESC2513 - GenAI / Agentic Developer (removed)
 - ESC2514 - Business Analyst (BA) (active)
 - ESC2515 - Prompt Engineer (LLM / GenAI) (active)
-- ESC2516 - Agentic AI QA Engineer (active)
+- ESC2516 - Quality Assurance (QA) Engineer for AI product (active)
 - ESC2517 - DevOps Engineer (active)
 - ESC2518 - Full Stack Engineer (Node + React) (active)
 

@@ -809,7 +809,7 @@ export const openPositions = [
   },
   {
     jobId: 'ESC2516',
-    title: 'Agentic AI QA Engineer',
+    title: 'Quality Assurance (QA) Engineer for AI product',
     department: 'AI & Data',
     location: 'HSR Layout, Bengaluru',
     type: 'Full-time',
