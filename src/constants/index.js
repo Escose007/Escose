@@ -57,6 +57,10 @@ export const navLinks = [
     title: 'About Us',
   },
   {
+    id: '/leaders',
+    title: 'Leaders',
+  },
+  {
     id: '/careers',
     title: 'Career',
   },

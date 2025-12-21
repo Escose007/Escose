@@ -19,6 +19,7 @@ const SolutionsFlow = lazy(() => import('./page/SolutionsFlow'));
 const Services = lazy(() => import('./page/Services'));
 const Careers = lazy(() => import('./page/Careers'));
 const About = lazy(() => import('./page/About'));
+const Leaders = lazy(() => import('./page/Leaders'));
 const NotFound = lazy(() => import('./page/NotFound'));
 const CaseStudies = lazy(() => import('./page/CaseStudies'));
 const PrivacyPolicy = lazy(() => import('./page/PrivacyPolicy'));
@@ -59,6 +60,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="/" element={<App />}>
                   <Route index element={<Home />} />
                   <Route path="about" element={<About />} />
+                  <Route path="leaders" element={<Leaders />} />
                   <Route path="blogs" element={<Blogs />} />
                   <Route path="blogs/:slug" element={<BlogDetail />} />
                   <Route path="contact" element={<Contact />} />

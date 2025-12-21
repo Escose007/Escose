@@ -33,6 +33,8 @@ import close from './close.svg';
 import escose_logo from './escose_logo.webp';
 import menu from './menu.svg';
 import hosting from './hosting.svg';
+import pooja_jangir from './pooja_jangir.png';
+import ankita_sharma from './ankita_sharma.png';
 
 export {
   react,
@@ -70,4 +72,6 @@ export {
   escose_logo,
   menu,
   hosting,
+  pooja_jangir,
+  ankita_sharma,
 };
