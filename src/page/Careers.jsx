@@ -122,7 +122,9 @@ export default function Careers() {
 
   // Apply both department filter and search filter - memoized with debounced query
   const filtered = useMemo(() => {
-    let result = selectedDept === 'All' ? openPositions : openPositions.filter(p => p.department === selectedDept);
+    // Filter out inactive jobs (jobs without active property are considered active by default)
+    let result = openPositions.filter(p => p.active !== false);
+    result = selectedDept === 'All' ? result : result.filter(p => p.department === selectedDept);
     result = searchJobs(result, debouncedSearchQuery);
     return result;
   }, [selectedDept, debouncedSearchQuery, searchJobs]);
