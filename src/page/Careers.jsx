@@ -63,6 +63,26 @@ const highlightSkills = (skills, query) => {
   });
 };
 
+// Helper function to parse postedDate and convert to comparable format
+const parsePostedDate = (dateStr) => {
+  if (!dateStr) return new Date(0); // Return epoch for missing dates (will sort last)
+  // Parse format like "18 Nov 2025" or "25 Dec 2025"
+  const months = {
+    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+  };
+  const parts = dateStr.trim().split(' ');
+  if (parts.length === 3) {
+    const day = parseInt(parts[0], 10);
+    const month = months[parts[1]];
+    const year = parseInt(parts[2], 10);
+    if (!isNaN(day) && month !== undefined && !isNaN(year)) {
+      return new Date(year, month, day);
+    }
+  }
+  return new Date(0); // Return epoch for invalid dates
+};
+
 export default function Careers() {
   const [selectedDept, setSelectedDept] = useState('All');
   const [activeJob, setActiveJob] = useState(null);
@@ -126,6 +146,12 @@ export default function Careers() {
     let result = openPositions.filter(p => p.active !== false);
     result = selectedDept === 'All' ? result : result.filter(p => p.department === selectedDept);
     result = searchJobs(result, debouncedSearchQuery);
+    // Sort by postedDate (newest first)
+    result.sort((a, b) => {
+      const dateA = parsePostedDate(a.postedDate);
+      const dateB = parsePostedDate(b.postedDate);
+      return dateB - dateA; // Descending order (newest first)
+    });
     return result;
   }, [selectedDept, debouncedSearchQuery, searchJobs]);
 
