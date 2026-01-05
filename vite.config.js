@@ -5,16 +5,35 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
+  // AWS Amplify configuration
+  base: '/', // Use root path for Amplify (change if using subdirectory)
+  
   // Performance Optimizations
   build: {
-    // Enable minification
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.logs in production
-        drop_debugger: true
-      }
-    },
+    // Build output directory (Amplify expects 'dist')
+    outDir: 'dist',
+    
+    // Use esbuild for faster minification (much faster than terser)
+    minify: 'esbuild',
+    // esbuild automatically drops console and debugger in production
+    // For more control, we can use esbuild options
+    target: 'es2015', // Target modern browsers for faster builds
+    cssMinify: 'esbuild', // Use esbuild for CSS minification too
+    
+    // Chunk size warnings
+    chunkSizeWarningLimit: 1000,
+    
+    // Enable source maps for debugging (disable in production)
+    sourcemap: false,
+    
+    // Asset optimization
+    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
+    
+    // CSS code splitting
+    cssCodeSplit: true,
+    
+    // Build performance optimizations
+    reportCompressedSize: false, // Disable compressed size reporting (saves time)
     
     // Code splitting for better caching
     rollupOptions: {
@@ -36,19 +55,7 @@ export default defineConfig({
           }
         }
       }
-    },
-    
-    // Chunk size warnings
-    chunkSizeWarningLimit: 1000,
-    
-    // Enable source maps for debugging (disable in production)
-    sourcemap: false,
-    
-    // Asset optimization
-    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
-    
-    // CSS code splitting
-    cssCodeSplit: true
+    }
   },
   
   // Server configuration
@@ -63,6 +70,14 @@ export default defineConfig({
   
   // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', '@emailjs/browser']
+    include: ['react', 'react-dom', 'react-router-dom', '@emailjs/browser'],
+    // Force optimization to speed up subsequent builds
+    force: false // Set to true if you want to force re-optimization
+  },
+  
+  // Additional performance optimizations
+  esbuild: {
+    // Drop console and debugger in production builds
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : []
   }
 })
