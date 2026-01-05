@@ -1062,7 +1062,7 @@ export const openPositions = [
   },
   {
     jobId: 'ESC2523',
-    title: 'Backend Engineer (Golang)',
+    title: 'Golang Backend Engineer',
     department: 'Engineering',
     location: 'Bangalore',
     type: 'Full-time',
