@@ -52,7 +52,7 @@ const IMAGES_TO_OPTIMIZE = [
   { file: 'ionic.png', category: 'logos', priority: 3 },
   { file: 'mongodb.png', category: 'logos', priority: 3 },
   { file: 'postgresql.png', category: 'logos', priority: 3 },
-  { file: 'wordtress.png', category: 'logos', priority: 3 },
+  { file: 'wordpress.png', category: 'logos', priority: 3 },
   { file: 'flutter.png', category: 'logos', priority: 3 },
   { file: 'android.png', category: 'logos', priority: 3 },
   { file: 'azure.png', category: 'logos', priority: 3 },

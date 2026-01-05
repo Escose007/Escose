@@ -10,7 +10,7 @@ import ios from './ios.webp';
 import flutter from './flutter.webp';
 import jquery from './jquery.gif';
 import ionic from './ionic.webp';
-import wordtress from './wordtress.webp';
+import wordpress from './wordpress.webp';
 import aws from './aws.webp';
 import azure from './azure.webp';
 import gcp from './gcp.webp';
@@ -49,7 +49,7 @@ export {
   flutter,
   jquery,
   ionic,
-  wordtress,
+  wordpress,
   aws,
   azure,
   gcp,
