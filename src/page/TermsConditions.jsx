@@ -8,7 +8,7 @@ const TermsConditions = () => {
         <title>Terms & Conditions | Escose Technologies</title>
         <meta name="description" content="Terms and Conditions for using Escose Technologies services. Read our terms of service for IT staffing and software development." />
         <link rel="canonical" href="https://escose.com/terms" />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

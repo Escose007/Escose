@@ -38,6 +38,28 @@ export default function Leaders() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Our Leaders | Escose Technologies" />
         <meta name="twitter:description" content="Meet the visionary leaders behind Escose Technologies." />
+        
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Leaders",
+                "item": "https://escose.com/leaders"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
     
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

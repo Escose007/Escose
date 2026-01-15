@@ -173,6 +173,28 @@ export default function Careers() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Careers at Escose Technologies" />
         <meta name="twitter:description" content="Join our team of 500+ engineers. Exciting opportunities in software development and GenAI." />
+        
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Careers",
+                "item": "https://escose.com/careers"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
     
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

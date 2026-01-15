@@ -308,27 +308,3 @@ div:not(.bg-white):not([class*="bg-white"]) {
   }
 }
 
-/* Fade Animation for Client Logos */
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.animate-fade {
-  animation: fade 10s linear;
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
-  will-change: opacity;
-}
-
-/* Ensure tiles are visible when not animating */
-.tile-container {
-  opacity: 1;
-}

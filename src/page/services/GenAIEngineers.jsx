@@ -37,6 +37,60 @@ const GenAIEngineers = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hire GenAI Engineers | Escose" />
         <meta name="twitter:description" content="Expert generative AI engineers. Pre-vetted, ready in 2 weeks." />
+        
+        {/* Service Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "GenAI Engineer Hiring Service",
+            "description": "Hire expert GenAI engineers in 2 weeks. Pre-vetted generative AI developers with 3-8 years experience. Specialized in LLMs, RAG, LangChain, and agentic workflows. Staff augmentation, dedicated teams.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "url": "https://escose.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Global"
+            },
+            "serviceType": "IT Staffing",
+            "category": "Software Development Staffing",
+            "offers": {
+              "@type": "Offer",
+              "description": "Flexible engagement models: Staff Augmentation, Dedicated Teams, Contract-to-Hire",
+              "priceRange": "Contact for pricing",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://escose.com/csd"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "GenAI Engineers",
+                "item": "https://escose.com/services/genai-engineers"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

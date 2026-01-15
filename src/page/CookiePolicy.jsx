@@ -8,7 +8,7 @@ const CookiePolicy = () => {
         <title>Cookie Policy | Escose Technologies</title>
         <meta name="description" content="Cookie Policy for Escose Technologies. Learn about how we use cookies and similar technologies on our website." />
         <link rel="canonical" href="https://escose.com/cookies" />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

@@ -21,6 +21,57 @@ export default function About() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Escose Technologies" />
         <meta name="twitter:description" content="Leading IT staffing and software development company with 500+ engineers and 98% client satisfaction." />
+        
+        {/* AboutPage Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Escose Technologies",
+            "description": "Escose Technologies is a leading IT staffing and engineering talent solutions provider, specializing in connecting companies with pre-vetted engineers across Backend, Frontend, Full Stack, DevOps, QA, Data Engineering, GenAI, Android, and iOS roles. Founded in 2020, we've evolved into a trusted talent partner serving startups, scale-ups, and enterprises worldwide.",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "foundingDate": "2022",
+              "description": "Leading IT staffing and software outsourcing company providing staff augmentation, dedicated development teams, and contract-to-hire services. Hire pre-vetted developers in 2 weeks.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "190C, SAI-KRUPA, 6TH MAIN 16TH CROSS, BTM 2ND STAGE, N S PALYA",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560076",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-7416857052",
+                "email": "info@escose.com",
+                "contactType": "Customer Service"
+              }
+            }
+          })}
+        </script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://escose.com/about"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
     
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">
@@ -43,7 +94,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Who We Are</h2>
               <p className="text-gray-300 mb-4 leading-relaxed">
-                Escose Technologies is a leading <span className="text-white font-semibold">IT staffing and engineering talent solutions provider</span>, specializing in connecting companies with pre-vetted engineers across Backend, Frontend, Full Stack, DevOps, QA, Data Engineering, GenAI, Android, and iOS roles. Founded with a vision to bridge the talent gap for growing tech companies, we've evolved into a trusted talent partner serving startups, scale-ups, and enterprises worldwide.
+                Escose Technologies is a leading <span className="text-white font-semibold">IT staffing and engineering talent solutions provider</span>, specializing in connecting companies with pre-vetted engineers across Backend, Frontend, Full Stack, DevOps, QA, Data Engineering, GenAI, Android, and iOS roles. Founded in 2022 with a vision to bridge the talent gap for growing tech companies, we've evolved into a trusted talent partner serving startups, scale-ups, and enterprises worldwide. With over 2 years of experience in IT staffing and software development, we've successfully placed 500+ engineers across 25+ countries.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 Our core strength lies in delivering <span className="text-white font-semibold">pre-vetted, highly skilled engineers</span> who integrate seamlessly into your team in just 2 weeks. Whether you need staff augmentation, dedicated squads, or contract-to-hire talent, we combine deep technical expertise with rigorous vetting processes, ensuring you scale quickly without compromising quality. We also offer custom software development services as a secondary offering for clients seeking end-to-end project delivery.

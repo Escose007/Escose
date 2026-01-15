@@ -58,6 +58,68 @@ const Contact = () => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Contact Escose Technologies" />
         <meta name="twitter:description" content="Get free consultation for IT staffing and software development needs." />
+        
+        {/* ContactPage Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Escose Technologies",
+            "description": "Contact Escose Technologies for IT staffing, software development, and GenAI solutions. Get free consultation, hire pre-vetted developers, or discuss your project requirements.",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "url": "https://escose.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "190C, SAI-KRUPA, 6TH MAIN 16TH CROSS, BTM 2ND STAGE, N S PALYA",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560076",
+                "addressCountry": "IN"
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7416857052",
+                  "email": "info@escose.com",
+                  "contactType": "Sales",
+                  "areaServed": "Global",
+                  "availableLanguage": ["English"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7416857052",
+                  "email": "info@escose.com",
+                  "contactType": "Customer Service",
+                  "areaServed": "Global",
+                  "availableLanguage": ["English"]
+                }
+              ]
+            }
+          })}
+        </script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://escose.com/contact"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
         <div className={`md:mt-10 sm:mt-24 ${styles.flexStart}`}>

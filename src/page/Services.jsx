@@ -40,6 +40,28 @@ const Services = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Custom Software Development Services | Escose" />
       <meta name="twitter:description" content="Custom software development services: GenAI solutions, mobile apps, web applications, and UI/UX design." />
+      
+      {/* BreadcrumbList Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://escose.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://escose.com/csd"
+            }
+          ]
+        })}
+      </script>
     </Helmet>
   
     <div className={`bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 ${styles.paddingX} ${styles.flexCenter} py-32 md:py-28 min-h-screen`}>
