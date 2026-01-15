@@ -37,6 +37,60 @@ const PythonDevelopers = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hire Python Developers | Escose" />
         <meta name="twitter:description" content="Expert Python developers. Django, Flask, AI/ML specialists." />
+        
+        {/* Service Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Python Developer Hiring Service",
+            "description": "Hire expert Python developers in 2 weeks. Django, Flask, FastAPI, AI/ML specialists. Pre-vetted Python engineers with 3-8 years experience. Staff augmentation and dedicated teams available.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "url": "https://escose.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Global"
+            },
+            "serviceType": "IT Staffing",
+            "category": "Software Development Staffing",
+            "offers": {
+              "@type": "Offer",
+              "description": "Flexible engagement models: Staff Augmentation, Dedicated Teams, Contract-to-Hire",
+              "priceRange": "Contact for pricing",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://escose.com/csd"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Python Developers",
+                "item": "https://escose.com/services/python-developers"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

@@ -37,6 +37,60 @@ const FullStackDevelopers = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hire Full Stack Developers | Escose" />
         <meta name="twitter:description" content="Expert full stack developers. MERN, MEAN stack specialists." />
+        
+        {/* Service Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Full Stack Developer Hiring Service",
+            "description": "Hire expert full stack developers in 2 weeks. MERN, MEAN stack specialists. Pre-vetted engineers with 4-8 years experience. React, Node.js, Python, Java expertise. Staff augmentation available.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "url": "https://escose.com"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Global"
+            },
+            "serviceType": "IT Staffing",
+            "category": "Software Development Staffing",
+            "offers": {
+              "@type": "Offer",
+              "description": "Flexible engagement models: Staff Augmentation, Dedicated Teams, Contract-to-Hire",
+              "priceRange": "Contact for pricing",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://escose.com/csd"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Full Stack Developers",
+                "item": "https://escose.com/services/fullstack-developers"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

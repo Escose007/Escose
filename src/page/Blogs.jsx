@@ -61,6 +61,28 @@ const Blogs = () => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Escose Technologies Blog" />
         <meta name="twitter:description" content="Tech insights, IT staffing tips, and industry trends." />
+        
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blogs",
+                "item": "https://escose.com/blogs"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
     
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

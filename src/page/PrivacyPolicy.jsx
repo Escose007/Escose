@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
         <title>Privacy Policy | Escose Technologies</title>
         <meta name="description" content="Privacy Policy for Escose Technologies. Learn how we collect, use, and protect your personal information." />
         <link rel="canonical" href="https://escose.com/privacy-policy" />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

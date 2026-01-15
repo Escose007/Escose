@@ -76,6 +76,28 @@ const CaseStudies = () => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Case Studies | Escose Technologies" />
         <meta name="twitter:description" content="Client success stories and project case studies." />
+        
+        {/* BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://escose.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Case Studies",
+                "item": "https://escose.com/case-studies"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">
