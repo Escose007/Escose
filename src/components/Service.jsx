@@ -59,7 +59,7 @@ const Service = () => (
               </Link>
             ) : (
               <Link
-                to="/csd"
+                to="/services"
                 className="w-full bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-medium transition-all duration-300 text-base text-center block truncate border border-white/10"
               >
                 Learn More

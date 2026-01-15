@@ -64,7 +64,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   <Route path="blogs" element={<Blogs />} />
                   <Route path="blogs/:slug" element={<BlogDetail />} />
                   <Route path="contact" element={<Contact />} />
-                  <Route path="csd" element={<Services />} />
+                  <Route path="services" element={<Services />} />
                   <Route path="careers" element={<Careers />} />
                   <Route path="outsourcing" element={<EmployeeOutsourcing />} />
                   <Route path="solutions-flow" element={<SolutionsFlow />} />

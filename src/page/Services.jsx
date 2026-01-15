@@ -25,20 +25,20 @@ const Services = () => {
   return (
     <>
     <Helmet>
-      <title>Custom Software Development Services | Web, Mobile, GenAI Solutions | Escose</title>
+      <title>Services | Custom Software Development | Escose Technologies</title>
       <meta name="description" content="Custom software development services: Cutting-edge technology development (GenAI Solutions, Agentic Workflows), mobile app development, web development, and UI/UX design. End-to-end solutions tailored to your business needs." />
       <meta name="keywords" content="custom software development, web development, mobile app development, GenAI solutions, agentic workflows, UI UX design, software development services" />
-      <link rel="canonical" href="https://escose.com/csd" />
+      <link rel="canonical" href="https://escose.com/services" />
       
       {/* Open Graph */}
-      <meta property="og:title" content="Custom Software Development Services | Escose" />
+      <meta property="og:title" content="Services | Custom Software Development | Escose" />
       <meta property="og:description" content="Custom software development services: GenAI solutions, mobile apps, web applications, and UI/UX design. End-to-end solutions for your business." />
-      <meta property="og:url" content="https://escose.com/csd" />
+      <meta property="og:url" content="https://escose.com/services" />
       <meta property="og:type" content="website" />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Custom Software Development Services | Escose" />
+      <meta name="twitter:title" content="Services | Custom Software Development | Escose" />
       <meta name="twitter:description" content="Custom software development services: GenAI solutions, mobile apps, web applications, and UI/UX design." />
       
       {/* BreadcrumbList Schema */}
@@ -57,7 +57,7 @@ const Services = () => {
               "@type": "ListItem",
               "position": 2,
               "name": "Services",
-              "item": "https://escose.com/csd"
+              "item": "https://escose.com/services"
             }
           ]
         })}

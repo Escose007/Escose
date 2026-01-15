@@ -91,6 +91,47 @@ const Home = () => (
           ]
         })}
       </script>
+      
+      {/* SiteNavigationElement Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Main Navigation",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "IT Staffing & Outsourcing",
+              "url": "https://escose.com/outsourcing"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Services",
+              "url": "https://escose.com/services"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "About Us",
+              "url": "https://escose.com/about"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Careers",
+              "url": "https://escose.com/careers"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Contact",
+              "url": "https://escose.com/contact"
+            }
+          ]
+        })}
+      </script>
     </Helmet>
     
     {/* Hero Section - Dark theme - No wrapper needed as Hero handles its own spacing */}

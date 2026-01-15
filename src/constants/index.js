@@ -47,7 +47,7 @@ export const navLinks = [
         title: 'IT Staffing',
       },
       {
-        id: '/csd',
+        id: '/services',
         title: 'Custom Software Development',
       },
     ],

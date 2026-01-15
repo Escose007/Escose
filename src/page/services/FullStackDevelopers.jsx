@@ -80,7 +80,7 @@ const FullStackDevelopers = () => {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Services",
-                "item": "https://escose.com/csd"
+                "item": "https://escose.com/services"
               },
               {
                 "@type": "ListItem",

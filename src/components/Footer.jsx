@@ -89,7 +89,7 @@ const Footer = () => (
               Hire Developers
             </Link>
             <Link
-              to="/csd"
+              to="/services"
               className="block bg-brand-gradient hover:brightness-110 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm text-center"
             >
               View Services
