@@ -707,6 +707,37 @@ export const outsourcingFormFields = [
 
 export const openPositions = [
   {
+    jobId: 'ESC2524',
+    title: 'Software Development Intern',
+    department: 'Engineering',
+    location: 'Work From Home (100% Remote)',
+    type: 'Internship',
+    experience: 'Fresher (Batch 2025 & 2026)',
+    openings: 30,
+    postedDate: '26 Jan 2026',
+    skills: ['React', 'Python', 'JavaScript', 'Web Development'],
+    summary: 'Join our engineering team as a Software Development Intern. Gain deep, hands-on exposure to end-to-end product development. 100% Remote, 6-month duration, for 2025 & 2026 pass-outs.',
+    applyUrl: 'https://forms.gle/WQzEHu1J4DZHKa5A8',
+    jd: {
+      responsibilities: [
+        'Build and contribute to real products from start to finish',
+        'Learn directly from senior engineering leaders',
+        'Develop and maintain web applications using React and Python',
+        'Participate in the full software development lifecycle',
+        'Collaborate with cross-functional teams to implement new features',
+        'Maintain clean, reusable, and efficient code',
+      ],
+      requirements: [
+        'Eligibility: Open only to Batch of 2025 & 2026 pass-outs',
+        'Tech Stack: React & Python',
+        'Availability: Full-time for 6 months',
+        'Passionate tech enthusiast eager to build real-world products from scratch',
+        'Strong problem-solving skills and logical thinking',
+        'Eager to learn and grow with a fast-moving team',
+      ],
+    },
+  },
+  {
     jobId: 'ESC2514',
     title: 'Business Analyst (BA)',
     department: 'Product & AI',
