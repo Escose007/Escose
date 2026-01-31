@@ -48,7 +48,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="w-full fixed top-0 left-0 right-0 z-50">
+      <nav className="w-full fixed top-0 left-0 right-0 z-50" role="navigation" aria-label="Main Navigation">
         <div className="bg-slate-900 border-b border-slate-700/50 shadow-lg relative">
         <div className="justify-between pl-0 pr-2 mx-auto lg:max-w-7xl md:items-center md:flex md:pl-0 md:pr-4 h-20 md:h-24">
         <div>

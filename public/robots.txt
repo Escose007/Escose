@@ -6,7 +6,6 @@ Sitemap: https://escose.com/sitemap.xml
 
 # Disallow admin or private areas (if any)
 Disallow: /admin/
-Disallow: /_next/
 Disallow: /api/
 
 # Allow all common crawlers
