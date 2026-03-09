@@ -35,7 +35,7 @@
   <!-- Careers -->
   <url>
     <loc>https://escose.com/careers</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,8 +59,76 @@
   <!-- Blogs -->
   <url>
     <loc>https://escose.com/blogs</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://escose.com/blogs/genai-in-software-development</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/agentic-ai-patterns</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/react-18-best-practices</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/data-driven-development-metrics</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/scaling-devops-enterprise</loc>
+    <lastmod>2025-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/cybersecurity-remote-teams</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/integrating-ai-web-apps</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/building-innovation-culture</loc>
+    <lastmod>2025-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/json-vs-toon-llm-formats</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/stop-confusing-llms-with-ai-agents</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/llm-single-agent-multi-agent-architecture-decision</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   

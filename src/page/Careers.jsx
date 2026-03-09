@@ -195,6 +195,49 @@ export default function Careers() {
             ]
           })}
         </script>
+
+        {/* JobPosting Schema for Google for Jobs */}
+        {openPositions.filter(p => p.active !== false).map((job, idx) => (
+          <script key={idx} type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "JobPosting",
+              "title": job.title,
+              "description": `<p>${job.summary || ''}</p>${job.jd?.responsibilities ? '<h3>Responsibilities</h3><ul>' + job.jd.responsibilities.map(r => `<li>${r}</li>`).join('') + '</ul>' : ''}${job.jd?.requirements ? '<h3>Requirements</h3><ul>' + job.jd.requirements.map(r => `<li>${r}</li>`).join('') + '</ul>' : ''}`,
+              "identifier": {
+                "@type": "PropertyValue",
+                "name": "Escose Technologies",
+                "value": job.jobId
+              },
+              "datePosted": (() => {
+                if (!job.postedDate) return undefined;
+                const months = { 'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04', 'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08', 'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12' };
+                const parts = job.postedDate.trim().split(' ');
+                if (parts.length === 3) return `${parts[2]}-${months[parts[1]] || '01'}-${parts[0].padStart(2, '0')}`;
+                return undefined;
+              })(),
+              "employmentType": job.type === 'Full-time' ? 'FULL_TIME' : job.type === 'Internship' ? 'INTERN' : 'FULL_TIME',
+              "hiringOrganization": {
+                "@type": "Organization",
+                "name": "Escose Technologies",
+                "sameAs": "https://escose.com",
+                "logo": "https://escose.com/escose-logo.webp"
+              },
+              "jobLocation": {
+                "@type": "Place",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": job.location?.includes('Remote') ? 'Bangalore' : job.location?.split(',')[0]?.trim() || 'Bangalore',
+                  "addressRegion": "Karnataka",
+                  "addressCountry": "IN"
+                }
+              },
+              ...(job.location?.toLowerCase().includes('remote') ? { "jobLocationType": "TELECOMMUTE" } : {}),
+              "skills": job.skills?.join(', '),
+              "experienceRequirements": job.experience
+            })}
+          </script>
+        ))}
       </Helmet>
     
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

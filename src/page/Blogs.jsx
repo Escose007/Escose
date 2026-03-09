@@ -83,6 +83,31 @@ const Blogs = () => {
             ]
           })}
         </script>
+
+        {/* Blog CollectionPage Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Tech Insights & IT Staffing Blog",
+            "description": "Expert insights on IT staffing, software development, GenAI, and technology trends from Escose Technologies.",
+            "url": "https://escose.com/blogs",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "url": "https://escose.com"
+            },
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": sortedBlogPosts.map((post, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `https://escose.com/blogs/${post.slug}`,
+                "name": post.title
+              }))
+            }
+          })}
+        </script>
       </Helmet>
     
     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-slate-100 min-h-screen">

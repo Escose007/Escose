@@ -127,6 +127,50 @@ export default function BlogDetail() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || post.description} />
+
+        {/* BlogPosting Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt || post.description,
+            "datePublished": post.dateFull || post.date,
+            "dateModified": post.dateFull || post.date,
+            "author": {
+              "@type": "Organization",
+              "name": post.author || "Escose Technologies",
+              "url": "https://escose.com"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Escose Technologies",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://escose.com/escose-logo.webp"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://escose.com/blogs/${post.slug}`
+            },
+            ...(post.image ? { "image": typeof post.image === 'string' && post.image.startsWith('http') ? post.image : `https://escose.com/escose-logo.webp` } : {}),
+            "articleSection": post.category,
+            "wordCount": (() => {
+              let wc = 0;
+              if (post.sections) {
+                post.sections.forEach(s => {
+                  if (s.paragraphs) s.paragraphs.forEach(p => wc += p.split(' ').length);
+                  if (s.bullets) s.bullets.forEach(b => wc += b.split(' ').length);
+                  if (s.tailParagraphs) s.tailParagraphs.forEach(tp => wc += tp.split(' ').length);
+                });
+              } else if (post.content) {
+                post.content.forEach(p => wc += p.split(' ').length);
+              }
+              return wc;
+            })()
+          })}
+        </script>
       </Helmet>
     
     <div className="bg-white min-h-screen">
@@ -295,6 +339,34 @@ export default function BlogDetail() {
           </div>
         </div>
       </article>
+
+      {/* Related Service CTA */}
+      {(() => {
+        const categoryServiceMap = {
+          'AI/ML': { url: '/services/genai-engineers', label: 'Hire GenAI Engineers', desc: 'Need AI/ML expertise for your project? Our pre-vetted GenAI engineers can help you build intelligent solutions.' },
+          'Agentic AI': { url: '/services/genai-engineers', label: 'Hire GenAI Engineers', desc: 'Looking to build agentic AI systems? Our GenAI engineers specialize in autonomous AI workflows.' },
+          'React': { url: '/services/react-developers', label: 'Hire React Developers', desc: 'Need expert React developers? Hire pre-vetted React engineers to build modern, performant web applications.' },
+          'DevOps': { url: '/services/devops-engineers', label: 'Hire DevOps Engineers', desc: 'Scale your infrastructure with our DevOps engineers. CI/CD, cloud, and automation expertise on demand.' },
+          'Analytics': { url: '/services/data-engineers', label: 'Hire Data Engineers', desc: 'Turn your data into insights. Our data engineers build scalable pipelines and analytics platforms.' },
+          'Security': { url: '/outsourcing', label: 'Explore IT Staffing', desc: 'Secure your remote teams with the right talent. Explore our IT staffing and outsourcing solutions.' },
+          'Innovation': { url: '/services', label: 'Explore Our Services', desc: 'Build an innovation culture with the right engineering team. See how we can help.' },
+        };
+        const service = categoryServiceMap[post.category];
+        if (!service) return null;
+        return (
+          <div className="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 py-10">
+            <div className="max-w-3xl mx-auto px-6 text-center">
+              <p className="text-gray-700 text-lg mb-4">{service.desc}</p>
+              <Link
+                to={service.url}
+                className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300"
+              >
+                {service.label} &rarr;
+              </Link>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Related Articles */}
       {relatedPosts.length > 0 && (
