@@ -59,7 +59,7 @@
   <!-- Blogs -->
   <url>
     <loc>https://escose.com/blogs</loc>
-    <lastmod>2025-12-19</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -128,6 +128,12 @@
   <url>
     <loc>https://escose.com/blogs/llm-single-agent-multi-agent-architecture-decision</loc>
     <lastmod>2025-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://escose.com/blogs/langchain-vs-langgraph-when-to-use-what</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

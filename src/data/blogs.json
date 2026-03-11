@@ -726,5 +726,195 @@
       "Based on Microsoft Azure AI, Anthropic research, and production data, 73% of AI use cases can be solved with well-designed single agents. The key is starting simple, validating use cases, and only scaling complexity when single-agent demonstrably fails. Smart companies use tiered architectures routing 70-80% of requests through lite LLM, 15-25% through single agents, and 5% through multi-agent systems—achieving 60% cost savings while maintaining 91% accuracy.",
       "As frontier LLMs improve with longer context windows and better reasoning, tasks that required multi-agent in 2024 can now be single-agent in 2025. The winning strategy: Build modular systems where you can swap architectures based on task complexity. The companies winning aren't the ones with the fanciest architectures—they're the ones shipping value fast with the right tool for the job."
     ]
+  },
+  {
+    "slug": "langchain-vs-langgraph-when-to-use-what",
+    "title": "LangChain vs LangGraph: The Complete Guide with Code Examples",
+    "category": "Agentic AI",
+    "date": "Mar 2026",
+    "dateFull": "2026-03-11",
+    "emoji": "🔗",
+    "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=600&fit=crop&q=80",
+    "excerpt": "LangChain and LangGraph solve different problems. LangChain is the toolkit for building LLM-powered chains. LangGraph is the framework for building stateful, multi-step agent workflows with cycles. Here's when to use each — with production-ready code examples.",
+    "sections": [
+      {
+        "heading": "Introduction",
+        "paragraphs": [
+          "If you're building AI applications in 2026, you've probably encountered both LangChain and LangGraph. They come from the same team (LangChain Inc.), they share some DNA, but they solve fundamentally different problems.",
+          "The confusion is real: developers often pick LangChain when they need LangGraph, or over-engineer with LangGraph when a simple LangChain chain would suffice. This guide cuts through the noise with clear distinctions, architecture comparisons, and production-ready code examples.",
+          "By the end, you'll know exactly when to reach for each tool — and when to combine them."
+        ]
+      },
+      {
+        "heading": "What is LangChain?",
+        "paragraphs": [
+          "LangChain is a framework for building applications powered by language models. Think of it as a toolkit that provides standardized interfaces for LLMs, prompts, memory, document loaders, vector stores, and output parsers.",
+          "The core abstraction in LangChain is the Chain — a sequence of operations where the output of one step feeds into the next. Chains are linear and predictable: Step A → Step B → Step C → Done."
+        ],
+        "bullets": [
+          "LLM Wrappers: Unified interface for OpenAI, Anthropic, Google, Ollama, and 50+ providers.",
+          "Prompt Templates: Reusable, parameterized prompt engineering with variable injection.",
+          "Document Loaders & Splitters: Ingest PDFs, web pages, databases, and split them for RAG pipelines.",
+          "Vector Stores: Integration with Pinecone, Weaviate, Chroma, FAISS, and more.",
+          "Output Parsers: Structured output extraction (JSON, Pydantic models, lists).",
+          "LCEL (LangChain Expression Language): Declarative syntax for composing chains with the | pipe operator."
+        ],
+        "tailParagraphs": [
+          "LangChain excels at linear workflows: take input → process through a chain of steps → return output. No loops, no branching, no conditional routing. Simple, fast, and predictable."
+        ]
+      },
+      {
+        "heading": "What is LangGraph?",
+        "paragraphs": [
+          "LangGraph is a framework for building stateful, multi-actor applications with LLMs, built on top of LangChain. The key abstraction is a graph — specifically a directed graph where nodes are computation steps and edges define the flow between them.",
+          "Unlike LangChain's linear chains, LangGraph supports cycles (loops), conditional branching, parallel execution, and persistent state. This makes it the right tool for building agents, multi-agent systems, and any workflow where the next step depends on the result of the current step."
+        ],
+        "bullets": [
+          "StateGraph: Define a typed state that flows through the graph and gets updated by each node.",
+          "Nodes: Functions or agents that read state, perform actions, and return state updates.",
+          "Edges: Define flow — including conditional edges that route based on state values.",
+          "Cycles: Nodes can loop back, enabling iterative agent behavior (think → act → observe → think again).",
+          "Checkpointing: Built-in persistence to save and resume graph execution at any point.",
+          "Human-in-the-Loop: Pause execution, wait for human input, then resume.",
+          "Streaming: Stream intermediate results as the graph executes."
+        ],
+        "tailParagraphs": [
+          "LangGraph is for workflows that need decision-making at runtime. The path through the graph isn't known in advance — it depends on LLM outputs, tool results, and state accumulated along the way."
+        ]
+      },
+      {
+        "heading": "Architecture Comparison: Chain vs Graph",
+        "paragraphs": [
+          "The fundamental difference comes down to control flow."
+        ],
+        "bullets": [
+          "LangChain (Chain/LCEL): Linear pipeline. A → B → C → Output. The path is fixed at design time. Great for deterministic workflows like RAG, summarization, or structured extraction.",
+          "LangGraph (StateGraph): Directed graph with cycles. A → B → (if condition: go to C, else: loop back to A). The path is determined at runtime based on state. Essential for agents, iterative refinement, and complex decision trees.",
+          "State Management: LangChain passes data through the chain. LangGraph maintains a typed state object that accumulates information across nodes and persists across executions.",
+          "Error Recovery: LangChain fails the whole chain. LangGraph can checkpoint, retry from the last successful node, or route to an error-handling path.",
+          "Parallelism: LangChain runs sequentially. LangGraph can fan out to multiple nodes in parallel and fan back in.",
+          "Human Intervention: LangChain has no built-in support. LangGraph has first-class interrupt/resume for human-in-the-loop workflows."
+        ]
+      },
+      {
+        "heading": "Code Example 1: RAG Pipeline with LangChain (LCEL)",
+        "paragraphs": [
+          "This is LangChain's sweet spot — a classic Retrieval-Augmented Generation pipeline. Linear, predictable, no branching needed."
+        ],
+        "codeBlocks": [
+          {
+            "title": "RAG Pipeline — LangChain LCEL",
+            "language": "python",
+            "code": "from langchain_openai import ChatOpenAI, OpenAIEmbeddings\nfrom langchain_community.vectorstores import FAISS\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_core.output_parsers import StrOutputParser\nfrom langchain_core.runnables import RunnablePassthrough\nfrom langchain_text_splitters import RecursiveCharacterTextSplitter\nfrom langchain_community.document_loaders import WebBaseLoader\n\n# 1. Load and chunk documents\nloader = WebBaseLoader(\"https://docs.example.com/api-reference\")\ndocs = loader.load()\nsplitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)\nchunks = splitter.split_documents(docs)\n\n# 2. Create vector store\nembeddings = OpenAIEmbeddings(model=\"text-embedding-3-small\")\nvectorstore = FAISS.from_documents(chunks, embeddings)\nretriever = vectorstore.as_retriever(search_kwargs={\"k\": 4})\n\n# 3. Define prompt\nprompt = ChatPromptTemplate.from_template(\"\"\"\nAnswer the question based only on the following context.\nIf you cannot answer from the context, say \"I don't have enough information.\"\n\nContext: {context}\n\nQuestion: {question}\n\nAnswer:\"\"\")\n\n# 4. Build chain with LCEL (pipe operator)\nllm = ChatOpenAI(model=\"gpt-4o\", temperature=0)\n\nrag_chain = (\n    {\"context\": retriever, \"question\": RunnablePassthrough()}\n    | prompt\n    | llm\n    | StrOutputParser()\n)\n\n# 5. Run it\nresult = rag_chain.invoke(\"How do I authenticate API requests?\")\nprint(result)\n# Flow: Question → Retrieve docs → Format prompt → LLM → Parse output\n# Linear. No loops. No branching. Perfect for LangChain."
+          }
+        ],
+        "tailParagraphs": [
+          "This is clean, readable, and exactly what LangChain was designed for. The LCEL pipe syntax makes it easy to compose, test, and modify individual steps."
+        ]
+      },
+      {
+        "heading": "Code Example 2: ReAct Agent with LangGraph",
+        "paragraphs": [
+          "Now let's build something that requires cycles — a ReAct (Reason + Act) agent that can use tools, observe results, and decide whether to continue or finish. This is where LangGraph shines."
+        ],
+        "codeBlocks": [
+          {
+            "title": "ReAct Agent — LangGraph with Tool Calling",
+            "language": "python",
+            "code": "from langgraph.graph import StateGraph, END\nfrom langgraph.prebuilt import ToolNode\nfrom langchain_openai import ChatOpenAI\nfrom langchain_core.tools import tool\nfrom langchain_core.messages import HumanMessage, AIMessage\nfrom typing import TypedDict, Annotated\nimport operator\n\n# ── Define Tools ──\n@tool\ndef search_web(query: str) -> str:\n    \"\"\"Search the web for current information.\"\"\"\n    # In production: call Tavily, Serper, or your search API\n    return f\"Search results for '{query}': Latest data shows...\"\n\n@tool\ndef query_database(sql: str) -> str:\n    \"\"\"Execute a read-only SQL query against the analytics database.\"\"\"\n    # In production: execute against your DB\n    return f\"Query result for '{sql}': 5,234 records found...\"\n\n@tool\ndef send_slack_message(channel: str, message: str) -> str:\n    \"\"\"Send a message to a Slack channel.\"\"\"\n    return f\"Message sent to #{channel}\"\n\ntools = [search_web, query_database, send_slack_message]\n\n# ── Define State ──\nclass AgentState(TypedDict):\n    messages: Annotated[list, operator.add]  # Append-only message list\n\n# ── Define Nodes ──\nllm = ChatOpenAI(model=\"gpt-4o\", temperature=0).bind_tools(tools)\n\ndef call_agent(state: AgentState) -> dict:\n    \"\"\"The agent reasons about what to do next.\"\"\"\n    response = llm.invoke(state[\"messages\"])\n    return {\"messages\": [response]}\n\ndef should_continue(state: AgentState) -> str:\n    \"\"\"Decide: call a tool or finish?\"\"\"\n    last_message = state[\"messages\"][-1]\n    if last_message.tool_calls:  # LLM wants to use a tool\n        return \"tools\"\n    return \"end\"  # LLM is done, return final answer\n\n# ── Build the Graph ──\nworkflow = StateGraph(AgentState)\n\n# Add nodes\nworkflow.add_node(\"agent\", call_agent)\nworkflow.add_node(\"tools\", ToolNode(tools))\n\n# Set entry point\nworkflow.set_entry_point(\"agent\")\n\n# Add conditional edge: agent decides to use tools or finish\nworkflow.add_conditional_edges(\n    \"agent\",\n    should_continue,\n    {\"tools\": \"tools\", \"end\": END}\n)\n\n# After tools execute, go back to agent (THE CYCLE)\nworkflow.add_edge(\"tools\", \"agent\")\n\n# Compile\nagent = workflow.compile()\n\n# ── Run it ──\nresult = agent.invoke({\n    \"messages\": [HumanMessage(\n        content=\"Find our Q4 revenue from the database, \"\n                \"search for industry benchmarks, \"\n                \"and send a summary to #leadership on Slack.\"\n    )]\n})\n\n# The agent will:\n# 1. Think: \"I need to query the database first\"\n# 2. Call query_database tool → get results\n# 3. Think: \"Now I need industry benchmarks\"\n# 4. Call search_web tool → get results  \n# 5. Think: \"Now I'll compose and send the summary\"\n# 6. Call send_slack_message tool → confirmation\n# 7. Think: \"All tasks complete\" → END\n\nfor msg in result[\"messages\"]:\n    print(f\"{msg.type}: {msg.content[:100]}...\")"
+          }
+        ],
+        "tailParagraphs": [
+          "Notice the cycle: agent → tools → agent → tools → ... → END. The agent decides at each step whether to call another tool or finish. This loop is impossible with a linear LangChain chain — you'd need to hardcode the number of tool calls in advance.",
+          "The should_continue function is the conditional edge — it inspects the state and routes accordingly. This is the power of graph-based orchestration."
+        ]
+      },
+      {
+        "heading": "Code Example 3: Multi-Agent Workflow with LangGraph",
+        "paragraphs": [
+          "For complex tasks, you can have multiple specialized agents collaborate. Here's a content pipeline with a researcher, writer, and reviewer working together."
+        ],
+        "codeBlocks": [
+          {
+            "title": "Multi-Agent Content Pipeline — LangGraph",
+            "language": "python",
+            "code": "from langgraph.graph import StateGraph, END\nfrom langchain_openai import ChatOpenAI\nfrom langchain_core.messages import HumanMessage, SystemMessage\nfrom typing import TypedDict\n\n# ── State shared across all agents ──\nclass ContentState(TypedDict):\n    topic: str\n    research: str\n    draft: str\n    review: str\n    final_content: str\n    revision_count: int\n\n# ── Specialized Agent Nodes ──\nllm = ChatOpenAI(model=\"gpt-4o\", temperature=0.3)\n\ndef researcher(state: ContentState) -> dict:\n    \"\"\"Research agent gathers information on the topic.\"\"\"\n    response = llm.invoke([\n        SystemMessage(content=\"You are a senior tech researcher. \"\n                      \"Provide comprehensive, factual research with data points.\"),\n        HumanMessage(content=f\"Research this topic thoroughly: {state['topic']}\")\n    ])\n    return {\"research\": response.content}\n\ndef writer(state: ContentState) -> dict:\n    \"\"\"Writer agent creates content based on research.\"\"\"\n    context = state.get(\"review\", \"No previous review.\")\n    response = llm.invoke([\n        SystemMessage(content=\"You are an expert technical content writer. \"\n                      \"Write engaging, SEO-optimized content.\"),\n        HumanMessage(content=f\"Topic: {state['topic']}\\n\\n\"\n                     f\"Research: {state['research']}\\n\\n\"\n                     f\"Previous review feedback: {context}\\n\\n\"\n                     \"Write a comprehensive blog post.\")\n    ])\n    return {\"draft\": response.content}\n\ndef reviewer(state: ContentState) -> dict:\n    \"\"\"Reviewer agent evaluates the draft and provides feedback.\"\"\"\n    response = llm.invoke([\n        SystemMessage(content=\"You are a senior content editor. \"\n                      \"Evaluate for accuracy, clarity, SEO, and engagement. \"\n                      \"If the content is publication-ready, respond with APPROVED. \"\n                      \"Otherwise, provide specific improvement feedback.\"),\n        HumanMessage(content=f\"Review this draft:\\n\\n{state['draft']}\")\n    ])\n    return {\n        \"review\": response.content,\n        \"revision_count\": state.get(\"revision_count\", 0) + 1\n    }\n\ndef publisher(state: ContentState) -> dict:\n    \"\"\"Finalize content for publication.\"\"\"\n    return {\"final_content\": state[\"draft\"]}\n\n# ── Routing Logic ──\ndef review_decision(state: ContentState) -> str:\n    \"\"\"Should we revise or publish?\"\"\"\n    if \"APPROVED\" in state[\"review\"].upper():\n        return \"publish\"\n    if state.get(\"revision_count\", 0) >= 3:  # Max 3 revisions\n        return \"publish\"\n    return \"revise\"  # Send back to writer\n\n# ── Build the Graph ──\nworkflow = StateGraph(ContentState)\n\nworkflow.add_node(\"researcher\", researcher)\nworkflow.add_node(\"writer\", writer)\nworkflow.add_node(\"reviewer\", reviewer)\nworkflow.add_node(\"publisher\", publisher)\n\nworkflow.set_entry_point(\"researcher\")\nworkflow.add_edge(\"researcher\", \"writer\")\nworkflow.add_edge(\"writer\", \"reviewer\")\n\n# Conditional: approved → publish, needs work → back to writer\nworkflow.add_conditional_edges(\n    \"reviewer\",\n    review_decision,\n    {\"publish\": \"publisher\", \"revise\": \"writer\"}\n)\nworkflow.add_edge(\"publisher\", END)\n\npipeline = workflow.compile()\n\n# ── Run ──\nresult = pipeline.invoke({\n    \"topic\": \"Best practices for deploying LLMs in production\",\n    \"research\": \"\", \"draft\": \"\", \"review\": \"\",\n    \"final_content\": \"\", \"revision_count\": 0\n})\n\nprint(f\"Revisions: {result['revision_count']}\")\nprint(f\"Final content length: {len(result['final_content'])} chars\")"
+          }
+        ],
+        "tailParagraphs": [
+          "This pipeline has a review loop: writer → reviewer → (if not approved) → writer → reviewer → ... → publisher. The graph automatically handles the iteration, state passing, and termination. Try doing this cleanly with a linear chain — you can't."
+        ]
+      },
+      {
+        "heading": "Code Example 4: LangGraph with Checkpointing and Human-in-the-Loop",
+        "paragraphs": [
+          "One of LangGraph's killer features is checkpointing — saving graph state so you can pause, resume, or replay executions. Combined with human-in-the-loop, it enables approval workflows."
+        ],
+        "codeBlocks": [
+          {
+            "title": "Human-in-the-Loop Approval — LangGraph with Checkpointing",
+            "language": "python",
+            "code": "from langgraph.graph import StateGraph, END\nfrom langgraph.checkpoint.memory import MemorySaver\nfrom langchain_openai import ChatOpenAI\nfrom langchain_core.messages import HumanMessage, SystemMessage\nfrom typing import TypedDict\n\nclass OrderState(TypedDict):\n    request: str\n    analysis: str\n    approved: bool | None\n    result: str\n\nllm = ChatOpenAI(model=\"gpt-4o\", temperature=0)\n\ndef analyze_request(state: OrderState) -> dict:\n    response = llm.invoke([\n        SystemMessage(content=\"Analyze this order request. \"\n                      \"Flag any amounts over $10,000 or unusual patterns.\"),\n        HumanMessage(content=state[\"request\"])\n    ])\n    return {\"analysis\": response.content}\n\ndef check_approval_needed(state: OrderState) -> str:\n    if \"$10,000\" in state[\"analysis\"] or \"unusual\" in state[\"analysis\"].lower():\n        return \"needs_approval\"  # Pause for human review\n    return \"auto_approve\"\n\ndef human_review(state: OrderState) -> dict:\n    # This node is an interrupt point — execution pauses here\n    # In production, you'd send a notification and wait\n    return {}  # Human will update state externally\n\ndef process_order(state: OrderState) -> dict:\n    status = \"approved\" if state.get(\"approved\") else \"rejected\"\n    return {\"result\": f\"Order {status} and processed.\"}\n\n# Build graph with checkpointing\nworkflow = StateGraph(OrderState)\nworkflow.add_node(\"analyze\", analyze_request)\nworkflow.add_node(\"human_review\", human_review)\nworkflow.add_node(\"process\", process_order)\n\nworkflow.set_entry_point(\"analyze\")\nworkflow.add_conditional_edges(\"analyze\", check_approval_needed, {\n    \"needs_approval\": \"human_review\",\n    \"auto_approve\": \"process\"\n})\nworkflow.add_edge(\"human_review\", \"process\")\nworkflow.add_edge(\"process\", END)\n\n# Enable checkpointing with MemorySaver\ncheckpointer = MemorySaver()\napp = workflow.compile(\n    checkpointer=checkpointer,\n    interrupt_before=[\"human_review\"]  # Pause before this node\n)\n\n# Start execution — will pause at human_review\nconfig = {\"configurable\": {\"thread_id\": \"order-123\"}}\nresult = app.invoke(\n    {\"request\": \"Purchase 50 servers at $15,000 each\",\n     \"analysis\": \"\", \"approved\": None, \"result\": \"\"},\n    config\n)\nprint(\"Paused for human review...\")\nprint(f\"Analysis: {result['analysis'][:200]}\")\n\n# Later: human approves and resumes\napp.update_state(config, {\"approved\": True})\nfinal = app.invoke(None, config)  # Resume from checkpoint\nprint(f\"Result: {final['result']}\")"
+          }
+        ],
+        "tailParagraphs": [
+          "The interrupt_before parameter pauses execution before the human_review node. The state is checkpointed, so you can resume hours or days later. This pattern is essential for production workflows involving approvals, reviews, or escalations."
+        ]
+      },
+      {
+        "heading": "Decision Framework: When to Use What",
+        "paragraphs": [
+          "Here's a practical decision tree based on your use case."
+        ],
+        "bullets": [
+          "Use LangChain (LCEL) when: Your workflow is linear (A → B → C). You're building RAG, summarization, extraction, or classification pipelines. You need composable, testable chains. No loops or conditional branching required. You want simplicity and fast iteration.",
+          "Use LangGraph when: Your workflow has cycles or loops (agent → tool → agent → ...). The next step depends on the result of the current step. You need persistent state across steps or sessions. You're building agents, multi-agent systems, or approval workflows. You need human-in-the-loop, checkpointing, or streaming of intermediate steps.",
+          "Use Both Together when: Your LangGraph nodes internally use LangChain chains. Example: A LangGraph agent node uses an LCEL RAG chain for retrieval, then decides what to do next based on the result. This is actually the most common production pattern — LangGraph for orchestration, LangChain for individual steps.",
+          "Avoid LangGraph when: A simple chain solves your problem. Adding graph complexity for a linear workflow is over-engineering. If you don't need cycles, conditional routing, or state persistence, stick with LangChain.",
+          "Avoid LangChain when: You need dynamic, runtime-determined flow. If you find yourself writing if/else logic around chain invocations or manually managing state between chain calls, you need LangGraph."
+        ]
+      },
+      {
+        "heading": "Performance and Production Considerations",
+        "paragraphs": [
+          "Both frameworks have different operational characteristics in production."
+        ],
+        "bullets": [
+          "Latency: LangChain chains execute faster (single pass). LangGraph agents may loop multiple times, adding latency per cycle. Budget for 2-10 LLM calls per agent execution.",
+          "Cost: A LangChain RAG chain costs ~$0.01-0.05 per query (1-2 LLM calls). A LangGraph agent costs ~$0.05-0.50 per task (3-10 LLM calls with tools).",
+          "Debugging: LangChain is easier to debug (linear trace). LangGraph requires graph-aware tracing — LangSmith is the recommended observability tool for both.",
+          "Testing: Test LangChain chains unit-by-unit. Test LangGraph graphs by asserting on state at each node and validating edge routing logic.",
+          "Scaling: Both work well with async. LangGraph's checkpointing adds persistence requirements (Redis, PostgreSQL, or SQLite for production checkpointers)."
+        ]
+      },
+      {
+        "heading": "Common Mistakes to Avoid",
+        "paragraphs": [
+          "After reviewing dozens of production LangChain/LangGraph implementations, these are the most common pitfalls."
+        ],
+        "bullets": [
+          "Using LangGraph for a simple RAG pipeline. If your workflow is retrieve → prompt → generate, use LangChain. LangGraph adds unnecessary complexity.",
+          "Building agents with raw LangChain chains. If you're manually looping over chain.invoke() calls and managing state in a while loop, you've reinvented LangGraph poorly. Use the real thing.",
+          "Ignoring state design in LangGraph. Your TypedDict state schema is the most important design decision. Plan it carefully — adding fields later requires migration of checkpointed states.",
+          "Not setting max iterations on agent loops. Without a termination condition, agents can loop infinitely. Always add a max_iterations or revision_count guard.",
+          "Skipping LangSmith for observability. Both frameworks benefit enormously from tracing. In production, you need to see every LLM call, tool invocation, and routing decision."
+        ]
+      },
+      {
+        "heading": "The Bottom Line",
+        "paragraphs": [
+          "LangChain and LangGraph are not competitors — they're complementary tools at different levels of abstraction.",
+          "LangChain is your toolkit for building individual AI operations: chains, retrievers, prompt templates, output parsers. It's the bricks and mortar.",
+          "LangGraph is your architect for orchestrating those operations into complex, stateful workflows with cycles, branching, and persistence. It's the blueprint.",
+          "The winning pattern in production: Use LangGraph as the orchestration layer, with LangChain components as the building blocks inside each node. Start with LangChain chains for simple use cases, and graduate to LangGraph when you need cycles, state, or human-in-the-loop.",
+          "Don't choose based on what's trendy. Choose based on your control flow: linear → LangChain, dynamic → LangGraph."
+        ]
+      }
+    ],
+    "content": [
+      "LangChain and LangGraph solve fundamentally different problems. LangChain is a toolkit for building linear LLM-powered chains — RAG pipelines, summarization, extraction. LangGraph is a framework for building stateful, multi-step agent workflows with cycles, conditional branching, and persistence.",
+      "Use LangChain when your workflow is A → B → C (linear, deterministic). Use LangGraph when the next step depends on the current result (agent loops, multi-agent coordination, approval workflows). The most common production pattern uses both: LangGraph for orchestration, LangChain components inside each node.",
+      "Key LangGraph advantages over raw LangChain: cycles for iterative agent behavior, typed state management, checkpointing for pause/resume, human-in-the-loop support, and conditional routing. Start simple with LangChain and graduate to LangGraph when complexity demands it."
+    ]
   }
 ]
