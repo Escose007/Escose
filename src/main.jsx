@@ -35,6 +35,8 @@ const DevOpsEngineers = lazy(() => import('./page/services/DevOpsEngineers'));
 const GenAIEngineers = lazy(() => import('./page/services/GenAIEngineers'));
 const DataEngineers = lazy(() => import('./page/services/DataEngineers'));
 const QAEngineers = lazy(() => import('./page/services/QAEngineers'));
+const GenAIProjects = lazy(() => import('./page/services/GenAIProjects'));
+const AgenticProjects = lazy(() => import('./page/services/AgenticProjects'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -77,6 +79,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   <Route path="services/genai-engineers" element={<GenAIEngineers />} />
                   <Route path="services/data-engineers" element={<DataEngineers />} />
                   <Route path="services/qa-engineers" element={<QAEngineers />} />
+                  <Route path="services/genai-projects" element={<GenAIProjects />} />
+                  <Route path="services/agentic-projects" element={<AgenticProjects />} />
                   
                   {/* Case Studies & Legal */}
                   <Route path="case-studies" element={<CaseStudies />} />

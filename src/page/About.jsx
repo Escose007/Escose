@@ -8,7 +8,7 @@ export default function About() {
       <Helmet>
         <title>About Escose Technologies | IT Staffing & Engineering Talent Solutions Provider</title>
         <meta name="description" content="Learn about Escose Technologies - a leading IT staffing and engineering talent solutions provider. 500+ pre-vetted engineers available, 98% client satisfaction, 2-week average time-to-hire. Your trusted partner for staff augmentation and engineering talent placement." />
-        <meta name="keywords" content="about escose, IT staffing company, software development company, pre-vetted engineers, staff augmentation services, offshore development center, IT recruitment agency" />
+        <meta name="keywords" content="about escose, IT staffing company India, software development company Bangalore, pre-vetted engineers, staff augmentation services, offshore development center India, IT recruitment agency, Escose Technologies about, engineering talent solutions, 500 engineers, IT outsourcing India, software company Bangalore, 98% client satisfaction IT staffing" />
         <link rel="canonical" href="https://escose.com/about" />
         
         {/* Open Graph */}

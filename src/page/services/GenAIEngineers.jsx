@@ -26,7 +26,7 @@ const GenAIEngineers = () => {
       <Helmet>
         <title>Hire GenAI Engineers | Expert Generative AI Developers | Escose</title>
         <meta name="description" content="Hire expert GenAI engineers in 2 weeks. Pre-vetted generative AI developers with 3-8 years experience. Specialized in LLMs, RAG, LangChain, and agentic workflows. Staff augmentation, dedicated teams." />
-        <meta name="keywords" content="hire GenAI engineers, generative AI developers, LLM engineers, RAG developers, LangChain developers, AI staff augmentation, hire AI developers, OpenAI developers" />
+        <meta name="keywords" content="hire GenAI engineers India, generative AI developers hire, LLM engineers for hire, RAG pipeline developers, LangChain developers hire, LangGraph engineers, AI staff augmentation, hire AI developers remote, OpenAI developers, Anthropic Claude developers, GenAI development outsourcing India, prompt engineers hire, agentic AI developers, AI automation engineers hire" />
         <link rel="canonical" href="https://escose.com/services/genai-engineers" />
         
         <meta property="og:title" content="Hire Expert GenAI Engineers | Escose Technologies" />

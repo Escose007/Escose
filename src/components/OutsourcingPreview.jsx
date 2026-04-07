@@ -1,164 +1,195 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../style';
+import { prepare, layout } from '@chenglou/pretext';
 
-const OutsourcingPreview = () => {
-  const [activeTab, setActiveTab] = useState('developers');
-  
-  const tabs = {
-    developers: {
-      title: 'Top Developers',
-      icon: '👨‍💻',
-      count: '500+',
-      description: 'Pre-vetted developers ready to join your team'
-    },
-    technologies: {
-      title: 'Technologies',
-      icon: '⚡',
-      count: '50+',
-      description: 'Cutting-edge technologies and frameworks'
-    },
-    countries: {
-      title: 'Global Reach',
-      icon: '🌍',
-      count: '25+',
-      description: 'Countries with available talent'
-    }
-  };
+const ROLES = ['Backend', 'Frontend', 'Full Stack', 'DevOps', 'GenAI', 'Data Eng.', 'QA', 'Android', 'iOS'];
 
-  const quickStats = [
-    { label: 'Average Hire Time', value: '2 Weeks', icon: '⏱️' },
-    { label: 'Client Satisfaction', value: '98%', icon: '⭐' },
-    { label: 'Cost Savings', value: '60%', icon: '💰' },
-    { label: 'Time Zones', value: '24/7', icon: '🕐' }
-  ];
+const BENTO_STATS = [
+  {
+    accent: 'cyan',
+    icon: '⚡',
+    value: 'avg. 8 days',
+    label: 'First CV in your inbox',
+    sub: 'vs 60+ days with traditional recruiting',
+    detail: '7× faster',
+  },
+  {
+    accent: 'blue',
+    icon: '💰',
+    value: '60%',
+    label: 'Cost savings',
+    sub: 'vs equivalent local hire — same quality, lower overhead',
+    detail: 'Zero compromise',
+  },
+  {
+    accent: 'purple',
+    icon: '🔒',
+    value: '30 days',
+    label: 'Replacement guarantee',
+    sub: 'Risk-free staffing — we replace at no extra cost',
+    detail: 'Risk-free',
+  },
+];
+
+const ACCENT = {
+  cyan:   { border: 'rgba(0,212,255,0.25)',   bg: 'rgba(0,212,255,0.07)',   text: '#67e8f9',  glow: 'rgba(0,212,255,0.15)',   detail: 'rgba(0,212,255,0.2)'   },
+  blue:   { border: 'rgba(39,110,241,0.25)',  bg: 'rgba(39,110,241,0.07)',  text: '#93c5fd',  glow: 'rgba(39,110,241,0.15)',  detail: 'rgba(39,110,241,0.2)'  },
+  purple: { border: 'rgba(139,92,246,0.25)',  bg: 'rgba(139,92,246,0.07)',  text: '#c4b5fd',  glow: 'rgba(139,92,246,0.15)',  detail: 'rgba(139,92,246,0.2)'  },
+};
+
+/* Pretext — measure sub-text */
+const SUB_FONT  = '13px Poppins, sans-serif';
+const SUB_LH    = 20;
+const SUB_WIDTH = 220;
+function measureSub(text) {
+  try { return layout(prepare(text, SUB_FONT), SUB_WIDTH, SUB_LH).height; }
+  catch { return SUB_LH * 3; }
+}
+
+export default function OutsourcingPreview() {
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [subHeight, setSubHeight]       = useState(SUB_LH * 3);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const heights = BENTO_STATS.map(s => measureSub(s.sub));
+    setSubHeight(Math.max(...heights) + 4);
+  }, []);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setStatsVisible(true); }, { threshold: 0.2 });
+    if (statsRef.current) obs.observe(statsRef.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div className={`${styles.flexCenter} flex-col flex-wrap sm:mb-20 mb-6 mt-16`}>
-      {/* Main Section */}
-      <div className="w-full bg-gradient-to-br from-cyan-600/10 via-blue-800/20 to-purple-600/10 rounded-3xl p-8 lg:p-12 border border-cyan-400/20 backdrop-blur-sm relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500 rounded-full transform translate-x-32 -translate-y-32 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 rounded-full transform -translate-x-24 translate-y-24 blur-3xl"></div>
+
+      {/* ── Section Label ── */}
+      <div className="text-center mb-12 w-full" data-animate>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-400/30 text-purple-300 text-sm font-semibold mb-4"
+          style={{ background: 'rgba(139,92,246,0.06)' }}>
+          ✦ IT Staffing
         </div>
-        
-        <div className="relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
-            {/* Content Side */}
-            <div className="lg:w-2/3 mb-8 lg:mb-0">
-              <div className="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                🚀 SCALE YOUR TEAM NOW
-              </div>
-              
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">
-                Hire World-Class
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Developers in 2 Weeks</span>
-              </h2>
-              
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Access our global pool of pre-vetted developers, designers, and technical experts. 
-                Scale your team instantly with flexible engagement models and reduce costs while maintaining quality.
-              </p>
-              
-              {/* Interactive Tabs */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                {Object.entries(tabs).map(([key, tab]) => (
-                  <div
-                    key={key}
-                    className={`p-4 rounded-xl cursor-pointer transition-all duration-300 ${
-                      activeTab === key 
-                        ? 'bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-400/50' 
-                        : 'bg-gray-800/30 border border-gray-600/30 hover:border-cyan-400/30'
-                    }`}
-                    onClick={() => setActiveTab(key)}
-                  >
-                    <div className="text-2xl mb-2">{tab.icon}</div>
-                    <div className="text-2xl font-bold text-cyan-400">{tab.count}</div>
-                    <div className="text-sm text-gray-300">{tab.description}</div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
-                  to="/outsourcing"
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 text-center shadow-lg hover:shadow-cyan-500/25"
-                >
-                  Start Hiring Now
-                </Link>
-              </div>
-            </div>
-            
-            {/* Visual Side */}
-            <div className="lg:w-1/3 flex justify-center">
-              <div className="relative">
-                {/* Main Circle */}
-                <div className="w-64 h-64 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-cyan-400/30">
-                  <div className="text-center">
-                    <div className="text-5xl mb-3">{tabs[activeTab].icon}</div>
-                    <div className="text-xl font-semibold text-cyan-300">{tabs[activeTab].title}</div>
-                    <div className="text-gray-300">{tabs[activeTab].count} Available</div>
-                  </div>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-4 -left-4 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-sm rounded-lg p-3 border border-cyan-400/30 animate-pulse">
-                  <div className="text-lg">⚡</div>
-                  <div className="text-xs font-semibold text-cyan-300">Fast</div>
-                </div>
-                
-                <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-500/20 to-cyan-600/20 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 animate-pulse">
-                  <div className="text-lg">💎</div>
-                  <div className="text-xs font-semibold text-blue-300">Quality</div>
-                </div>
-                
-                <div className="absolute top-1/2 -right-8 bg-gradient-to-r from-cyan-600/20 to-blue-500/20 backdrop-blur-sm rounded-lg p-3 border border-cyan-400/30 animate-pulse">
-                  <div className="text-lg">🎯</div>
-                  <div className="text-xs font-semibold text-cyan-300">Precise</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Quick Stats Section */}
-      <div className="w-full mt-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
-        {quickStats.map((stat, index) => (
-          <div 
-            key={index}
-            className="bg-gradient-to-br from-gray-800/50 to-blue-900/30 rounded-2xl p-6 text-center border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 hover:transform hover:-translate-y-1 group"
-          >
-            <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{stat.value}</div>
-            <div className="text-gray-300 text-sm">{stat.label}</div>
-          </div>
-        ))}
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-100 headline-balanced">
+          Scale your team{' '}
+          <span className="animated-gradient-text">without the friction</span>
+        </h2>
       </div>
 
-      {/* Featured Roles */}
-      <div className="w-full mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          { role: 'React Developers', icon: '⚛️', available: '120+' },
-          { role: 'Python Engineers', icon: '🐍', available: '85+' },
-          { role: 'DevOps Experts', icon: '🔧', available: '65+' },
-          { role: 'UI/UX Designers', icon: '🎨', available: '95+' }
-        ].map((item, index) => (
-          <div 
-            key={index}
-            className="bg-gradient-to-br from-gray-800/30 to-blue-900/20 rounded-xl p-4 text-center border border-gray-600/30 hover:border-cyan-400/50 transition-all duration-300 group"
-          >
-            <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-            <div className="text-lg font-semibold text-white mb-1">{item.role}</div>
-            <div className="text-cyan-400 text-sm font-medium">{item.available} Available</div>
+      {/* ══ HERO BENTO CARD ══ */}
+      <div className="w-full grid grid-cols-1 gap-5 mb-5">
+        <div
+          className="bento-card bento-card-cyan p-8 lg:p-10 card-beam"
+          style={{ background: 'linear-gradient(145deg, rgba(0,212,255,0.07), rgba(39,110,241,0.05))' }}
+          data-animate="left"
+        >
+          {/* Ambient top-right glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%)' }} />
+
+          <div className="relative z-10 flex flex-col h-full">
+            {/* Top line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[20px]"
+              style={{ background: 'linear-gradient(90deg, #00d4ff, #276ef1, #8b5cf6)', opacity: 0.8 }} />
+
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6 w-fit mt-2"
+              style={{ background: 'rgba(0,212,255,0.12)', border: '1px solid rgba(0,212,255,0.3)', color: '#67e8f9' }}>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+              </span>
+              PRIMARY SERVICE — Active Placements Open
+            </div>
+
+            {/* Headline */}
+            <h3 className="text-3xl lg:text-4xl font-bold text-slate-100 mb-4 headline-balanced leading-tight">
+              500+ pre-vetted engineers,<br />
+              <span className="animated-gradient-text">ready to join in 2 weeks</span>
+            </h3>
+
+            <p className="text-slate-400 text-base leading-relaxed mb-7 max-w-lg">
+              Staff augmentation, dedicated teams, and contract-to-hire across 9 engineering roles.
+              Full ownership from sourcing to onboarding.
+            </p>
+
+            {/* Role pills */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {ROLES.map(r => (
+                <span key={r}
+                  className="px-3 py-1 rounded-full text-xs font-medium text-cyan-300 transition-all duration-200 hover:scale-105 cursor-default"
+                  style={{ background: 'rgba(0,212,255,0.08)', border: '1px solid rgba(0,212,255,0.2)' }}>
+                  {r}
+                </span>
+              ))}
+            </div>
+
+            {/* Inline mini-stats */}
+            <div className="flex flex-wrap gap-6 mb-8">
+              {[['2 weeks', 'Avg. hire time'], ['60%', 'Cost reduction'], ['500+', 'Engineers ready']].map(([v, l]) => (
+                <div key={l}>
+                  <div className="text-xl font-bold text-cyan-300">{v}</div>
+                  <div className="text-xs text-slate-500">{l}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="mt-auto flex flex-wrap gap-3">
+              <Link to="/outsourcing"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+                style={{ background: 'linear-gradient(135deg, #00d4ff, #276ef1)', boxShadow: '0 4px 20px rgba(0,212,255,0.25)' }}>
+                Start Hiring Now →
+              </Link>
+              <Link to="/careers"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-slate-300 border border-white/15 hover:border-cyan-400/40 hover:text-cyan-300 transition-all duration-300">
+                Join as a Developer
+              </Link>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
+
+      {/* ── STAT CARDS ROW ── */}
+      <div ref={statsRef} className="w-full grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {BENTO_STATS.map(({ accent, icon, value, label, sub, detail }, i) => {
+          const a = ACCENT[accent];
+          return (
+            <div
+              key={label}
+              className={`bento-card bento-card-${accent} p-7 card-beam`}
+              style={{
+                background: a.bg,
+                ...(statsVisible ? { animation: `stat-flash 0.65s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.15}s both` } : { opacity: 0 }),
+              }}
+            >
+              {/* Radial ambient */}
+              <div className="absolute inset-0 rounded-[20px] pointer-events-none"
+                style={{ background: `radial-gradient(circle at 80% 20%, ${a.glow}, transparent 60%)` }} />
+
+              {/* Top gradient line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-[20px]"
+                style={{ background: `linear-gradient(90deg, ${a.text}, rgba(39,110,241,0.5))`, opacity: 0.6 }} />
+
+              <div className="relative z-10">
+                <div className="text-2xl mb-4">{icon}</div>
+                <div className="text-4xl font-black mb-1" style={{ color: a.text }}>{value}</div>
+                <div className="text-base font-semibold text-slate-200 mb-2">{label}</div>
+                <p className="text-slate-500 text-xs leading-relaxed" style={{ minHeight: subHeight }}>{sub}</p>
+
+                {/* Detail badge */}
+                <div className="mt-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style={{ background: a.detail, border: `1px solid ${a.border}`, color: a.text }}>
+                  ✓ {detail}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   );
-};
-
-export default OutsourcingPreview; 
+}

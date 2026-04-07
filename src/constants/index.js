@@ -50,6 +50,14 @@ export const navLinks = [
         id: '/services',
         title: 'Custom Software Development',
       },
+      {
+        id: '/services/genai-projects',
+        title: 'GenAI Projects',
+      },
+      {
+        id: '/services/agentic-projects',
+        title: 'Agentic Projects',
+      },
     ],
   },
   {
@@ -75,6 +83,27 @@ export const navLinks = [
 ];
 
 export const footerLinks = [
+  {
+    title: 'Our Services',
+    links: [
+      {
+        name: 'IT Staffing & Staff Augmentation',
+        link: '/outsourcing',
+      },
+      {
+        name: 'Custom Software Development',
+        link: '/services',
+      },
+      {
+        name: 'GenAI Projects',
+        link: '/services/genai-projects',
+      },
+      {
+        name: 'Agentic Projects',
+        link: '/services/agentic-projects',
+      },
+    ],
+  },
   {
     title: 'Hire Engineers',
     links: [
@@ -158,19 +187,112 @@ export const services = [
     title: 'Custom Software Development',
     icon: 'code',
     description:
-      'End-to-end development services: web, mobile, cloud, and IoT applications. We build scalable, maintainable products using modern tech stacks.',
+      'End-to-end development services: web, mobile, cloud, and IoT applications. We build scalable, maintainable products using modern tech stacks — fixed-price or long-term engagement.',
     img: web_development,
     isPrimary: false,
+  },
+  {
+    title: 'GenAI Projects',
+    icon: 'auto_awesome',
+    description:
+      'Ship production-ready GenAI products — RAG pipelines, LLM-powered apps, AI chatbots, semantic search, and custom model fine-tuning. Built on OpenAI, Anthropic, Gemini, and open-source LLMs.',
+    img: null,
+    emoji: '🤖',
+    isPrimary: false,
+    isNew: true,
+    tag: 'Cutting Edge',
+    tagColor: 'purple',
+  },
+  {
+    title: 'Agentic Projects',
+    icon: 'hub',
+    description:
+      'Design and build autonomous multi-agent systems — tool-using AI agents, LangGraph workflows, CrewAI pipelines, and self-improving agentic loops that automate complex business operations.',
+    img: null,
+    emoji: '⚡',
+    isPrimary: false,
+    isNew: true,
+    tag: 'Next-Gen AI',
+    tagColor: 'cyan',
   },
 ];
 
 export const customSoftwareServices = [
   {
+    title: 'GenAI Projects',
+    icon: '🤖',
+    description: 'Ship production-ready GenAI products — RAG pipelines, LLM-powered apps, AI chatbots, semantic search, and custom model fine-tuning. Built on OpenAI, Anthropic, Gemini, and open-source LLMs.',
+    features: ['RAG Pipelines', 'LLM Integration', 'AI Chatbots', 'Semantic Search', 'Model Fine-tuning'],
+    img: python,
+    isNew: true,
+    tag: 'Cutting Edge',
+    tagColor: 'purple',
+    details: {
+      overview: 'We build production-grade Generative AI products — not proof-of-concepts. From RAG systems that answer questions over your private data, to LLM-powered workflows, AI chatbots, and custom fine-tuned models. Delivered as fixed-price projects or long-term engagements with dedicated GenAI engineers.',
+      capabilities: [
+        'RAG Systems: Retrieval-Augmented Generation over private data with vector databases (Pinecone, Weaviate, pgvector)',
+        'LLM Integration: OpenAI, Anthropic Claude, Gemini, Mistral, and open-source model integration',
+        'AI Chatbots & Assistants: Domain-specific chatbots with context-aware responses and tool use',
+        'Semantic Search: Embedding-based search replacing keyword search across large document sets',
+        'Prompt Engineering & Optimization: Systematic prompt design for reliability and accuracy',
+        'Model Fine-tuning: Custom fine-tuning on proprietary data for domain-specific performance',
+        'LLMOps & Monitoring: Evaluation, observability, and continuous improvement pipelines',
+      ],
+      technologies: ['Python', 'LangChain', 'LlamaIndex', 'OpenAI', 'Anthropic', 'Gemini', 'Pinecone', 'pgvector', 'FastAPI', 'LLMOps'],
+      engagementModels: [
+        'Fixed-price: Defined scope, timeline, and deliverables — ideal for standalone GenAI products',
+        'Long-term: Dedicated GenAI engineers embedded in your team for ongoing AI development',
+        'Staff Augmentation: Senior GenAI engineers to strengthen your existing AI team',
+      ],
+      benefits: [
+        'Production-ready systems — not demos or prototypes',
+        'Engineers who have shipped real GenAI products at scale',
+        'Same tech stack across staffing and project delivery',
+        'Reduce manual knowledge work by 60–80% with intelligent automation',
+      ],
+    },
+  },
+  {
+    title: 'Agentic Projects',
+    icon: '⚡',
+    description: 'Design and build autonomous multi-agent systems — tool-using AI agents, LangGraph workflows, CrewAI pipelines, and self-improving agentic loops that automate complex business operations.',
+    features: ['Multi-Agent Systems', 'LangGraph Workflows', 'Tool-Using Agents', 'Autonomous Pipelines', 'CrewAI'],
+    img: python,
+    isNew: true,
+    tag: 'Next-Gen AI',
+    tagColor: 'cyan',
+    details: {
+      overview: 'Agentic AI goes beyond chatbots — it\'s AI that plans, decides, and acts autonomously. We design and build multi-agent systems where AI agents use tools, delegate subtasks, manage memory, and execute complex workflows with minimal human intervention. This is the frontier of practical AI deployment.',
+      capabilities: [
+        'Multi-Agent Orchestration: Design agent hierarchies where specialized agents collaborate to complete complex tasks',
+        'LangGraph Workflows: Stateful, graph-based agent workflows with conditional branching and loops',
+        'CrewAI Pipelines: Role-based agent teams with defined goals, tools, and delegation patterns',
+        'Tool-Using Agents: Agents that call APIs, query databases, search the web, write code, and take real actions',
+        'Memory & State Management: Short-term and long-term memory systems for context-aware agents',
+        'Human-in-the-Loop: Approval workflows where agents escalate to humans at critical decision points',
+        'Autonomous Code Execution: Agents that write, test, and deploy code autonomously',
+        'Agentic RPA: Replace brittle rule-based automation with intelligent agents that adapt to change',
+      ],
+      technologies: ['Python', 'LangGraph', 'CrewAI', 'AutoGen', 'LangChain', 'OpenAI Functions', 'Tool APIs', 'Vector DBs', 'Redis', 'FastAPI'],
+      engagementModels: [
+        'Fixed-price: Defined agentic workflow with clear inputs, outputs, and success criteria',
+        'Long-term: Dedicated agentic AI team iterating and expanding your autonomous systems',
+        'Consulting + Build: Architecture review, agent design, and phased implementation',
+      ],
+      benefits: [
+        'Automate multi-step workflows that were previously human-only',
+        'Agents that adapt to new scenarios without re-programming',
+        'Reduce operational overhead by delegating repetitive cognitive tasks',
+        'Scale intelligent automation across departments simultaneously',
+      ],
+    },
+  },
+  {
     title: 'Cutting-edge Technology Development',
     icon: '🤖',
     description: 'Build next-generation AI-powered solutions with GenAI and agentic workflows that transform business operations.',
     features: ['GenAI Solutions', 'Agentic Workflows'],
-    img: python, // Using python icon for AI/GenAI
+    img: python,
     details: {
       overview: 'We specialize in building cutting-edge AI solutions that leverage Generative AI and agentic workflows to automate processes, enhance decision-making, and create intelligent systems that learn and adapt.',
       capabilities: [

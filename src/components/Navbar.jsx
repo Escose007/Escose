@@ -55,11 +55,13 @@ export default function NavBar() {
           <div className="flex items-center justify-between h-full md:block">
             {/* Make logo clickable */}
             <Link to="/" className="cursor-pointer pl-4 pt-4 md:pl-0 md:pt-0">
-              <img
-                src={escose_logo}
-                alt="Escose Technologies - IT Staffing & Software Development Company"
-                className="md:w-[200px] md:h-[60px] w-[160px] h-[48px] filter brightness-125 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] hover:opacity-90 transition-opacity duration-300"
-              />
+              <div className="logo-anim-wrapper">
+                <img
+                  src={escose_logo}
+                  alt="Escose Technologies - IT Staffing & Software Development Company"
+                  className="logo-anim-img md:w-[200px] md:h-[60px] w-[160px] h-[48px] object-contain"
+                />
+              </div>
             </Link>
             <div className="md:hidden">
               <button
