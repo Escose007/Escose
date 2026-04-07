@@ -7,13 +7,15 @@ const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col text-white bg-[#0E2F55]`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
-        <Link to="/" className="mb-6">
-          <img
-            src={escose_logo}
-            alt="Escose Technologies - IT Staffing & Software Development Company"
-            loading="lazy"
-            className="w-[266px] h-[72.14px] object-contain filter brightness-150 hover:opacity-80 transition-opacity duration-300"
-          />
+        <Link to="/" className="mb-6 inline-block">
+          <div className="logo-anim-wrapper">
+            <img
+              src={escose_logo}
+              alt="Escose Technologies - IT Staffing & Software Development Company"
+              loading="lazy"
+              className="logo-anim-img w-[266px] h-[72.14px] object-contain"
+            />
+          </div>
         </Link>
         <p className={`${styles.paragraph} mt-4 max-w-[312px] text-gray-300 leading-relaxed`}>
           Transforming ideas into digital reality with innovative solutions and global talent.

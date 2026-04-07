@@ -1,220 +1,251 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
+
+  <!-- ── Core Pages ── -->
   <url>
     <loc>https://escose.com/</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- IT Staffing & Outsourcing -->
+
   <url>
     <loc>https://escose.com/outsourcing</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Services -->
+
   <url>
     <loc>https://escose.com/services</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
-  
-  <!-- About -->
-  <url>
-    <loc>https://escose.com/about</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Careers -->
-  <url>
-    <loc>https://escose.com/careers</loc>
-    <lastmod>2026-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Contact -->
-  <url>
-    <loc>https://escose.com/contact</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Solutions Flow -->
+
   <url>
     <loc>https://escose.com/solutions-flow</loc>
-    <lastmod>2025-01-27</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-  
-  <!-- Blogs -->
+
+  <!-- ── Service Landing Pages — Staffing ── -->
   <url>
-    <loc>https://escose.com/blogs</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://escose.com/services/react-developers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/python-developers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/fullstack-developers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/devops-engineers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/genai-engineers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/data-engineers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/qa-engineers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── Service Landing Pages — GenAI / Agentic ── -->
+  <url>
+    <loc>https://escose.com/services/genai-projects</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/services/agentic-projects</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── Company Pages ── -->
+  <url>
+    <loc>https://escose.com/about</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://escose.com/leaders</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Posts -->
   <url>
-    <loc>https://escose.com/blogs/genai-in-software-development</loc>
-    <lastmod>2025-09-01</lastmod>
+    <loc>https://escose.com/case-studies</loc>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- ── Careers ── -->
   <url>
-    <loc>https://escose.com/blogs/agentic-ai-patterns</loc>
-    <lastmod>2025-09-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://escose.com/careers</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+  <!-- ── Contact ── -->
   <url>
-    <loc>https://escose.com/blogs/react-18-best-practices</loc>
-    <lastmod>2025-10-01</lastmod>
+    <loc>https://escose.com/contact</loc>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- ── Blog Hub ── -->
   <url>
-    <loc>https://escose.com/blogs/data-driven-development-metrics</loc>
-    <lastmod>2025-09-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://escose.com/blogs</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+  <!-- ── Blog Posts ── -->
   <url>
-    <loc>https://escose.com/blogs/scaling-devops-enterprise</loc>
-    <lastmod>2025-08-01</lastmod>
+    <loc>https://escose.com/blogs/langchain-vs-langgraph-when-to-use-what</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://escose.com/blogs/cybersecurity-remote-teams</loc>
-    <lastmod>2025-10-01</lastmod>
+    <loc>https://escose.com/blogs/llm-single-agent-multi-agent-architecture-decision</loc>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://escose.com/blogs/integrating-ai-web-apps</loc>
-    <lastmod>2025-09-01</lastmod>
+    <loc>https://escose.com/blogs/stop-confusing-llms-with-ai-agents</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://escose.com/blogs/building-innovation-culture</loc>
-    <lastmod>2025-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
     <loc>https://escose.com/blogs/json-vs-toon-llm-formats</loc>
     <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
-    <loc>https://escose.com/blogs/stop-confusing-llms-with-ai-agents</loc>
-    <lastmod>2025-11-11</lastmod>
+    <loc>https://escose.com/blogs/genai-in-software-development</loc>
+    <lastmod>2025-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
-    <loc>https://escose.com/blogs/llm-single-agent-multi-agent-architecture-decision</loc>
-    <lastmod>2025-12-19</lastmod>
+    <loc>https://escose.com/blogs/react-18-best-practices</loc>
+    <lastmod>2025-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
   <url>
-    <loc>https://escose.com/blogs/langchain-vs-langgraph-when-to-use-what</loc>
-    <lastmod>2026-03-11</lastmod>
+    <loc>https://escose.com/blogs/cybersecurity-remote-teams</loc>
+    <lastmod>2025-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
-  <!-- Case Studies -->
+
   <url>
-    <loc>https://escose.com/case-studies</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://escose.com/blogs/agentic-ai-patterns</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
-  
-  <!-- Service Landing Pages -->
+
   <url>
-    <loc>https://escose.com/services/react-developers</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://escose.com/blogs/data-driven-development-metrics</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://escose.com/services/python-developers</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://escose.com/blogs/integrating-ai-web-apps</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://escose.com/services/fullstack-developers</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://escose.com/blogs/scaling-devops-enterprise</loc>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://escose.com/services/devops-engineers</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://escose.com/blogs/building-innovation-culture</loc>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
-  
-  <url>
-    <loc>https://escose.com/services/genai-engineers</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://escose.com/services/data-engineers</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://escose.com/services/qa-engineers</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Legal Pages -->
+
+  <!-- ── Legal Pages ── -->
   <url>
     <loc>https://escose.com/privacy-policy</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  
+
   <url>
     <loc>https://escose.com/terms</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  
+
   <url>
     <loc>https://escose.com/cookies</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>

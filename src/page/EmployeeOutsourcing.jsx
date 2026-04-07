@@ -16,7 +16,7 @@ const EmployeeOutsourcing = () => {
       <Helmet>
         <title>IT Staffing & Employee Outsourcing | Hire Pre-Vetted Developers | Escose</title>
         <meta name="description" content="Hire elite developers in 2 weeks. IT staff augmentation, dedicated teams, and contract-to-hire models. 500+ pre-vetted engineers. Save 60% on costs. Flexible engagement models with replacement guarantee." />
-        <meta name="keywords" content="IT staffing, employee outsourcing, hire developers, staff augmentation, dedicated development teams, contract to hire, offshore developers, IT recruitment, hire React developers, hire Python developers, hire Java developers" />
+        <meta name="keywords" content="IT staffing India, employee outsourcing, hire developers India, staff augmentation, dedicated development teams, contract to hire, offshore developers India, IT recruitment agency, hire React developers, hire Python developers, hire full stack developers, hire DevOps engineers, hire GenAI engineers, remote developer hiring, pre-vetted engineers, 2 week developer onboarding, software development outsourcing, 60% cost savings developers, IT staffing Bangalore" />
         <link rel="canonical" href="https://escose.com/outsourcing" />
         
         {/* Open Graph */}

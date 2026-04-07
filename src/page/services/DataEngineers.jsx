@@ -26,7 +26,7 @@ const DataEngineers = () => {
       <Helmet>
         <title>Hire Data Engineers | Expert Data Engineering Talent | Escose</title>
         <meta name="description" content="Hire expert data engineers in 2 weeks. Pre-vetted data engineering specialists with 3-10 years experience. Specialized in Spark, Airflow, ETL pipelines, and big data. Staff augmentation, dedicated teams." />
-        <meta name="keywords" content="hire data engineers, data engineering talent, Spark engineers, ETL developers, big data engineers, data pipeline developers, Airflow engineers, data warehouse developers" />
+        <meta name="keywords" content="hire data engineers India, data engineering talent outsourcing, Apache Spark engineers hire, ETL pipeline developers hire, big data engineers, Airflow developers, data warehouse engineers hire, dbt engineers, Kafka engineers, offshore data engineers, remote data engineers hire, contract data engineers, dedicated data engineering team, data platform engineers India" />
         <link rel="canonical" href="https://escose.com/services/data-engineers" />
         
         <meta property="og:title" content="Hire Expert Data Engineers | Escose Technologies" />

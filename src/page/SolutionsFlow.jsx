@@ -130,7 +130,7 @@ export default function SolutionsFlow() {
       <Helmet>
         <title>GenAI Solutions & Agentic Workflow Architecture | Escose Technologies</title>
         <meta name="description" content="Explore our GenAI and agentic workflow solution architectures. RAG knowledge assistants, content automation, agentic systems, dev velocity tools, and data extraction flows with LLMs and enterprise-grade guardrails." />
-        <meta name="keywords" content="GenAI solutions, agentic workflows, RAG architecture, AI automation, LLMOps, GenAI development, AI workflow automation, enterprise AI, knowledge assistants, LLM integration" />
+        <meta name="keywords" content="GenAI solutions India, agentic workflow development, RAG architecture, AI automation, LLMOps, GenAI development company, AI workflow automation, enterprise AI solutions, knowledge assistants, LLM integration, LangChain LangGraph workflows, CrewAI multi-agent, AutoGen development, RAG pipeline, AI chatbot development, semantic search, document AI, GenAI consulting India" />
         <link rel="canonical" href="https://escose.com/solutions-flow" />
         
         {/* Open Graph */}

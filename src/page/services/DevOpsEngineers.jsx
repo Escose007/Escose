@@ -26,7 +26,7 @@ const DevOpsEngineers = () => {
       <Helmet>
         <title>Hire DevOps Engineers | Expert AWS, Azure, Kubernetes DevOps Specialists | Escose</title>
         <meta name="description" content="Hire expert DevOps engineers in 2 weeks. AWS, Azure, Kubernetes specialists. Pre-vetted engineers with CI/CD, Docker, Terraform expertise. Staff augmentation and dedicated teams available." />
-        <meta name="keywords" content="hire DevOps engineers, AWS DevOps, Azure DevOps, Kubernetes engineers, hire DevOps specialists, CI CD engineers, Docker engineers, infrastructure engineers, cloud DevOps" />
+        <meta name="keywords" content="hire DevOps engineers India, AWS DevOps engineers hire, Azure DevOps specialists, Kubernetes engineers hire, DevOps staff augmentation, CI CD pipeline engineers, Docker engineers hire, Terraform engineers, cloud DevOps outsourcing India, remote DevOps engineers, contract DevOps engineers, dedicated DevOps team, infrastructure as code engineers, SRE engineers hire" />
         <link rel="canonical" href="https://escose.com/services/devops-engineers" />
         
         <meta property="og:title" content="Hire Expert DevOps Engineers | Escose Technologies" />

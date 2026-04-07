@@ -26,7 +26,7 @@ const QAEngineers = () => {
       <Helmet>
         <title>Hire QA Engineers | Expert Quality Assurance Talent | Escose</title>
         <meta name="description" content="Hire expert QA engineers in 2 weeks. Pre-vetted quality assurance specialists with 2-8 years experience. Specialized in test automation, Selenium, Cypress, and API testing. Staff augmentation, dedicated teams." />
-        <meta name="keywords" content="hire QA engineers, quality assurance engineers, test automation engineers, Selenium engineers, Cypress developers, QA staff augmentation, hire testers, QA testing engineers" />
+        <meta name="keywords" content="hire QA engineers India, quality assurance engineers hire, test automation engineers, Selenium engineers hire, Cypress developers hire, QA staff augmentation, AI product testing engineers, offshore QA engineers, remote QA testers hire, contract QA engineers, automated testing engineers India, LLM QA testing engineers, GenAI product QA hire" />
         <link rel="canonical" href="https://escose.com/services/qa-engineers" />
         
         <meta property="og:title" content="Hire Expert QA Engineers | Escose Technologies" />

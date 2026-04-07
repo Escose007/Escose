@@ -27,7 +27,7 @@ const Services = () => {
     <Helmet>
       <title>Services | Custom Software Development | Escose Technologies</title>
       <meta name="description" content="Custom software development services: Cutting-edge technology development (GenAI Solutions, Agentic Workflows), mobile app development, web development, and UI/UX design. End-to-end solutions tailored to your business needs." />
-      <meta name="keywords" content="custom software development, web development, mobile app development, GenAI solutions, agentic workflows, UI UX design, software development services" />
+      <meta name="keywords" content="custom software development India, web development company, mobile app development, GenAI solutions company, agentic AI workflows, LLM application development, RAG pipeline development, UI UX design services, software development services Bangalore, AI software development, agentic AI systems, LangChain development, LangGraph development, full stack development services" />
       <link rel="canonical" href="https://escose.com/services" />
       
       {/* Open Graph */}
