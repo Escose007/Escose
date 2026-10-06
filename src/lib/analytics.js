@@ -1,6 +1,11 @@
 import posthog from 'posthog-js';
 
-const PH_TOKEN = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN;
+// A PostHog project token is public by design - it ships in client JS and can
+// only write events, never read data. Defaulted here (same as the EmailJS keys)
+// so analytics can't silently break on a missing env var.
+const PH_TOKEN =
+  import.meta.env.VITE_POSTHOG_PROJECT_TOKEN ||
+  'phc_Bu8DYnQBy763T5GGDMuaNW6ZmE4ChtmDH9YFL8qxSLPM';
 const PH_HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://eu.i.posthog.com';
 
 // Don't pollute production stats with localhost traffic.
