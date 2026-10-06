@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { outsourcingFormFields } from '../constants';
 import Input from '../pureComponents/Input';
 import { useToast } from './ToastContainer';
+import { trackFormSubmit } from '../lib/analytics';
 
 const WHY_ITEMS = [
   { icon: '⚡', text: '500+ pre-vetted engineers ready' },
@@ -46,6 +47,7 @@ const OutsourcingForm = ({ handleSuccessToast }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       );
       form.current.reset();
+      trackFormSubmit('hire_request');
       showSuccess("Request sent! We'll send your first CVs within 8 business days.");
       if (handleSuccessToast) handleSuccessToast(true);
     } catch {
