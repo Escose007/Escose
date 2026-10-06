@@ -8,6 +8,7 @@ import './index.css';
 import ErrorBoundary from './components/ErrorBoundary';
 import { ToastProvider } from './components/ToastContainer';
 import ScrollToTop from './components/ScrollToTop';
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 // Lazy load all routes for code splitting
 const Home = lazy(() => import('./page/Home'));
@@ -93,6 +94,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               </Routes>
             </Suspense>
             <ScrollToTop />
+            <AnalyticsTracker />
           </BrowserRouter>
         </ToastProvider>
       </HelmetProvider>

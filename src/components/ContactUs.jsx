@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { contactUsFields } from '../constants';
 import Input from '../pureComponents/Input';
 import { useToast } from './ToastContainer';
+import { trackFormSubmit } from '../lib/analytics';
 
 const ContactUs = ({ handleSuccessToast }) => {
   const form = useRef();
@@ -38,6 +39,7 @@ const ContactUs = ({ handleSuccessToast }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       );
       form.current.reset();
+      trackFormSubmit('general_inquiry');
       showSuccess('Your message has been sent! We\'ll get back to you within 24 hours.');
       if (handleSuccessToast) handleSuccessToast(true);
     } catch (err) {

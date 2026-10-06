@@ -20,14 +20,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e293b" />
     
-    <!-- Google Analytics 4 -->
-    <!-- Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 (GA4) -->
+    <!-- page_view is sent manually from src/lib/analytics.js so SPA route changes are counted -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0JVRHFNY0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-Z0JVRHFNY0', { send_page_view: false });
     </script>
     
     <!-- Primary Meta Tags -->

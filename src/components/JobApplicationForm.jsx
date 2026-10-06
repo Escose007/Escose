@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Input from '../pureComponents/Input';
 import { useToast } from './ToastContainer';
+import { trackFormSubmit } from '../lib/analytics';
 
 const PERKS = [
   { icon: '🌍', text: 'Work with global clients' },
@@ -48,6 +49,7 @@ const JobApplicationForm = ({ handleSuccessToast }) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '2HswVx6NHPH32wUNU'
       );
       form.current.reset();
+      trackFormSubmit('job_application');
       showSuccess('Application submitted! Our HR team will reach out within 3–5 business days.');
       if (handleSuccessToast) handleSuccessToast(true);
     } catch {
